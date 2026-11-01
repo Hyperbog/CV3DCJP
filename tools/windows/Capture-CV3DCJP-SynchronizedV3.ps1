@@ -41,6 +41,7 @@ if ($ValidateOnly) { return }
 
 $runId = [Guid]::NewGuid().ToString('N')
 $runDir = Join-Path $root $runId
+New-Item -ItemType Directory -Path $root -Force -ErrorAction Stop | Out-Null
 New-Item -ItemType Directory -Path $runDir -ErrorAction Stop | Out-Null
 # Run from a disposable COPY, protecting saves/config in the working baseline.
 $runExeDir = Join-Path $runDir 'executable'
@@ -93,7 +94,8 @@ $receipt = [ordered]@{
     hook_source_sha256 = (Get-FileHash -LiteralPath $hookSource -Algorithm SHA256).Hash.ToLowerInvariant()
     sha256 = $hashes
 }
-$receipt | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $runDir 'session.json') -Encoding utf8
+[IO.File]::WriteAllText((Join-Path $runDir 'session.json'),
+    ($receipt | ConvertTo-Json -Depth 8), [Text.UTF8Encoding]::new($false))
 $validator = Join-Path $repo 'tools\extract\verify_stage0_synchronized_v3.py'
 & py -3.12 $validator --rom $Rom --session $runDir --out (Join-Path $runDir 'audit.json')
 if ($LASTEXITCODE -ne 0) {
