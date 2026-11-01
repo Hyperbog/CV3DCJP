@@ -1,0 +1,387 @@
+{
+  "status": "HOST SOURCE IMPORTED; WINDOWS/ROM GAMEPLAY NOT YET VERIFIED",
+  "host_source": "authenticated pre-W8 5H8F snapshot",
+  "dependencies": "pinned Hyperbog/CVIII-Decomp f7f533b",
+  "sources": [
+    {
+      "path": "Build-CVIII-Phase5H8F.ps1",
+      "sha256": "e1a92598a135a8cfb9da1b3680d560f137e76b1ca3ac2fd5ad225727084258fe",
+      "bytes": 8811
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/CMakeLists.txt",
+      "sha256": "beff0283313293b2984d62910935293eff92e7c8dc54e4a1dca204995497abcd",
+      "bytes": 19487
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_boss_cache_5h8c.c",
+      "sha256": "95f5701dc59d0196d4df06c7c3cd22d2a8f19a3f19c6f9e359e89dce435d6902",
+      "bytes": 3943
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_boss_cache_5h8c.h",
+      "sha256": "444f99e02e41d4ad67198890ae8d245de5457cf096558866c3087f63bdd8b6c1",
+      "bytes": 1324
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_gate_5h4.c",
+      "sha256": "2ab26d4bdf28866599ae62a0a61ab7ee7d36412c6bf37be7746fc207a7b702ef",
+      "bytes": 1480
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_gate_5h4.h",
+      "sha256": "8b7b0a2d75a79c9b6d6b9ab67c6865e07793f1e45837f24e3a4860f1295a6650",
+      "bytes": 1532
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_gate_test_5h4.c",
+      "sha256": "27719cf7e809d77f37fcff2284733892ab2b18639742fb6e71488985c4447ad6",
+      "bytes": 1175
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_trace_5h3.c",
+      "sha256": "ec6c88a4b62ddcd34269f82896b48a79a0f23ac095449c4bf227d7e151eb9a23",
+      "bytes": 2713
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_trace_5h3.h",
+      "sha256": "16781fa60c01b461fe8cb0b0921ecbd93c108b24d5ccc0c661c3ee1cc8032cb7",
+      "bytes": 1380
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_trace_test_5h3.c",
+      "sha256": "b28d2403266d95c3e299b4733d6599fc145a5c73e9ea4e9bc5606187e5910f65",
+      "bytes": 1614
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_track_5h7.c",
+      "sha256": "f08e3533b8a44f5ba2aa6743dbf34b3765cf6e80c0fddcbfa806abba3e838bcb",
+      "bytes": 2397
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_track_5h7.h",
+      "sha256": "c16641be3ce3717f3c8459d9472f34ad7d120f6d9be79b8a459fee68735e4eb0",
+      "bytes": 1068
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_camera_track_test_5h7.c",
+      "sha256": "b77c9afa36e303a0870c1f978b24fb6989fe43d6b8122ec28239d655c4d79417",
+      "bytes": 1996
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_diagnostic_5h8.c",
+      "sha256": "16ce46c5e8fe45f6ba5a163f74d598d8e95ae6252f18f7a28b433d778690b77d",
+      "bytes": 5306
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_diagnostic_5h8.h",
+      "sha256": "1c94aad2753682b7c2e51d1ad33e2410c15b65c246cb0abaa58d4b0368f5af3c",
+      "bytes": 1526
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_diagnostic_runtime_5h8.c",
+      "sha256": "3afcc5fcda6dedd3173777bc93466909af0d04d260ce7de4406622ec308c0d8c",
+      "bytes": 2266
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_diagnostic_stub_5h8.c",
+      "sha256": "b02c80dd9445963f8d7c470904dc892b9ad8b0fc160d5b3e553155d761afa6f8",
+      "bytes": 315
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_diagnostic_test_5h8.c",
+      "sha256": "0e322cddd7f03052b26a80dcfab63b1a75cc1ce4b9634111b1ba6cfce9e7f523",
+      "bytes": 1475
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_dual_scene_5h8c.c",
+      "sha256": "7d161c0363869b9cb0bbf42e138f3bfb2194efc260d54643e70f80c6b4715726",
+      "bytes": 3057
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_dual_scene_5h8c.h",
+      "sha256": "97fddde2b4e953a740f058cc41055ce67bae0edc8e3388c07f749a61f4861db8",
+      "bytes": 935
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_entity_events_5h8f.c",
+      "sha256": "e7fd433b7c7f3946e357d9066c733ba7f8bf7cb6d637ac5734439707acc887b4",
+      "bytes": 4006
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_entity_events_5h8f.h",
+      "sha256": "5ce75a29677c3b259de0b25913169888224dc89450609ae95051156c5ad4c11f",
+      "bytes": 2717
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_entity_events_test_5h8f.c",
+      "sha256": "d66ad9a8da20d28df7fc0bd5c5764181ea8281d9e79bf4bc78bfc5695a1c9802",
+      "bytes": 2494
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_host_test_stubs.c",
+      "sha256": "6313c9fee6a8a6e0febe5f8482a2f5882ff21775d80606f6ab14f30931ac9d85",
+      "bytes": 2137
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_modern_host.c",
+      "sha256": "fa1221b9349b2308e407efdcb892944a26e1a8d7b7719617b3faeb7dd4109a51",
+      "bytes": 13915
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_modern_host_test.c",
+      "sha256": "1a58a80b1ac9ed0edb9a118316b1f9a376f0be3378f77fe6c0432479184131de",
+      "bytes": 7791
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_mutable_tiles_5h8e.c",
+      "sha256": "fd63ebc3edd018c964bfbe262d79f154d5fffcce6e2eef92dd7a116e835d4437",
+      "bytes": 4675
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_mutable_tiles_5h8e.h",
+      "sha256": "fa1c2718dc016d8bf6bc7ec1e00b6b86372c89cadaebc30ef8233e396f4a5a38",
+      "bytes": 1691
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_mutation_test_5h8e.c",
+      "sha256": "e07e0c3f84cdc1bc3c2eb6af9321c255c50ab9cd2726847d0a4c0f9a67c57c80",
+      "bytes": 1677
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_native_world_5h2.c",
+      "sha256": "ab836b0ed1f5104f4bccb86cda32407e6c68cdd6dbeafbe8941e00ad60541dcc",
+      "bytes": 6974
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_native_world_5h2.h",
+      "sha256": "0685a84a57268c6078f424e68eda1072b8ee818ca6ccdebd43aa1bbf3620170a",
+      "bytes": 1931
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_native_world_test_5h2.c",
+      "sha256": "f6f4664ca573a9d661bee477eb7ec4ed9b847c421d6fd6236eb786e7fa3480e6",
+      "bytes": 5038
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_boot_5h8j/CMakeLists.txt",
+      "sha256": "eb21f14aa5278bc1f219dc86423835f8b336b4f0f866918c713fa46f302b032f",
+      "bytes": 1000
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_boot_5h8j/cviii_pc_boot_5h8j.c",
+      "sha256": "796db16c697d8f778270db3033604d0ad943b84d9f022c4be73aff99c2a783ce",
+      "bytes": 8323
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_graphics_5h8k/CMakeLists.txt",
+      "sha256": "de5413e2e194bcd670de200233731835d3cc9dbb2f7819bda529587b199baa36",
+      "bytes": 1022
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_graphics_5h8k/cviii_pc_graphics_5h8k.c",
+      "sha256": "1837aa5e46cc5ca5618faa2c0f45a4f784616fcf16a36058dd1058a43e7b2ea5",
+      "bytes": 9022
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_import_5h8i/CMakeLists.txt",
+      "sha256": "f10a16e1a89dacf3eb368b78e0c9fbed3c804a4fa171b9f9ff84bd4789deee0c",
+      "bytes": 952
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_import_5h8i/cviii_pc_import_5h8i.c",
+      "sha256": "1a67cb3c0c53b8440d36bb936c0144afb136121f2b9d7989edba73557e521cac",
+      "bytes": 3707
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_import_5h8i/cviii_pc_import_5h8i.h",
+      "sha256": "e4f20ec9f39566c1a6ed33693b643eab08e7fa374dc36c9c92f358dcbf91ee0f",
+      "bytes": 239
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_import_5h8i/cviii_pc_import_test_5h8i.c",
+      "sha256": "d8e7bbe1eb4cb9e50e5754bee8e034c5977ab7343fa8dbbfb8f0c82f2dd1ef8c",
+      "bytes": 2825
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_persistence_5h8v/CMakeLists.txt",
+      "sha256": "ca0abe572789a4a56e779fb5355a731f05490bb81778d34441472ba04673014b",
+      "bytes": 820
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_persistence_5h8v/cviii_pc_persistence.c",
+      "sha256": "5ab827c4ad83a7e16d9c7fe1ccebfdd55079ed3c6b87a41ae9b37bac092243dc",
+      "bytes": 3949
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_persistence_5h8v/cviii_pc_persistence.h",
+      "sha256": "2c8f50bd6b78e048795e9cb19b238f524a804f38b185b6764172f61cafb4da23",
+      "bytes": 2150
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_persistence_5h8v/cviii_pc_persistence_test.c",
+      "sha256": "59affd67c98e12d5664e66c777da22533baa4c2a2143bd2bf787549c4db3b089",
+      "bytes": 5255
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_world_5h8h/CMakeLists.txt",
+      "sha256": "1b6762c7d2ec13d3f492221d036105dea257a4fa4214477fcfe90c4af9418326",
+      "bytes": 775
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_world_5h8h/cviii_pc_save.c",
+      "sha256": "047e0f2092748d3b99374783710819e6026326dfb3cbc373a620cd417798780e",
+      "bytes": 5132
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_world_5h8h/cviii_pc_world.c",
+      "sha256": "c9334c92e4fb3971c2def3ae745c1bdb4280b15375e2df500558fbed6d6bd000",
+      "bytes": 7987
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_world_5h8h/cviii_pc_world.h",
+      "sha256": "a26ab54ced068b55ce8708ad5549585a62e9a7b064be3a3d95a0c891a7764f1a",
+      "bytes": 4193
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_pc_world_5h8h/cviii_pc_world_test.c",
+      "sha256": "a429b3bb7259cdafb4bc9229b392727488a122f75d41675eb92f6dfa7dbae945",
+      "bytes": 3660
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_ppu_audit_5h6.c",
+      "sha256": "5c653c573acf97335fdc09fcd9d5fce8ca9ece2ab1b30ec3a6c8118ac45ec50d",
+      "bytes": 3313
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_ppu_audit_5h6.h",
+      "sha256": "703789d90c2e10614877b092ce277108772728fcdd38d7a70a4e99b0397b651c",
+      "bytes": 1467
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_ppu_audit_test_5h6.c",
+      "sha256": "151617e8359cbd536c0dacfe02629a88800d8c14267f4f8825b15e032dc7901e",
+      "bytes": 1984
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_ppu_guard_5g2.c",
+      "sha256": "54422f8edb6bc3e6baf370fc1f2074f104447abed499c73097917e7df30b07d4",
+      "bytes": 4861
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_ppu_guard_5g2.h",
+      "sha256": "58f7592635fb4579383c3658e39f10b9f35186d753f349a0401bdec325b446c1",
+      "bytes": 1190
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_ppu_guard_test_5g2.c",
+      "sha256": "7a8423fb3709ba3bf1e593ee7b8841c0d8a31bba8f281b01e1a75816fdccc640",
+      "bytes": 2799
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_reference_capture_5h8l2.h",
+      "sha256": "2e283f37e3e9eecfd2dede2325250a9b28b014cd6e5e3c8ea0505ab45e7170e6",
+      "bytes": 2702
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_diag.c",
+      "sha256": "1313e492f8b3ee8a7b89be77c8ec91865f2fd226805296b5791aa62d594d8b7e",
+      "bytes": 47813
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_diag.h",
+      "sha256": "f965123a2741a6ffd47bf51e506f12d69534f9d86da51cfdb6a4f9d33f9c3aea",
+      "bytes": 1453
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_diag_test_5f.c",
+      "sha256": "fee1896804eba619fe39bc5271aba1d27cbf88a5b52296ee41d1a641e8c30f28",
+      "bytes": 1379
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_diag_test_5g.c",
+      "sha256": "e98d77f9c1e816fd9d4073f9df28d6419b9e8b9129a7c88f9cd3f0a1f3763033",
+      "bytes": 2576
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_local_5h8.c",
+      "sha256": "37c0747671f845e0edb6e5eb8c31b29135275d5f92e314ea2968730d2fd4267c",
+      "bytes": 3929
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_local_5h8.h",
+      "sha256": "2f7f66b23ad62cbb1d09227b5a73400913753fc0314532c11324ef160184359d",
+      "bytes": 1358
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_room_local_test_5h8b.c",
+      "sha256": "68a060e91b42b2a9be4d03f7b8736c64fbcf737ac405d391bf95346baec8a7f0",
+      "bytes": 3150
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_scene_epoch_5h8c.c",
+      "sha256": "daaed4d750af7e146c4d699c142cfca43913c339eae982eebd92b9a8cc8540df",
+      "bytes": 1891
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_scene_epoch_5h8c.h",
+      "sha256": "a5a4ca05d417a4096b003d4227c9e2b2a6076ad6d1a2da27984e0354cd9894df",
+      "bytes": 955
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_scene_integration_test_5h8c.c",
+      "sha256": "8bdd1a69ffa59f2da0a6b34461bcebdad2d9b4c7491b2d31cc68beca713d0897",
+      "bytes": 3293
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_selector_native_5h8s.c",
+      "sha256": "436c05f74d28e78f1545be20ce068c48dccb7ed83f747db396d529258f0360ab",
+      "bytes": 2084
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_selector_native_5h8s.h",
+      "sha256": "12c75109f2a9ed7cac7544baf1c2b8324b183dd4ba6ef40b51a5a8852346b1a0",
+      "bytes": 508
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_selector_native_5h8u.c",
+      "sha256": "ed24ff620c48611e03a2906f1800552e7e35c1a2bc462e6a4a2b96c646a1c0d8",
+      "bytes": 1352
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_selector_native_5h8u.h",
+      "sha256": "e4207ce668b015940d39da60002a8083fb9b641eb56f03dff99c5773cca22d78",
+      "bytes": 298
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_transition_5h8d.c",
+      "sha256": "6afd67e44e1a9c67c0ec8de9b54844b6d8646a981ab41976e5e1bd67f384b839",
+      "bytes": 5925
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_transition_5h8d.h",
+      "sha256": "ada24c5a25a6a50783a1306dd49d89ef9d4dc038f6c368110a48d7212dfc7b6a",
+      "bytes": 1922
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_transition_test_5h8d.c",
+      "sha256": "062be46a96da3a630ed99ac53ac0701421c39983673d4ca2c4284e427fe332f3",
+      "bytes": 4199
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_world_parity_5h5.c",
+      "sha256": "7bf7d3a2f327ad6f7c5178a1b93bd8bd9b64fbb901135b533239e113a2dda3ce",
+      "bytes": 3155
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_world_parity_5h5.h",
+      "sha256": "629efed1e3b40b371eea708581d4d9b6797b5cf44888e61ea9f1683bd1c6b92d",
+      "bytes": 1207
+    },
+    {
+      "path": "JP/recomp/native/nesrecomp_modern/cviii_world_parity_test_5h5.c",
+      "sha256": "6e2b07cf8e826cce1f0f4c59435baed970ef50628fc0242033cd638b6510ca1d",
+      "bytes": 4228
+    }
+  ]
+}
