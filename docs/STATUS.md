@@ -1,32 +1,38 @@
 # Verified project status
 
-**Last editorial update: 2026-10-31**
+**Last editorial update: 2026-10-31 (owner local time)**
 
 | Area | Current evidence | Status |
 | --- | --- | --- |
-| Repository | Newly initialized GitHub hub | Bootstrap |
-| Working original gameplay | 156 original support files and authenticated pre-W8 5H8F ROM-backed host merged to `main` in PR #5 and PR #6 | **Source imported; external diagnostic tools and reproducible Windows build still pending** |
-| Stage 0 room-local graphics/data | Extracted in earlier private project artifacts | Available outside repository; **not independently verified by this repo** |
-| Complete Stage 0 world placement | Several origins were provisional in previous mockups | **Unverified** |
-| W8–W13 enhanced rendering | User screenshots show visible seams and graphics discontinuities | **Failed visual acceptance; not a baseline** |
-| Native PC engine | Clean architecture described, components exist in local prototypes | **Not yet an accepted integrated build** |
-| CI | Repository hygiene tests proposed on foundation PR | Pending merge |
+| Repository | Source import PRs #5, #6, #8; isolated build script PR #9 | **Source and build tooling on main** |
+| Original Japanese ROM-backed gameplay | Owner reports on 2026-10-31: “Rom loads. Plays as natively intended.” after the isolated Windows build instructions | **Owner-observed functional gameplay**; full regression and ROM-frame parity not independently measured |
+| Original ROM identity | Isolated build script checks size 393232 bytes and SHA-256 `958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28` before running | **Identity-gated locally**; build logs not archived in repository |
+| Recovered source | 156 pinned Japanese support sources, 76 host/launcher sources, and 5 diagnostic tools/tests imported | **Tracked in GitHub with provenance** |
+| Stage 0 room-local graphics/data | Extracted in earlier private project artifacts | **Not independently verified by this repository** |
+| Complete Stage 0 room placement | Prior map has unverified room-world origins | **Unverified** |
+| W8–W13 enhanced rendering | Owner screenshots show scene seams and incorrect visuals | **Failed visual acceptance; not a baseline** |
+| True native, resolution-independent renderer | Still separate from the ROM-backed original-mode gameplay | **Not yet accepted** |
+| Repository CI | GitHub Actions source-policy and Python tests run on Windows and Linux | **Passing at last merge**; does not test live ROM gameplay |
 
-## Immediate acceptance sequence
+## Evidence levels
 
-1. Import the minimal known-working ROM-backed gameplay source and its Windows build scripts without graphics modifications.
-2. Establish exact ROM identity, reproducible local extraction and evidence manifest format.
-3. Compile all original Stage 0 terrain from authenticated ROM data; resolve room origins from ROM transitions.
-4. Compare the complete native Stage 0 output against independent original-ROM captures and report mismatches.
-5. Attach the native renderer to the behavior engine only after Stage 0 geometry validation.
-6. Verify gameplay, resolution changes, transitions, sprites, HUD, entities, drops, persistence, and Windows presentation in one executable.
+- **Owner-observed:** The owner ran the isolated Windows workflow and reports that the ROM loads and plays as natively intended. This is meaningful functional acceptance of the current *original-ROM mode* on their machine.
+- **Repository-verified:** Historical sources are present; import hashes, source safeguards, Python tests and GitHub Windows/Linux repository CI have been checked.
+- **Not yet independently established:** Full-game playthrough, per-frame ROM parity, audio timing measurements, all stage transitions, a clean build log retained as evidence, and all enhanced native-renderer features.
 
-**Rule:** No unverified W8–W13 branch or stage image is to be promoted to release or used as an authoritative fixture.
+**Do not infer native graphics parity, complete Stage 0 world correctness, or widescreen acceptance from the successful original-ROM play session.**
 
-## Historical source handoff
+## Preserved reference baseline
 
-The guarded importer and pre-W8 source hash manifest are documented in [BASELINE_IMPORT.md](BASELINE_IMPORT.md). Issue #2 remains open: original Git-tracked modules are on the import PR; the historical host and any non-Git tracked tools have not yet been committed, and the source has not been built or validated from this repository.
+The ROM-backed original-mode executable from [WINDOWS_BASELINE_BUILD.md](WINDOWS_BASELINE_BUILD.md) is now the **owner-confirmed functional reference**, not a certified frame-perfect reimplementation. Keep its original gameplay execution and original presentation unchanged while working on ROM-derived world data, camera independence and native rendering.
 
-## Historical source post-import audit
+The protected isolated build path is `C:\NESDev\CV3DCJP-Builds\5h8f-original`; the older existing game installation is `C:\NESDev\AkumajouDensetsu\build-5h8f`. Do not overwrite either with experimental graphics builds.
 
-PR #6 merged the authenticated 5H8F host. A fresh audit of the historical Windows launcher identified five absent diagnostic Python source files from the owner's local archive. They can be staged with the hash-pinned [diagnostic source importer](../tools/import_local_diagnostics.py) (see [handoff](DIAGNOSTIC_SOURCE_HANDOFF.md)). Neither a clean Windows/MSVC build nor original-ROM live gameplay has been verified from this repository. Do not run the old launcher with its existing build/UI modification defaults.
+## Next original-game verification work
+
+1. Preserve and record the precise baseline commit, build log, ROM identity, CTest output, and a short reproducible launch/control/transition log, **without checking in the ROM or frame assets**.
+2. Compile Stage 0 terrain and transitions from the exact original Japanese ROM with explicit provenance. Fail when a room origin or active graphics phase is unresolved.
+3. Compare native output to **independently recorded original-ROM output**, not against W9's provisional assembled bitmap.
+4. Connect the modern camera and renderer only after these independent checks; recheck playable gameplay in the same native window at multiple resolutions.
+
+See [ROM_AUTHORITY.md](ROM_AUTHORITY.md), [ARCHITECTURE.md](ARCHITECTURE.md), [SOURCE_IMPORT_PROVENANCE.md](SOURCE_IMPORT_PROVENANCE.md), and [WINDOWS_BASELINE_BUILD.md](WINDOWS_BASELINE_BUILD.md).
