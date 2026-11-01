@@ -22,7 +22,7 @@ class IsolatedBaselineTests(unittest.TestCase):
     def test_old_installation_is_protected(self):
         self.assertIn("C:\\NESDev\\AkumajouDensetsu", SCRIPT)
         self.assertIn("C:\\NESDev\\CVIII-Decomp", SCRIPT)
-        self.assertIn("Safe", "Safe")  # Keep test coverage focused on script invariants.
+        self.assertIn("if ($build.Equals($protected", SCRIPT)
         self.assertIn("Refusing to overwrite source or working game", SCRIPT)
 
     def test_build_is_isolated_and_owner_marked(self):
