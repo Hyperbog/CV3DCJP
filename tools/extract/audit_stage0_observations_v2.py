@@ -103,6 +103,8 @@ def audit(rom: bytes, capture: Path, content: Path, destination: Path) -> dict:
                    for relative in stage["room_files"]]
     if len(records) != 8 or {r["identity"]["stage_index"] for r in records} != {0}:
         raise ValueError("Expected exactly eight authenticated Stage 0 room records")
+    if len(edges) != 7 or len(palette_states) != 24:
+        raise ValueError("Historical evidence population differs from verified audit")
     ids = set()
     if destination.exists():
         raise FileExistsError("Refusing to overwrite output")
@@ -127,8 +129,6 @@ def audit(rom: bytes, capture: Path, content: Path, destination: Path) -> dict:
                      for state, count in room_counts[key].most_common()
                  ]
              })
-    if len(edges) != 7 or len(palette_states) != 24:
-        raise ValueError("Historical evidence population differs from verified audit")
     dump(destination / "connections-observed.json", {
         "schema": SCHEMA, "rom_sha256": ROM_SHA, "runs": runs,
         "stable_threshold_frames": 3, "observed_edges": edges,
