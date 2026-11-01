@@ -34,7 +34,7 @@ def inspect(path: str, data: bytes) -> list[str]:
         problems.append(f"{path}: private/generated/build directory")
     if len(data) > MAX_TRACKED_BYTES:
         problems.append(f"{path}: tracked file exceeds 5 MiB")
-    if data.startswith((b"NES\\x1a", b"FDS\\x1a")):
+    if data.startswith((b"NES\x1a", b"FDS\x1a")):
         problems.append(f"{path}: original game cartridge header detected")
     return problems
 
@@ -43,7 +43,7 @@ def tracked_files() -> list[str]:
     result = subprocess.run(
         ["git", "ls-files", "-z"], cwd=REPO, check=True, capture_output=True
     )
-    return [p.decode("utf-8") for p in result.stdout.split(b"\\0") if p]
+    return [p.decode("utf-8") for p in result.stdout.split(b"\0") if p]
 
 
 def main() -> int:
