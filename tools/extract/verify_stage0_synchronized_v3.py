@@ -53,8 +53,12 @@ def verify(directory: Path, rom: bytes) -> dict:
         raise ValueError("Wrong Japanese ROM identity")
     receipt = json.loads((directory / "session.json").read_text("utf-8"))
     if (receipt.get("schema") != SCHEMA or receipt.get("rom_sha256") != ROM_SHA
-            or receipt.get("exit_code") != 0 or not receipt.get("run_id")):
+            or receipt.get("exit_code") != 0 or receipt.get("run_id") != directory.name):
         raise ValueError("Invalid or incomplete single-process session")
+    copied_exe = directory / "executable/jp_akumajou_densetsu_modern.exe"
+    if (not copied_exe.is_file() or
+            sha(copied_exe.read_bytes()) != receipt.get("executable_sha256")):
+        raise ValueError("Runnable copied executable hash mismatch")
     blobs = {}
     for name in FILES:
         raw = (directory / name).read_bytes()
