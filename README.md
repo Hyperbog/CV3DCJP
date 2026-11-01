@@ -2,7 +2,7 @@
 
 **Castlevania III: Dracula's Curse — Japanese ROM-authoritative PC-native reconstruction**
 
-> **Status: repository bootstrap.** No playable or visually verified native build has been committed here yet. Historical local prototypes and captures are not release baselines.
+> **Status: ROM-backed original gameplay owner-confirmed on Windows (2026-10-31).** The owner reports that the original Japanese ROM loads and plays as natively intended using the recovered host. This does **not** establish complete frame parity or a verified native widescreen renderer; see [docs/STATUS.md](docs/STATUS.md).
 
 ## Non-negotiable source of truth
 
@@ -23,6 +23,6 @@ Build a modern, resolution-independent PC engine. Keep the game world, independe
 
 ## Next action
 
-Import the **known-working ROM gameplay baseline** with reproducible build instructions, then implement and validate a ROM-accurate Stage 0 asset compiler before reconnecting the modern renderer. Do not promote W8–W13 experimental renderer outputs as verified world maps.
+Preserve the **owner-confirmed original-ROM gameplay baseline** and verify a ROM-accurate Stage 0 asset compiler, global room placement and original-frame parity before reconnecting the modern renderer. Do not promote W8–W13 experimental renderer outputs as verified world maps.
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/ROM_AUTHORITY.md](docs/ROM_AUTHORITY.md), and [CONTRIBUTING.md](CONTRIBUTING.md) when the repository foundation PR is merged.
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/ROM_AUTHORITY.md](docs/ROM_AUTHORITY.md), and [CONTRIBUTING.md](CONTRIBUTING.md) for the current verification and development contracts.

@@ -36,6 +36,12 @@ To run the isolated executable **only after successful Build**, use:
 
 The launch explicitly requests `--edition original --room-view 0` to avoid enhanced display effects. Validate original gameplay separately: title screen, Trevor movement, attacks, collision, items, enemies, room transitions and audio. Attach actual Windows output before declaring the baseline accepted.
 
+## Owner confirmation (2026-10-31)
+
+The owner reported that the Japanese ROM **loads and plays as natively intended** after following the isolated build/launch workflow. Record this as **user-observed original-ROM gameplay functionality**, not as an independent pixel-perfect parity result or a verified widescreen/native renderer. No individual build/CTest console log or complete-stage gameplay checklist is stored in this repository yet.
+
+The validated scope is the working ROM-backed original game on the owner's PC. Preserve it as the functional reference; keep later native-renderer experiments isolated. Future rebuilds must retain the ROM SHA gate and avoid modifying either the existing game installation or the private UI checkout.
+
 ## Important limits
 
 This script has repository-level static tests but has **not** itself been run with MSVC or an actual Windows game window during CI. No code from W8–W13 has been imported as verified gameplay. If CMake fails, capture the first error without touching the previous working build.
