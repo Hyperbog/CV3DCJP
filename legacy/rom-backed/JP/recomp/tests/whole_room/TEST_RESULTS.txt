@@ -1,0 +1,12 @@
+# Japanese original ROM authentication
+958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28  /mnt/data/Akumajou Densetsu (Japan).nes
+# Full Stage1 offline graphics and host wrapper
+PASS native whole-room: 135 rooms, 1080 pixel comparisons, viewport and rejection
+PASS preview: exact native left half, native room right half (hash c41bd3ba)
+PASS exact installed preview wrapper in synthetic host: 512x240, fallback, scroll, ROM binding; hash a9061fb4\nPASS exact installed preview wrapper in synthetic host: 512x240, fallback, scroll, ROM binding; hash a9061fb4\n# Original resource cache identities
+da80c441803e786ea4767a6bfc758432af4a7c617ca49a52bf824bc89807bf99  /mnt/data/cviii_live_host_validation/CVIII-Rooms.dat
+37e07c03cd9eabbe667a02ab1692829de67e9d49dc31c7aa9402bbb0626dccf6  /mnt/data/cviii_live_host_validation/CVIII-Graphics.dat
+# Source package installer result
+UPDATED /mnt/data/cviii_live_host_validation/host_source_fixture/JP/recomp/native/enhanced/test_room_preview.c
+PASS source installation only; full NESRecomp build and owner QA required
+PASS US ROM rejected
