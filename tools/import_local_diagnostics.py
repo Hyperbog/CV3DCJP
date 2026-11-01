@@ -31,10 +31,10 @@ def check_sources(workspace: Path, dest: Path) -> list[tuple[Path, bytes]]:
     for relative, expected in SOURCE_HASHES.items():
         src = workspace / relative
         target = dest / relative
-        if not src.is_file() or src.is_symlink():
-            raise FileNotFoundError(f"missing original source: {src}")
         if target.exists() or target.is_symlink():
             raise FileExistsError(f"refusing to overwrite: {target}")
+        if not src.is_file() or src.is_symlink():
+            raise FileNotFoundError(f"missing original source: {src}")
         data = src.read_bytes()
         if not data or len(data) > 1_048_576 or b"\0" in data:
             raise ValueError(f"not a small text source: {src}")
