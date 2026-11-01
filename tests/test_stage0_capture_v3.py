@@ -1,5 +1,6 @@
 """Safety checks for the one-process ROM/PPU capture launcher."""
 from pathlib import Path
+import os
 import shutil
 import subprocess
 import unittest
@@ -31,10 +32,11 @@ class Stage0CaptureContract(unittest.TestCase):
         # A parser check does not execute the script or launch any ROM.
         cmd = ("$t=$null;$e=$null;"
                "[System.Management.Automation.Language.Parser]::ParseFile("
-               "$args[0],[ref]$t,[ref]$e)|Out-Null;"
+               "$env:CV3_STAGE0_PARSE_PATH,[ref]$t,[ref]$e)|Out-Null;"
                "if($e.Count){foreach($x in $e){[Console]::Error.WriteLine($x.Message + ' at line ' + $x.Extent.StartLineNumber)};exit 1}")
-        result = subprocess.run([shell, "-NoProfile", "-Command", cmd,
-                                 str(SCRIPT)], capture_output=True, text=True)
+        env = dict(os.environ, CV3_STAGE0_PARSE_PATH=str(SCRIPT))
+        result = subprocess.run([shell, "-NoProfile", "-Command", cmd],
+                                capture_output=True, text=True, env=env)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
 
