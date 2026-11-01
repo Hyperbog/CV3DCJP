@@ -5,7 +5,7 @@
 | Area | Current evidence | Status |
 | --- | --- | --- |
 | Repository | Newly initialized GitHub hub | Bootstrap |
-| Working original gameplay | User has demonstrated functioning ROM-backed gameplay locally; archived pre-W8 host recovered with 75 source/CMake files | **Source-only recovery; missing local modules; not yet a reproducible GitHub build** |
+| Working original gameplay | Historical 5H8F host recovered; 156 original enhanced/tool/test dependencies pinned from the owner's source Git revision | **Dependency source imported; ROM host pending; no reproducible GitHub build yet** |
 | Stage 0 room-local graphics/data | Extracted in earlier private project artifacts | Available outside repository; **not independently verified by this repo** |
 | Complete Stage 0 world placement | Several origins were provisional in previous mockups | **Unverified** |
 | W8–W13 enhanced rendering | User screenshots show visible seams and graphics discontinuities | **Failed visual acceptance; not a baseline** |
@@ -25,4 +25,4 @@
 
 ## Historical source handoff
 
-The guarded importer and pre-W8 source hash manifest are documented in [BASELINE_IMPORT.md](BASELINE_IMPORT.md). Issue #2 remains open: owner-local original modules have not yet been committed, and the source has not been built or validated from this repository.
+The guarded importer and pre-W8 source hash manifest are documented in [BASELINE_IMPORT.md](BASELINE_IMPORT.md). Issue #2 remains open: original Git-tracked modules are on the import PR; the historical host and any non-Git tracked tools have not yet been committed, and the source has not been built or validated from this repository.

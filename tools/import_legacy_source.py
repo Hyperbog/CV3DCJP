@@ -18,13 +18,13 @@ ANCHORS={
 LAUNCHER="e1a92598a135a8cfb9da1b3680d560f137e76b1ca3ac2fd5ad225727084258fe"
 ALLOWED={".c",".h",".cpp",".hpp",".py",".txt",".md",".ps1"}
 REQUIRED=[
- "JP/enhanced/cviii_audio_levels_0618.c",
- "JP/enhanced/cviii_sprite_layers_0608.c",
- "JP/enhanced/cviii_chr_index_0598.c",
- "JP/enhanced/cviii_whole_room.c",
- "JP/enhanced/cviii_room_gfx.c",
- "JP/enhanced/cviii_room_renderer.c",
- "JP/enhanced/cviii_room_preview.c",
+ "JP/recomp/native/enhanced/cviii_audio_levels_0618.c",
+ "JP/recomp/native/enhanced/cviii_sprite_layers_0608.c",
+ "JP/recomp/native/enhanced/cviii_chr_index_0598.c",
+ "JP/recomp/native/enhanced/cviii_whole_room.c",
+ "JP/recomp/native/enhanced/cviii_room_gfx.c",
+ "JP/recomp/native/enhanced/cviii_room_renderer.c",
+ "JP/recomp/native/enhanced/cviii_room_preview.c",
  "JP/recomp/tools/cviii_asset_registry_5h1.py",
  "JP/recomp/tools/cviii_build_world_index_5h2.py",
  "JP/recomp/tools/jp_asset_pack_0597.py",
@@ -72,14 +72,8 @@ def collect(snapshot,workspace):
             raise ValueError("not the authenticated pre-W8 source: "+name)
     missing=[p for p in REQUIRED if not (workspace/p).is_file()]
     if missing: raise FileNotFoundError("missing owner-local source:\n  "+"\n  ".join(missing))
-    for prefix in ["JP/enhanced","JP/recomp/tools","JP/recomp/tests"]:
-        for f in sorted((workspace/prefix).rglob("*")):
-            if not f.is_file() or f.is_symlink(): continue
-            relative=f.relative_to(workspace).as_posix()
-            p=safe_path(relative)
-            if any(s in {"private","captures","generated","assets","__pycache__"} for s in p.parts): continue
-            if p.suffix.lower() not in ALLOWED and p.name!="CMakeLists.txt": continue
-            entries[relative]=source(f.read_bytes(),relative)
+    # Dependencies are already pinned from source revision f7f533b in GitHub.
+    # Never copy possibly modified W13 workspace modules over that baseline.
     if "Build-CVIII-Phase5H8F.ps1" not in entries:
         launcher=workspace/"Build-CVIII-Phase5H8F.ps1"
         if not launcher.is_file() or sha(launcher.read_bytes())!=LAUNCHER:
@@ -87,25 +81,35 @@ def collect(snapshot,workspace):
         entries["Build-CVIII-Phase5H8F.ps1"]=source(launcher.read_bytes(),str(launcher))
     return entries
 def stage(snapshot,workspace,dest):
-    if dest.exists(): raise FileExistsError("destination exists: "+str(dest))
     entries=collect(snapshot,workspace)
-    manifest={"status":"STAGED; WINDOWS/ROM GAMEPLAY NOT YET VERIFIED",
-              "sources":[{"path":k,"sha256":sha(v),"bytes":len(v)} for k,v in sorted(entries.items())]}
-    dest.parent.mkdir(parents=True,exist_ok=True)
-    with tempfile.TemporaryDirectory(dir=dest.parent,prefix=".baseline-import-") as tmp:
-        root=pathlib.Path(tmp)
+    meta=json.dumps({
+        "status":"HOST SOURCE IMPORTED; WINDOWS/ROM GAMEPLAY NOT YET VERIFIED",
+        "host_source":"authenticated pre-W8 5H8F snapshot",
+        "dependencies":"pinned Hyperbog/CVIII-Decomp f7f533b",
+        "sources":[{"path":k,"sha256":sha(v),"bytes":len(v)}
+                   for k,v in sorted(entries.items())]
+    },indent=2)+"\n"
+    entries["HOST_SOURCE_MANIFEST.json"]=meta.encode("utf-8")
+    targets=[dest.joinpath(*safe_path(name).parts) for name in entries]
+    if dest.exists() and not dest.is_dir():
+        raise FileExistsError("destination is not a directory: "+str(dest))
+    conflicts=[str(p) for p in targets if p.exists()]
+    if conflicts:
+        raise FileExistsError("refusing to overwrite existing sources:\n  "+"\n  ".join(conflicts))
+    written=[]
+    try:
         for name,data in entries.items():
-            p=root.joinpath(*safe_path(name).parts)
-            p.parent.mkdir(parents=True,exist_ok=True)
-            p.write_bytes(data)
-        (root/"SOURCE_MANIFEST.json").write_text(json.dumps(manifest,indent=2)+"\n")
-        (root/"README.md").write_text(
-            "# Historical ROM-backed source\n\n"
-            "Incomplete until independently built with Windows/MSVC, external "
-            "NESRecomp/recomp-ui, and an owner-supplied Japanese ROM. "
-            "No experimental W8-W13 renderer is an accepted baseline.\n")
-        root.rename(dest)
-    return len(entries)
+            path=dest.joinpath(*safe_path(name).parts)
+            path.parent.mkdir(parents=True,exist_ok=True)
+            with path.open("xb") as output:
+                output.write(data)
+            written.append(path)
+    except BaseException:
+        for path in reversed(written):
+            path.unlink(missing_ok=True)
+        raise
+    return len(entries)-1
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--snapshot",required=True,type=pathlib.Path)
