@@ -36,3 +36,9 @@ The protected isolated build path is `C:\NESDev\CV3DCJP-Builds\5h8f-original`; t
 4. Connect the modern camera and renderer only after these independent checks; recheck playable gameplay in the same native window at multiple resolutions.
 
 See [ROM_AUTHORITY.md](ROM_AUTHORITY.md), [ARCHITECTURE.md](ARCHITECTURE.md), [SOURCE_IMPORT_PROVENANCE.md](SOURCE_IMPORT_PROVENANCE.md), and [WINDOWS_BASELINE_BUILD.md](WINDOWS_BASELINE_BUILD.md).
+
+## ROM content catalog v1 — 2026-10-31
+
+The exact Japanese owner ROM was decoded locally using the already-audited whole-room and metatile extractors: **15 ROM stage selectors**, **135 room references**, **130 distinct layout payloads**, **1,563 metatile definitions**, and **8,192 physical CHR tiles**. A 172-file **private** archive contains the stage/area/room JSON, room-local screen sections, shared metatile tables and physical CHR patterns. No original graphic data is committed to GitHub.
+
+The public ROM-authenticated generator is [tools/extract/export_content_v1.py](../tools/extract/export_content_v1.py); the release-oriented content layout is [CONTENT_ARCHITECTURE.md](CONTENT_ARCHITECTURE.md). These figures are **ROM-local data extraction only**, not independent room-world placement or renderer pixel parity. Unknown coordinates remain null; real-time palettes, camera transitions, audio and native gameplay decoders remain unresolved. Issue #3 remains open.
