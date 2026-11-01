@@ -32,7 +32,7 @@ class Stage0CaptureContract(unittest.TestCase):
         cmd = ("$t=$null;$e=$null;"
                "[System.Management.Automation.Language.Parser]::ParseFile("
                "$args[0],[ref]$t,[ref]$e)|Out-Null;"
-               "if($e.Count){$e|Format-Table|Out-String|Write-Error;exit 1}")
+               "if($e.Count){foreach($x in $e){[Console]::Error.WriteLine($x.Message + ' at line ' + $x.Extent.StartLineNumber)};exit 1}")
         result = subprocess.run([shell, "-NoProfile", "-Command", cmd,
                                  str(SCRIPT)], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
