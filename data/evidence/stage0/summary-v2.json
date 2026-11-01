@@ -1,0 +1,68 @@
+{
+  "schema": "cv3dcjp.stage0-evidence/v2",
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "provenance": {
+    "frames_sha256": "c0cb6f83f33a9b9a201e439d1f2648769752c9e7ea0619eec3c41ae9fbc8240a",
+    "events_sha256": "c44492ba681efc991cd8c16d8e4824ed48fef1fbbd4040c158f81b0ec683860e",
+    "source": "original-ROM-backed NESRecomp 5H8F capture; frame-end CPU/PPU state"
+  },
+  "observations": {
+    "frame_count": 13944,
+    "stage0_room_count": 8,
+    "selector_event_count_including_bootstrap": 10,
+    "stable_edges": 7,
+    "unique_frame_end_palette_states": 24,
+    "static_rom_selector_writer_sites": 16,
+    "execution_confirmed_static_writer_sites_in_separate_5h8s_capture": 1,
+    "new_rom_verified_world_placements": 0
+  },
+  "observed_selector_edges": [
+    [
+      "0/0/0",
+      "0/1/0"
+    ],
+    [
+      "0/1/0",
+      "0/1/1"
+    ],
+    [
+      "0/1/1",
+      "0/1/3"
+    ],
+    [
+      "0/1/3",
+      "0/1/2"
+    ],
+    [
+      "0/1/2",
+      "0/2/1"
+    ],
+    [
+      "0/2/1",
+      "0/2/0"
+    ],
+    [
+      "0/2/0",
+      "0/3/0"
+    ]
+  ],
+  "previously_observed_relative_placements": {
+    "coordinate_system": "arbitrary origin anchored to 0/0/0",
+    "0/0/0": [
+      0,
+      0
+    ],
+    "0/1/0": [
+      768,
+      0
+    ],
+    "source_scope": "earlier 5H8M two-room observation; not newly CPU/PPU verified"
+  },
+  "remaining_world_origin_status": "UNRESOLVED",
+  "limitations": [
+    "Observed selectors are not CPU-writer-synchronized ROM instruction traces.",
+    "Captured PPU palette values are frame-end observations, not ROM palette table decoding or per-scanline timing.",
+    "All unseen/short-lived room selectors must remain in audit; short runs do not prove physical edges.",
+    "No new world placement, direction, independent pixel parity, runtime per-scanline graphics phase or authentic renderer acceptance."
+  ]
+}
