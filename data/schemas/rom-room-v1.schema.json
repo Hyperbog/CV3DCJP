@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Hyperbog/CV3DCJP/blob/main/data/schemas/rom-room-v1.schema.json",
+  "title": "CV3DCJP ROM-local room references v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "rom_sha256",
+    "identity",
+    "source",
+    "room_grid_size_metatiles",
+    "vertical_layout",
+    "graphics",
+    "sections",
+    "world_origin",
+    "world_origin_status",
+    "runtime_palette_phase",
+    "collision_binding",
+    "transitions"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cv3dcjp.rom-content/v1"
+    },
+    "rom_sha256": {
+      "const": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "stage_index",
+        "area_index",
+        "room_index"
+      ],
+      "properties": {
+        "stage_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "area_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "room_index": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "layout_file_offset",
+        "metadata_byte"
+      ],
+      "properties": {
+        "layout_file_offset": {
+          "type": "integer",
+          "minimum": 16
+        },
+        "metadata_byte": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      },
+      "additionalProperties": false
+    },
+    "room_grid_size_metatiles": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "integer",
+          "minimum": 1
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "vertical_layout": {
+      "type": "boolean"
+    },
+    "graphics": {
+      "type": "object",
+      "required": [
+        "metatile_group",
+        "chr_page_selectors"
+      ],
+      "properties": {
+        "metatile_group": {
+          "type": "string",
+          "pattern": "^graphics/metatiles/group-[0-9]{2}\\.json$"
+        },
+        "chr_page_selectors": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 127
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "additionalProperties": false
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "index",
+          "grid_origin",
+          "grid_size",
+          "metatile_ids"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "grid_origin": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "grid_size": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "metatile_ids": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "world_origin": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "world_origin_status": {
+      "enum": [
+        "UNRESOLVED_ROM_TRANSITION_EVIDENCE",
+        "ROM_TRANSITION_VERIFIED"
+      ]
+    },
+    "runtime_palette_phase": {
+      "type": "string"
+    },
+    "collision_binding": {
+      "type": "string"
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "world_origin_status": {
+            "const": "UNRESOLVED_ROM_TRANSITION_EVIDENCE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "world_origin": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
