@@ -1,8 +1,8 @@
 # Importing the recovered ROM-backed source
 
-**Current status: source recovery and import tooling; NOT YET a reproducing Windows game.**
+**Current status: 156 original Git-tracked dependencies imported on a review branch; the historical pre-W8 host still needs the guarded source-only handoff. This is NOT YET a reproducible Windows game.**
 
-The authenticated, archived pre-W8 source contains 75 host/CMake files. The owner-local original JP/enhanced C modules, JP/recomp asset tools, tests, external NESRecomp and recomp-ui sources, and the Japanese ROM are not included in the archived snapshot. W8–W13 enhanced compositor code is not an accepted baseline.
+The authenticated, archived pre-W8 source contains 75 host/CMake files. The original enhanced modules, tools and tests are pinned and included from Hyperbog/CVIII-Decomp revision f7f533b under legacy/rom-backed/JP/recomp/. The pre-W8 host is separately recovered, and external NESRecomp, optional recomp-ui, the owner's Japanese ROM and some later owner-local tools still require controlled setup. W8–W13 enhanced compositor code is not an accepted baseline.
 
 ## Authenticated historical source hashes
 
@@ -33,3 +33,7 @@ The importer takes the historical host from the pinned archive rather than copyi
 Do not claim a working repository baseline until the clean checkout plus documented local external dependencies reproduces ROM-backed player movement, collisions, enemies, item drops, room transitions, sprites, HUD and audio. Do not commit private ROM bytes, extracted copyright-protected artwork, captures, generated assets, build products or user save files.
 
 The GitHub import tool is an intentionally guarded handoff. It does not itself publish or validate a running game.
+
+## Updated 2026-10-31 source handoff
+
+The authenticated original dependencies have been imported directly into CV3DCJP using GitHub source blob validation, so the import tool **must not** overwrite them. The tool now reads the missing 5H8F host from the source-only archive and stages its files safely into the existing `legacy/rom-backed` tree; it rejects pre-existing host paths and does not copy modified `JP/recomp/native/enhanced` files from the current workspace. See [SOURCE_IMPORT_PROVENANCE.md](SOURCE_IMPORT_PROVENANCE.md) for exact original revision and dependency provenance. The 5H8F host remains unverified until clean Windows/MSVC execution.
