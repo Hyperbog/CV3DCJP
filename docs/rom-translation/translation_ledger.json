@@ -54,11 +54,11 @@
     "e648_8723_composite_cases_v5": 1500,
     "v5_retired_bytes": 0,
     "v6_native_source": "src/cviii_collision_external_native_v6.h",
-    "v6_rom_differential": "evidence/rom_differential_v6_partial.json",
+    "v6_rom_differential": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
     "v6_verified_isolated_cases": 9900,
     "v6_968a_composite": "FAILED case 359; no retirement or live integration",
     "v6_retired_bytes": 0,
-    "v7_968a_corrected_trace": "evidence/rom_differential_v7.json",
+    "v7_968a_corrected_trace": "docs/rom-translation/evidence/rom_differential_v7.json",
     "v7_mapping": "src/cviii_collision_e648_native_v5.h: cv5_read fixed $E000-$FFFF maps physical file 0x3E010..0x4000F",
     "v7_composite_coverage": "1498 matched, 2 unsupported bus rejected unchanged; case 359 now matches",
     "v7_86fb_branch_closure": "pending: initial branch-closure reporting script failed; targeted branch paths not independently accepted",
@@ -80,7 +80,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -105,7 +105,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -130,7 +130,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -155,7 +155,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -180,7 +180,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -205,7 +205,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -230,7 +230,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -255,7 +255,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -280,7 +280,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -305,7 +305,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -330,7 +330,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -355,7 +355,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -380,7 +380,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -405,7 +405,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -430,7 +430,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -455,7 +455,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -480,7 +480,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -505,7 +505,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -530,7 +530,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -555,7 +555,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -580,7 +580,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -605,7 +605,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -630,7 +630,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -655,7 +655,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -680,7 +680,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -705,7 +705,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -730,7 +730,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -755,7 +755,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -780,7 +780,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -805,7 +805,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -830,7 +830,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -855,7 +855,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -880,7 +880,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -905,7 +905,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -930,7 +930,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -955,7 +955,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -980,7 +980,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1005,7 +1005,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1030,7 +1030,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1055,7 +1055,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1080,7 +1080,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1105,7 +1105,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1130,7 +1130,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1155,7 +1155,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1180,7 +1180,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1205,7 +1205,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1230,7 +1230,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1255,7 +1255,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1280,7 +1280,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1305,7 +1305,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1330,7 +1330,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1355,7 +1355,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1380,7 +1380,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1405,7 +1405,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1430,7 +1430,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1455,7 +1455,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1480,7 +1480,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1505,7 +1505,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1530,7 +1530,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1555,7 +1555,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1580,7 +1580,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1605,7 +1605,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1630,7 +1630,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1655,7 +1655,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1680,7 +1680,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1705,7 +1705,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1730,7 +1730,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1755,7 +1755,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1780,7 +1780,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1805,7 +1805,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1830,7 +1830,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1855,7 +1855,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1880,7 +1880,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1905,7 +1905,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1930,7 +1930,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1955,7 +1955,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -1980,7 +1980,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "FIXED-E648-V5"
       ],
@@ -2009,7 +2009,7 @@
       ],
       "table_observation": "15 little-endian 16-bit pointers from $B5F6 to $B613; first pointer $B614",
       "translation_file": null,
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "approval": null
     },
     {
@@ -2047,7 +2047,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2089,7 +2089,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2131,7 +2131,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -2150,7 +2150,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -2169,7 +2169,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -2188,7 +2188,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -2207,7 +2207,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -2249,7 +2249,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2291,7 +2291,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2333,7 +2333,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2375,7 +2375,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2417,7 +2417,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2459,7 +2459,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -2482,7 +2482,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2507,7 +2507,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2532,7 +2532,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2557,7 +2557,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2582,7 +2582,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2607,7 +2607,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2632,7 +2632,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2657,7 +2657,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2682,7 +2682,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2707,7 +2707,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2732,7 +2732,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2757,7 +2757,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2782,7 +2782,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2807,7 +2807,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2832,7 +2832,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2857,7 +2857,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2882,7 +2882,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2907,7 +2907,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2932,7 +2932,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2957,7 +2957,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -2982,7 +2982,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3007,7 +3007,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3032,7 +3032,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3057,7 +3057,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3082,7 +3082,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3107,7 +3107,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3132,7 +3132,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3157,7 +3157,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3182,7 +3182,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3207,7 +3207,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3232,7 +3232,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3257,7 +3257,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3282,7 +3282,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3307,7 +3307,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3332,7 +3332,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3357,7 +3357,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3382,7 +3382,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3407,7 +3407,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3432,7 +3432,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3457,7 +3457,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3482,7 +3482,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3507,7 +3507,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3532,7 +3532,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3557,7 +3557,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3582,7 +3582,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3607,7 +3607,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3632,7 +3632,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3657,7 +3657,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3682,7 +3682,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3707,7 +3707,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3732,7 +3732,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3757,7 +3757,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3782,7 +3782,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3807,7 +3807,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3832,7 +3832,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3857,7 +3857,7 @@
         "EXT-CPU-E648"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3882,7 +3882,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3907,7 +3907,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3932,7 +3932,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3957,7 +3957,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -3982,7 +3982,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4007,7 +4007,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4032,7 +4032,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4057,7 +4057,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4082,7 +4082,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4107,7 +4107,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4132,7 +4132,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4157,7 +4157,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4182,7 +4182,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4207,7 +4207,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4232,7 +4232,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4257,7 +4257,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4282,7 +4282,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4307,7 +4307,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4332,7 +4332,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4357,7 +4357,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4382,7 +4382,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4407,7 +4407,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4432,7 +4432,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4457,7 +4457,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4482,7 +4482,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4507,7 +4507,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4532,7 +4532,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4557,7 +4557,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4582,7 +4582,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4607,7 +4607,7 @@
         "DEPENDENCY-8723"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR $E648 effects and timing",
         "live integration",
@@ -4632,7 +4632,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4656,7 +4656,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4680,7 +4680,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4704,7 +4704,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4728,7 +4728,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4752,7 +4752,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4776,7 +4776,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4800,7 +4800,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4824,7 +4824,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4848,7 +4848,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4872,7 +4872,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4896,7 +4896,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4920,7 +4920,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4944,7 +4944,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4968,7 +4968,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -4992,7 +4992,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "cycle timing",
         "live integration"
@@ -5035,7 +5035,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -5077,7 +5077,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -5119,7 +5119,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5138,7 +5138,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5157,7 +5157,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5176,7 +5176,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5195,7 +5195,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5214,7 +5214,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5233,7 +5233,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5371,7 +5371,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5390,7 +5390,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5409,7 +5409,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5451,7 +5451,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5470,7 +5470,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5512,7 +5512,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5531,7 +5531,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5550,7 +5550,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5592,7 +5592,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5611,7 +5611,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5630,7 +5630,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5649,7 +5649,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5668,7 +5668,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5687,7 +5687,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5706,7 +5706,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5748,7 +5748,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5767,7 +5767,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5786,7 +5786,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5828,7 +5828,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5847,7 +5847,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5889,7 +5889,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5908,7 +5908,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5927,7 +5927,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5969,7 +5969,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -5988,7 +5988,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6007,7 +6007,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6026,7 +6026,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6045,7 +6045,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6064,7 +6064,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6106,7 +6106,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -6148,7 +6148,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -6190,7 +6190,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -6232,7 +6232,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -6274,7 +6274,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -6316,7 +6316,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "branch successors beyond immediate decision not yet translated"
       ],
@@ -6358,7 +6358,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6377,7 +6377,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6396,7 +6396,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6438,7 +6438,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6457,7 +6457,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6476,7 +6476,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6518,7 +6518,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6537,7 +6537,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6556,7 +6556,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6575,7 +6575,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6617,7 +6617,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6640,7 +6640,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6664,7 +6664,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6688,7 +6688,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6712,7 +6712,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6736,7 +6736,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6760,7 +6760,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6784,7 +6784,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6808,7 +6808,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6832,7 +6832,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6856,7 +6856,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6880,7 +6880,7 @@
         "DEPENDENCY-89EB"
       ],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/dependency_coverage_v4.json",
+      "test_report": "docs/rom-translation/evidence/dependency_coverage_v4.json",
       "unresolved_successors": [
         "JSR stack/cycles",
         "live integration"
@@ -6923,7 +6923,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6942,7 +6942,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -6961,7 +6961,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7003,7 +7003,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7022,7 +7022,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7041,7 +7041,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7083,7 +7083,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7102,7 +7102,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7121,7 +7121,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7163,7 +7163,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7182,7 +7182,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7201,7 +7201,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/translation_coverage_v3.json",
+      "test_report": "docs/rom-translation/evidence/translation_coverage_v3.json",
       "unresolved_successors": [
         "next ROM-controlled call / offscreen object state or timing"
       ],
@@ -7220,7 +7220,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7245,7 +7245,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7270,7 +7270,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7295,7 +7295,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7320,7 +7320,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7345,7 +7345,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7370,7 +7370,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7395,7 +7395,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7420,7 +7420,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7445,7 +7445,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7470,7 +7470,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7495,7 +7495,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7520,7 +7520,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/e648_rom_differential_v5.json",
+      "test_report": "docs/rom-translation/evidence/e648_rom_differential_v5.json",
       "dependencies": [
         "COLL-8723-V4"
       ],
@@ -7547,7 +7547,7 @@
       "runtime_observations": 37494,
       "dependencies": [],
       "translation_file": "src/collision/Collision.c",
-      "test_report": "collision_fcde_native_v2/proof/collision_fcde_branch_coverage.json",
+      "test_report": "docs/rom-translation/evidence/collision_fcde_branch_coverage.json",
       "unresolved_successors": [
         "native replacement not yet integrated into live NESRecomp game",
         "cycle/timing and interrupt-interleave equivalence unverified",
@@ -7583,7 +7583,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7606,7 +7606,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7629,7 +7629,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7652,7 +7652,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7675,7 +7675,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7698,7 +7698,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7721,7 +7721,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7744,7 +7744,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7767,7 +7767,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7790,7 +7790,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7813,7 +7813,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7836,7 +7836,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7859,7 +7859,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7882,7 +7882,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7905,7 +7905,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7928,7 +7928,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7951,7 +7951,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7974,7 +7974,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -7997,7 +7997,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8020,7 +8020,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8043,7 +8043,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8066,7 +8066,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8089,7 +8089,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8112,7 +8112,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8135,7 +8135,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8158,7 +8158,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8181,7 +8181,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8204,7 +8204,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8227,7 +8227,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8250,7 +8250,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8273,7 +8273,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8296,7 +8296,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8319,7 +8319,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8342,7 +8342,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [],
       "runtime_observations": null,
       "approval": null,
@@ -8365,7 +8365,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8391,7 +8391,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8417,7 +8417,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8443,7 +8443,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8469,7 +8469,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8495,7 +8495,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8521,7 +8521,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8547,7 +8547,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8573,7 +8573,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8599,7 +8599,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8625,7 +8625,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8651,7 +8651,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8677,7 +8677,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8703,7 +8703,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8729,7 +8729,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8755,7 +8755,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8781,7 +8781,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8807,7 +8807,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8833,7 +8833,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8859,7 +8859,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8885,7 +8885,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8911,7 +8911,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8937,7 +8937,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8963,7 +8963,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -8989,7 +8989,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9015,7 +9015,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9041,7 +9041,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9067,7 +9067,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9093,7 +9093,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9119,7 +9119,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9145,7 +9145,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9171,7 +9171,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9197,7 +9197,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9223,7 +9223,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9249,7 +9249,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9275,7 +9275,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9301,7 +9301,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9327,7 +9327,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9353,7 +9353,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9379,7 +9379,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9405,7 +9405,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9431,7 +9431,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9457,7 +9457,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9483,7 +9483,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9509,7 +9509,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9535,7 +9535,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9561,7 +9561,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9587,7 +9587,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9613,7 +9613,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9639,7 +9639,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9665,7 +9665,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9691,7 +9691,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9717,7 +9717,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9743,7 +9743,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"
@@ -9769,7 +9769,7 @@
       "role": "code",
       "status": "IMPLEMENTED",
       "translation_file": "src/collision/Collision.c",
-      "test_report": "evidence/rom_differential_v6_partial.json",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
       "dependencies": [
         "v5:8723",
         "v5:E648"

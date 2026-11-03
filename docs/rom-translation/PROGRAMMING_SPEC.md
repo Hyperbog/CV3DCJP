@@ -104,7 +104,7 @@ player movement effects remain open. The recorded tests cannot establish
 those facts, and this release does not claim collision or physics complete.
 
 Source: `src/cviii_collision_callers_native_v3.h`
-Proof: `evidence/translation_coverage_v3.json`
+Proof: `docs/rom-translation/evidence/translation_coverage_v3.json`
 Ledger: `translation_ledger.json`
 
 ---
