@@ -1,0 +1,950 @@
+{
+  "source_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "physical_bank_16k": 14,
+  "conditional_branch_instruction_addresses": 28,
+  "conditional_branch_edges_possible_static": 56,
+  "conditional_branch_edges_not_tested": [
+    "$8721:not-taken",
+    "$8782:not-taken",
+    "$879A:not-taken",
+    "$87C1:not-taken"
+  ],
+  "differential_state_comparisons": 5834,
+  "distinct_rom_instructions": 113,
+  "distinct_rom_instruction_bytes": 238,
+  "tested_instruction_addresses": 113,
+  "condition_branch_edges_observed": 52,
+  "unobserved_instruction_addresses": [],
+  "boundaries": {
+    "$8723 -> $871C / 1": 80,
+    "$8723 -> $874A / 1": 35,
+    "$8723 -> $876A / 1": 343,
+    "$8723 -> $8786 / 2": 362,
+    "$8723 -> $87B9 / 1": 40,
+    "$8723 -> $87BA / 1": 340,
+    "$89EB -> $89F7 / 1": 600,
+    "$89EB -> $8A09 / 1": 600,
+    "$9B5E -> $9B76 / 1": 1200
+  },
+  "external_targets": {
+    "0x8723": "0xE648",
+    "0x968A": [
+      "0x8ABD",
+      "0xEF91",
+      "0x8723",
+      "0x86FB"
+    ],
+    "0x968D": [
+      "0xEF91",
+      "0x8723",
+      "0x86FB"
+    ]
+  },
+  "scope": "NON-CYCLE-ACCURATE CPU register/flags/2KiB RAM; no live hook; $E648 remains external",
+  "instructions": [
+    {
+      "cpu_pc": "0x8713",
+      "prg_offset": "0x38713",
+      "instruction": "LDY $04F2",
+      "opcode_hex": "acf204",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8716",
+      "prg_offset": "0x38716",
+      "instruction": "BPL $871D",
+      "opcode_hex": "1005",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8718",
+      "prg_offset": "0x38718",
+      "instruction": "LDA $8D",
+      "opcode_hex": "a58d",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x871A",
+      "prg_offset": "0x3871A",
+      "instruction": "BEQ $8729",
+      "opcode_hex": "f00d",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x871C",
+      "prg_offset": "0x3871C",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x871D",
+      "prg_offset": "0x3871D",
+      "instruction": "LDA $8D",
+      "opcode_hex": "a58d",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x871F",
+      "prg_offset": "0x3871F",
+      "instruction": "BEQ $871C",
+      "opcode_hex": "f0fb",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8721",
+      "prg_offset": "0x38721",
+      "instruction": "BNE $8729",
+      "opcode_hex": "d006",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8723",
+      "prg_offset": "0x38723",
+      "instruction": "LDA $88",
+      "opcode_hex": "a588",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8725",
+      "prg_offset": "0x38725",
+      "instruction": "CMP #$02",
+      "opcode_hex": "c902",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8727",
+      "prg_offset": "0x38727",
+      "instruction": "BEQ $8713",
+      "opcode_hex": "f0ea",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8729",
+      "prg_offset": "0x38729",
+      "instruction": "LDA $75",
+      "opcode_hex": "a575",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x872B",
+      "prg_offset": "0x3872B",
+      "instruction": "BNE $874B",
+      "opcode_hex": "d01e",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x872D",
+      "prg_offset": "0x3872D",
+      "instruction": "LDA $65",
+      "opcode_hex": "a565",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x872F",
+      "prg_offset": "0x3872F",
+      "instruction": "BMI $874B",
+      "opcode_hex": "301a",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8731",
+      "prg_offset": "0x38731",
+      "instruction": "LDA $04F2",
+      "opcode_hex": "adf204",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8734",
+      "prg_offset": "0x38734",
+      "instruction": "BMI $876B",
+      "opcode_hex": "3035",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8736",
+      "prg_offset": "0x38736",
+      "instruction": "ORA $0509",
+      "opcode_hex": "0d0905",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8739",
+      "prg_offset": "0x38739",
+      "instruction": "BEQ $876A",
+      "opcode_hex": "f02f",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x873B",
+      "prg_offset": "0x3873B",
+      "instruction": "LDA $6E",
+      "opcode_hex": "a56e",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x873D",
+      "prg_offset": "0x3873D",
+      "instruction": "CMP $54",
+      "opcode_hex": "c554",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x873F",
+      "prg_offset": "0x3873F",
+      "instruction": "BEQ $874B",
+      "opcode_hex": "f00a",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8741",
+      "prg_offset": "0x38741",
+      "instruction": "LDA $0438",
+      "opcode_hex": "ad3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8744",
+      "prg_offset": "0x38744",
+      "instruction": "BPL $874B",
+      "opcode_hex": "1005",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8746",
+      "prg_offset": "0x38746",
+      "instruction": "LDA #$01",
+      "opcode_hex": "a901",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8748",
+      "prg_offset": "0x38748",
+      "instruction": "STA $62",
+      "opcode_hex": "8562",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x874A",
+      "prg_offset": "0x3874A",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x874B",
+      "prg_offset": "0x3874B",
+      "instruction": "LDA $04C4",
+      "opcode_hex": "adc404",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x874E",
+      "prg_offset": "0x3874E",
+      "instruction": "CLC",
+      "opcode_hex": "18",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x874F",
+      "prg_offset": "0x3874F",
+      "instruction": "ADC $0509",
+      "opcode_hex": "6d0905",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8752",
+      "prg_offset": "0x38752",
+      "instruction": "STA $04C4",
+      "opcode_hex": "8dc404",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8755",
+      "prg_offset": "0x38755",
+      "instruction": "LDA $0438",
+      "opcode_hex": "ad3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8758",
+      "prg_offset": "0x38758",
+      "instruction": "ADC $04F2",
+      "opcode_hex": "6df204",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x875B",
+      "prg_offset": "0x3875B",
+      "instruction": "STA $0438",
+      "opcode_hex": "8d3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x875E",
+      "prg_offset": "0x3875E",
+      "instruction": "LDY $65",
+      "opcode_hex": "a465",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8760",
+      "prg_offset": "0x38760",
+      "instruction": "BMI $878B",
+      "opcode_hex": "3029",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8762",
+      "prg_offset": "0x38762",
+      "instruction": "CMP #$18",
+      "opcode_hex": "c918",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8764",
+      "prg_offset": "0x38764",
+      "instruction": "BCC $8780",
+      "opcode_hex": "901a",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8766",
+      "prg_offset": "0x38766",
+      "instruction": "CMP #$E9",
+      "opcode_hex": "c9e9",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8768",
+      "prg_offset": "0x38768",
+      "instruction": "BCS $8784",
+      "opcode_hex": "b01a",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x876A",
+      "prg_offset": "0x3876A",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x876B",
+      "prg_offset": "0x3876B",
+      "instruction": "LDA $C5",
+      "opcode_hex": "a5c5",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x876D",
+      "prg_offset": "0x3876D",
+      "instruction": "BNE $874B",
+      "opcode_hex": "d0dc",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x876F",
+      "prg_offset": "0x3876F",
+      "instruction": "LDA $53",
+      "opcode_hex": "a553",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8771",
+      "prg_offset": "0x38771",
+      "instruction": "ORA $54",
+      "opcode_hex": "0554",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8773",
+      "prg_offset": "0x38773",
+      "instruction": "BEQ $874B",
+      "opcode_hex": "f0d6",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8775",
+      "prg_offset": "0x38775",
+      "instruction": "LDY $0438",
+      "opcode_hex": "ac3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8778",
+      "prg_offset": "0x38778",
+      "instruction": "DEY",
+      "opcode_hex": "88",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8779",
+      "prg_offset": "0x38779",
+      "instruction": "BMI $874B",
+      "opcode_hex": "30d0",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x877B",
+      "prg_offset": "0x3877B",
+      "instruction": "LDA #$00",
+      "opcode_hex": "a900",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x877D",
+      "prg_offset": "0x3877D",
+      "instruction": "STA $62",
+      "opcode_hex": "8562",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x877F",
+      "prg_offset": "0x3877F",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8780",
+      "prg_offset": "0x38780",
+      "instruction": "LDX #$00",
+      "opcode_hex": "a200",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8782",
+      "prg_offset": "0x38782",
+      "instruction": "BEQ $8786",
+      "opcode_hex": "f002",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8784",
+      "prg_offset": "0x38784",
+      "instruction": "LDX #$01",
+      "opcode_hex": "a201",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8786",
+      "prg_offset": "0x38786",
+      "instruction": "JSR $E648",
+      "opcode_hex": "2048e6",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8789",
+      "prg_offset": "0x38789",
+      "instruction": "BCS $87BB",
+      "opcode_hex": "b030",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x878B",
+      "prg_offset": "0x3878B",
+      "instruction": "LDA $0438",
+      "opcode_hex": "ad3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x878E",
+      "prg_offset": "0x3878E",
+      "instruction": "CMP #$10",
+      "opcode_hex": "c910",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8790",
+      "prg_offset": "0x38790",
+      "instruction": "BCC $879C",
+      "opcode_hex": "900a",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8792",
+      "prg_offset": "0x38792",
+      "instruction": "CMP #$F0",
+      "opcode_hex": "c9f0",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8794",
+      "prg_offset": "0x38794",
+      "instruction": "BCC $87BA",
+      "opcode_hex": "9024",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8796",
+      "prg_offset": "0x38796",
+      "instruction": "LDX #$01",
+      "opcode_hex": "a201",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8798",
+      "prg_offset": "0x38798",
+      "instruction": "LDA #$F0",
+      "opcode_hex": "a9f0",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x879A",
+      "prg_offset": "0x3879A",
+      "instruction": "BNE $87A0",
+      "opcode_hex": "d004",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x879C",
+      "prg_offset": "0x3879C",
+      "instruction": "LDX #$00",
+      "opcode_hex": "a200",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x879E",
+      "prg_offset": "0x3879E",
+      "instruction": "LDA #$10",
+      "opcode_hex": "a910",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87A0",
+      "prg_offset": "0x387A0",
+      "instruction": "STA $0438",
+      "opcode_hex": "8d3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87A3",
+      "prg_offset": "0x387A3",
+      "instruction": "LDA $054E",
+      "opcode_hex": "ad4e05",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87A6",
+      "prg_offset": "0x387A6",
+      "instruction": "CMP #$03",
+      "opcode_hex": "c903",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87A8",
+      "prg_offset": "0x387A8",
+      "instruction": "BNE $87BA",
+      "opcode_hex": "d010",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87AA",
+      "prg_offset": "0x387AA",
+      "instruction": "LDA $0565",
+      "opcode_hex": "ad6505",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87AD",
+      "prg_offset": "0x387AD",
+      "instruction": "CMP #$34",
+      "opcode_hex": "c934",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87AF",
+      "prg_offset": "0x387AF",
+      "instruction": "BNE $87BA",
+      "opcode_hex": "d009",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87B1",
+      "prg_offset": "0x387B1",
+      "instruction": "LDA #$36",
+      "opcode_hex": "a936",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87B3",
+      "prg_offset": "0x387B3",
+      "instruction": "STA $0565",
+      "opcode_hex": "8d6505",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87B6",
+      "prg_offset": "0x387B6",
+      "instruction": "STX $05D8",
+      "opcode_hex": "8ed805",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87B9",
+      "prg_offset": "0x387B9",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87BA",
+      "prg_offset": "0x387BA",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87BB",
+      "prg_offset": "0x387BB",
+      "instruction": "CPX #$00",
+      "opcode_hex": "e000",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87BD",
+      "prg_offset": "0x387BD",
+      "instruction": "BEQ $87C3",
+      "opcode_hex": "f004",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87BF",
+      "prg_offset": "0x387BF",
+      "instruction": "LDA #$E9",
+      "opcode_hex": "a9e9",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87C1",
+      "prg_offset": "0x387C1",
+      "instruction": "BNE $87C5",
+      "opcode_hex": "d002",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87C3",
+      "prg_offset": "0x387C3",
+      "instruction": "LDA #$17",
+      "opcode_hex": "a917",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87C5",
+      "prg_offset": "0x387C5",
+      "instruction": "STA $0438",
+      "opcode_hex": "8d3804",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x87C8",
+      "prg_offset": "0x387C8",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89EB",
+      "prg_offset": "0x389EB",
+      "instruction": "LDA $65",
+      "opcode_hex": "a565",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89ED",
+      "prg_offset": "0x389ED",
+      "instruction": "BMI $89F8",
+      "opcode_hex": "3009",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89EF",
+      "prg_offset": "0x389EF",
+      "instruction": "LDA $041C",
+      "opcode_hex": "ad1c04",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89F2",
+      "prg_offset": "0x389F2",
+      "instruction": "AND #$F0",
+      "opcode_hex": "29f0",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89F4",
+      "prg_offset": "0x389F4",
+      "instruction": "STA $041C",
+      "opcode_hex": "8d1c04",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89F7",
+      "prg_offset": "0x389F7",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89F8",
+      "prg_offset": "0x389F8",
+      "instruction": "CLC",
+      "opcode_hex": "18",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89F9",
+      "prg_offset": "0x389F9",
+      "instruction": "LDA $041C",
+      "opcode_hex": "ad1c04",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89FC",
+      "prg_offset": "0x389FC",
+      "instruction": "ADC $53",
+      "opcode_hex": "6553",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x89FE",
+      "prg_offset": "0x389FE",
+      "instruction": "AND #$F0",
+      "opcode_hex": "29f0",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8A00",
+      "prg_offset": "0x38A00",
+      "instruction": "SEC",
+      "opcode_hex": "38",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8A01",
+      "prg_offset": "0x38A01",
+      "instruction": "SBC $53",
+      "opcode_hex": "e553",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8A03",
+      "prg_offset": "0x38A03",
+      "instruction": "CLC",
+      "opcode_hex": "18",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8A04",
+      "prg_offset": "0x38A04",
+      "instruction": "ADC #$03",
+      "opcode_hex": "6903",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8A06",
+      "prg_offset": "0x38A06",
+      "instruction": "STA $041C",
+      "opcode_hex": "8d1c04",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x8A09",
+      "prg_offset": "0x38A09",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B5E",
+      "prg_offset": "0x39B5E",
+      "instruction": "JSR $89EB",
+      "opcode_hex": "20eb89",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B61",
+      "prg_offset": "0x39B61",
+      "instruction": "LDA $054E",
+      "opcode_hex": "ad4e05",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B64",
+      "prg_offset": "0x39B64",
+      "instruction": "CMP #$02",
+      "opcode_hex": "c902",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B66",
+      "prg_offset": "0x39B66",
+      "instruction": "BNE $9B71",
+      "opcode_hex": "d009",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B68",
+      "prg_offset": "0x39B68",
+      "instruction": "LDA $041C",
+      "opcode_hex": "ad1c04",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B6B",
+      "prg_offset": "0x39B6B",
+      "instruction": "CLC",
+      "opcode_hex": "18",
+      "length": 1,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B6C",
+      "prg_offset": "0x39B6C",
+      "instruction": "ADC #$04",
+      "opcode_hex": "6904",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B6E",
+      "prg_offset": "0x39B6E",
+      "instruction": "STA $041C",
+      "opcode_hex": "8d1c04",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B71",
+      "prg_offset": "0x39B71",
+      "instruction": "LDA #$02",
+      "opcode_hex": "a902",
+      "length": 2,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B73",
+      "prg_offset": "0x39B73",
+      "instruction": "STA $0565",
+      "opcode_hex": "8d6505",
+      "length": 3,
+      "observed_in_differential_test": true
+    },
+    {
+      "cpu_pc": "0x9B76",
+      "prg_offset": "0x39B76",
+      "instruction": "RTS",
+      "opcode_hex": "60",
+      "length": 1,
+      "observed_in_differential_test": true
+    }
+  ]
+}

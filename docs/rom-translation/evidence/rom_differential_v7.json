@@ -1,0 +1,50 @@
+{
+  "component": "Collision v7: bounded bank-aware $968A integration correction",
+  "original_rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "failure_v6": "case 359 rejected by native composition; original reference reads CPU $E1D6 from fixed last 8 KiB PRG window in nested bank-7 $B437 path",
+  "corrected_mapper": "CPU $E000-$FFFF -> physical ROM offset 0x3E010 + (CPU address - 0xE000)",
+  "wrong_mapper_prevented": "0x3C010 is the start of 16 KiB PRG bank 15, not the correct CPU $E000 mapping",
+  "verified_read_case359": {
+    "cpu_address": "0xE1D6",
+    "physical_rom_offset": "0x3E1E6",
+    "byte": "0xA9"
+  },
+  "test_program": "tests/test_external_v6.py on modified v7 sources",
+  "test_results": {
+    "v6_8abd": {
+      "cases_passed": 1400,
+      "fail_closed_unsupported_bus": 0,
+      "unique_executed_instruction_addresses": 4,
+      "unique_observed_branch_edges": 0
+    },
+    "v6_ef91": {
+      "cases_passed": 3500,
+      "fail_closed_unsupported_bus": 0,
+      "unique_executed_instruction_addresses": 30,
+      "unique_observed_branch_edges": 4
+    },
+    "v6_86fb": {
+      "cases_passed": 5000,
+      "fail_closed_unsupported_bus": 0,
+      "unique_executed_instruction_addresses": 52,
+      "unique_observed_branch_edges": 25
+    },
+    "v6_968a": {
+      "cases_passed": 1498,
+      "fail_closed_unsupported_bus": 2,
+      "unique_executed_instruction_addresses": 164,
+      "unique_observed_branch_edges": 54
+    }
+  },
+  "coverage_reference": "evidence/rom_differential_v6.json includes original executed PCs and branch outcomes",
+  "branch_closure": "INCOMPLETE. 52 of 55 86FB CFG addresses and 25 of 32 conditional branch directions were observed in isolated 5000-case test. Reporting-only script failed twice; corrected source included but no successful closure result.",
+  "retired_code_bytes": 0,
+  "newly_identified_instruction_bytes": 0,
+  "limits": [
+    "No cycle-level verification",
+    "No IRQ/NMI/DMA mid-routine evidence",
+    "No live NESRecomp native substitution",
+    "Synthetic states only; captured real call inputs not replayed",
+    "No full branch closure verified in this increment"
+  ]
+}
