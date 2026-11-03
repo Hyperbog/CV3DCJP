@@ -48,3 +48,54 @@ The ROM is **not** committed to Git; tests require an owner-local authentic Japa
 - Exact scope excludes the subsequent execution of external `JSR`s, indirect/data-table continuation `$915E`, unresolved return targets, and live player physics. These must not be represented as retired code.
 - Reproduce locally with `CV3DCJP_JP_ROM=<owner-ROM-path> python -m unittest discover -s tests -p test_collision_v9_rom.py -v`. Without the owner ROM, this test skips.
 - Evidence: `docs/rom-translation/evidence/caller_continuations_v9.json` and `closure_86fb_v9.json`; 499 ledger entries, 1,264 identified code bytes, 1,150 implemented, 114 open, 60 data, **0 retired**.
+
+## v10 — CPU-clock parity and guarded runtime substitution boundary
+
+The canonical `$FCDE` C translation now reports **6502 CPU cycle totals** via
+`Collision_FCDE_Timed()` without changing the ABI of `Collision_FCDE()`.
+Its timing counts the original query instructions, branch-taken/page-cross
+penalties, indexed page crossings, and RTS (six cycles); the caller's JSR is
+already executed by the time the native routine would enter. The independent
+ROM-opcode reference matched all 2,200 tested native states on A/X/Y/P/SP,
+RAM (2 KiB), instruction counts, and CPU-cycle totals; the 121 decoded
+instruction addresses were exercised.
+
+The added `CollisionLive_ProbeFCDE` is deliberately **read-only**. It validates
+original bank-14 `JSR $FCDE` bytes, original JSR return address on the CPU
+stack, bank identity, absence of pending asynchronous hardware, and the
+fixed-bank native code fingerprint. It calculates the post-RTS program counter,
+SP increment, and CPU-cycle delta in an independent snapshot. It explicitly
+sets `runtime_commit_authorized=0` and does NOT modify live CPU state.
+
+The original NESRecomp host's `CycHostExtras` interface exposes frame/visual
+callbacks, **not** an instruction-fetch CPU replacement callback. Therefore,
+linking the native library to the host alone cannot accomplish a safe live
+substitution. We have NOT installed a CPU hook into NESRecomp's generated
+cycle dispatch or verified its bus cycle ordering. True gameplay substitution
+is NOT complete; no ROM spans are retired. Existing launcher, UI, renderer,
+CPU and audio baseline are untouched.
+
+An opt-in Mesen2 Lua capture now records the original game at actual `$FCDE`
+entry and caller-return boundaries, including all CPU registers, CPU-cycle
+counters, and full 2 KiB RAM. The Python verifier checks each measured case
+against the native shadow. **No such new capture was executed in v10**;
+existing Stage 0 logs omit the full entry A/X/Y/SP/RAM needed to establish
+one-to-one live timing for the recorded 37,494 calls.
+
+The remaining gate requires an owner-side Mesen2 capture, a supported
+cycle-dispatch hook in the exact NESRecomp revision, and cycle-interleaved
+CPU/PPU/APU/DMA/VRC6 and interrupt comparison. Until then, use only the
+read-only shadow path.
+
+### Commands (owner-local)
+
+```powershell
+# Existing original-rom emulator session: run
+# tools/instrumentation/mesen2_collision_fcde_gate_v10.lua
+# from Mesen2's Lua console, then stop the script to close the CSV.
+
+py -3 tools/instrumentation/verify_fcde_live_trace_v10.py `
+  --rom 'C:\NESDev\AkumajouDensetsu\Akumajou Densetsu (Japan).nes' `
+  --trace 'PATH_TO_MESEN_SCRIPT_DATA\cv3dcjp-fcde-v10-TIMESTAMP.csv' `
+  --report 'data/generated/collision-v10-live-evidence.json'
+```

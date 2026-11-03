@@ -178,3 +178,22 @@ The single canonical `src/collision/Collision.c` now contains bounded native con
 The `$86FB` closure passes 5,007 independent ROM instruction differential cases: **55/55 executed instructions, 31/32 conditional branch directions**, with the final direction statically impossible. The caller increment passes 8,000 distinct comparisons. The ledger adds 86 authentic instruction spans / 171 new bytes; current totals are **1,264 identified code bytes, 1,150 implemented, 114 open, 60 classified data, 0 retired**.
 
 **Still incomplete:** external and table-boundary continuations, full collision/physics code discovery, hardware/timing/interrupt equivalence, and live runtime substitution. `IMPLEMENTED` does not imply retirement.
+
+## Amendment v10 — native collision cycle clock and live integration safety gate
+
+The original `$FCDE` routine now has native CPU-cycle accounting with independently
+verified branch/page-cross penalties. 2,200 ROM-driven differential executions
+passed including exact CPU clock totals; all 121 instruction addresses were
+reached. This is NOT full hardware bus-cycle equivalence.
+
+A `CollisionLive_ProbeFCDE` adapter demonstrates validated JSR/RTS stack
+handoff, original ROM/bank/caller identity and transactional native execution.
+It cannot alter the host's CPU and it refuses speculative mutation; the
+runtime-commit gate is zero by construction. Mesen2 capture and comparison
+sources exist but were not executed against live Windows game or Mesen2 during
+this increment. CPU instruction-fetch hook, mapper/PPU/APU/DMA/interrupt
+interleaving and original-ROM live parity remain open.
+
+**Cumulative executable inventory unchanged:** 1,264 identified PRG code bytes,
+1,150 implemented, 114 identified/decoded only, and zero retired. The new
+code is adapter/timing verification, not newly translated original instructions.

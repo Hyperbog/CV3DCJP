@@ -20,7 +20,7 @@
 
 typedef struct {
     uint8_t a, x, y, sp, p;
-    unsigned instructions;
+    unsigned instructions; unsigned cpu_cycles;
     uint16_t exit_pc; /* Address of original RTS, not the caller's PC. */
 } CviiiCollisionNativeResult;
 
@@ -61,148 +61,150 @@ static int cviii_collision_fcde_native(const uint8_t fixed_bank[16384],
     /* The complete physical fixed bank fingerprint prevents wrong-version use. */
     if(c3_fnv64(fixed_bank,16384)!=UINT64_C(0x0ba6968ecce23e07))return -2;
     uint8_t a=initial_a,y=initial_y,sp=initial_sp,p=initial_p;
-    unsigned steps=0;
+    unsigned steps=0,cycles=0;
+#define T(N) do {steps++; cycles+=(unsigned)(N);}while(0)
     uint16_t exit_pc=0;
     /* $FCDE: PHA; LDA $65; BMI $FC80. The PHA writes to live stack RAM. */
-    ram[0x100u+sp]=a;sp--;steps++;
-    a=ram[0x65];c3_nz(&p,a);steps++;
-    steps++; /* BMI */
+    ram[0x100u+sp]=a;sp--;T(3);
+    a=ram[0x65];c3_nz(&p,a);T(3);
+    T(2u+((p&0x80u)!=0)); /* BMI */
     if(p&0x80u) {
         /* Vertical collision address computation, $FC80-$FCDC. */
-        sp++;a=ram[0x100u+sp];c3_nz(&p,a);steps++;
-        p&=(uint8_t)~1u;steps++;
-        a=c3_add(a,ram[0x438],&p);steps++;
-        y=a;c3_nz(&p,y);steps++;
-        ram[0x13]=a;steps++;
-        a=x;c3_nz(&p,a);steps++;
-        p&=(uint8_t)~1u;steps++;
-        a=c3_add(a,ram[0x41c],&p);steps++;
-        c3_cmp(a,ram[0xcd],&p);steps++;
-        steps++; /* BCC $FC7D */
+        sp++;a=ram[0x100u+sp];c3_nz(&p,a);T(4);
+        p&=(uint8_t)~1u;T(2);
+        a=c3_add(a,ram[0x438],&p);T(4);
+        y=a;c3_nz(&p,y);T(2);
+        ram[0x13]=a;T(3);
+        a=x;c3_nz(&p,a);T(2);
+        p&=(uint8_t)~1u;T(2);
+        a=c3_add(a,ram[0x41c],&p);T(4);
+        c3_cmp(a,ram[0xcd],&p);T(3);
+        T(2u+(!(p&1u))); /* BCC $FC7D */
         if(!(p&1u)) {
-            a=0;c3_nz(&p,a);steps++;exit_pc=0xFC7F;
+            a=0;c3_nz(&p,a);T(2);exit_pc=0xFC7F;
             goto done;
         }
-        p|=1u;steps++;
-        a=c3_sub(a,0x33u,&p);steps++;
-        ram[0x11]=a;steps++;
-        steps++; /* BCS $FC9C */
-        if(p&1u) { a=0;c3_nz(&p,a);steps++; }
-        else { a=0xffu;c3_nz(&p,a);steps++;steps++; /* BNE $FC9E */ }
-        ram[0x13]=a;steps++;
-        ram[0x10]=y;steps++;
-        a=y;c3_nz(&p,a);steps++;
-        for(unsigned i=0;i<5;++i){a=c3_lsr(a,&p);steps++;}
-        ram[0x12]=a;steps++;
-        a=ram[0x13];c3_nz(&p,a);steps++;
-        steps++; /* BMI $FCBB */
+        p|=1u;T(2);
+        a=c3_sub(a,0x33u,&p);T(2);
+        ram[0x11]=a;T(3);
+        T(2u+((p&1u)!=0)); /* BCS $FC9C */
+        if(p&1u) { a=0;c3_nz(&p,a);T(2); }
+        else { a=0xffu;c3_nz(&p,a);T(2);T(3); /* BNE $FC9E */ }
+        ram[0x13]=a;T(3);
+        ram[0x10]=y;T(3);
+        a=y;c3_nz(&p,a);T(2);
+        for(unsigned i=0;i<5;++i){a=c3_lsr(a,&p);T(2);}
+        ram[0x12]=a;T(3);
+        a=ram[0x13];c3_nz(&p,a);T(3);
+        T(2u+((p&0x80u)!=0)); /* BMI $FCBB */
         if(p&0x80u){
-            p&=(uint8_t)~1u;steps++;
-            a=ram[0x53];c3_nz(&p,a);steps++;
-            a=c3_add(a,ram[0x11],&p);steps++;
-            steps++; /* BCS $FCC8 */
+            p&=(uint8_t)~1u;T(2);
+            a=ram[0x53];c3_nz(&p,a);T(3);
+            a=c3_add(a,ram[0x11],&p);T(3);
+            T(2u+((p&1u)!=0)); /* BCS $FCC8 */
             if(!(p&1u)){
-                p|=1u;steps++;
-                a=c3_sub(a,0x10u,&p);steps++;
-                steps++; /* JMP $FCCF */
+                p|=1u;T(2);
+                a=c3_sub(a,0x10u,&p);T(2);
+                T(3); /* JMP $FCCF */
                 goto vertical_quantize;
             }
         } else {
-            p&=(uint8_t)~1u;steps++;
-            a=ram[0x53];c3_nz(&p,a);steps++;
-            a=c3_add(a,ram[0x11],&p);steps++;
-            steps++; /* BCC $FCC8 */
+            p&=(uint8_t)~1u;T(2);
+            a=ram[0x53];c3_nz(&p,a);T(3);
+            a=c3_add(a,ram[0x11],&p);T(3);
+            T(2u+(!(p&1u))); /* BCC $FCC8 */
             if(p&1u){
-                p&=(uint8_t)~1u;steps++;
-                a=c3_add(a,0x10u,&p);steps++;
-                steps++; /* JMP $FCCF */
+                p&=(uint8_t)~1u;T(2);
+                a=c3_add(a,0x10u,&p);T(2);
+                T(3); /* JMP $FCCF */
                 goto vertical_quantize;
             }
         }
-        c3_cmp(a,0xf0u,&p);steps++;
-        steps++; /* BCC $FCCF */
-        if(p&1u){p&=(uint8_t)~1u;steps++;a=c3_add(a,0x10u,&p);steps++;}
+        c3_cmp(a,0xf0u,&p);T(2);
+        T(2u+(!(p&1u))); /* BCC $FCCF */
+        if(p&1u){p&=(uint8_t)~1u;T(2);a=c3_add(a,0x10u,&p);T(2);}
 vertical_quantize:
-        a&=0xf0u;c3_nz(&p,a);steps++;
-        a=c3_lsr(a,&p);steps++;
-        p&=(uint8_t)~1u;steps++;
-        a=c3_add(a,ram[0x12],&p);steps++;
-        y=a;c3_nz(&p,y);steps++;
-        a=ram[0x10];c3_nz(&p,a);steps++;
-        a&=0x10u;c3_nz(&p,a);steps++;
-        steps++; /* BNE $FD40 */
+        a&=0xf0u;c3_nz(&p,a);T(2);
+        a=c3_lsr(a,&p);T(2);
+        p&=(uint8_t)~1u;T(2);
+        a=c3_add(a,ram[0x12],&p);T(3);
+        y=a;c3_nz(&p,y);T(2);
+        a=ram[0x10];c3_nz(&p,a);T(3);
+        a&=0x10u;c3_nz(&p,a);T(2);
+        T(2u+2u*(!(p&2u))); /* BNE $FD40 */
         if(!(p&2u)){goto low_nibble;}
-        steps++; /* BEQ $FD32 */
+        T(4); /* BEQ $FD32 */
         goto high_nibble;
     }
     /* Horizontal collision address computation, $FCE3-$FD30. */
-    sp++;a=ram[0x100u+sp];c3_nz(&p,a);steps++;
-    p&=(uint8_t)~1u;steps++;
-    a=c3_add(a,ram[0x438],&p);steps++;
-    y=a;c3_nz(&p,y);steps++;
-    a=x;c3_nz(&p,a);steps++;
-    p&=(uint8_t)~1u;steps++;
-    a=c3_add(a,ram[0x41c],&p);steps++;
-    p|=1u;steps++;
-    a=c3_sub(a,0x20u,&p);steps++;
-    steps++; /* BCC $FD4A */
+    sp++;a=ram[0x100u+sp];c3_nz(&p,a);T(4);
+    p&=(uint8_t)~1u;T(2);
+    a=c3_add(a,ram[0x438],&p);T(4);
+    y=a;c3_nz(&p,y);T(2);
+    a=x;c3_nz(&p,a);T(2);
+    p&=(uint8_t)~1u;T(2);
+    a=c3_add(a,ram[0x41c],&p);T(4);
+    p|=1u;T(2);
+    a=c3_sub(a,0x20u,&p);T(2);
+    T(2u+2u*(!(p&1u))); /* BCC $FD4A */
     if(!(p&1u)){exit_pc=0xFD4C;goto zero_exit;}
-    c3_cmp(a,0xc0u,&p);steps++;
-    steps++; /* BCS $FD4A */
+    c3_cmp(a,0xc0u,&p);T(2);
+    T(2u+2u*((p&1u)!=0)); /* BCS $FD4A */
     if(p&1u){exit_pc=0xFD4C;goto zero_exit;}
-    ram[0x11]=a;steps++;
-    ram[0x10]=y;steps++;
-    for(unsigned i=0;i<4;++i){ram[0x11]=c3_lsr(ram[0x11],&p);steps++;}
-    a=ram[0x53];c3_nz(&p,a);steps++;
-    p&=(uint8_t)~1u;steps++;
-    a=c3_add(a,ram[0x10],&p);steps++;
-    ram[0x13]=a;steps++;
-    a=ram[0x54];c3_nz(&p,a);steps++;
-    a=c3_add(a,0,&p);steps++;
-    ram[0x14]=a;steps++;
-    y=a;c3_nz(&p,y);steps++;
-    a=ram[0x13];c3_nz(&p,a);steps++;
-    for(unsigned i=0;i<5;++i){a=c3_lsr(a,&p);steps++;}
-    a|=fixed_bank[0x3d62u+y];c3_nz(&p,a);steps++;
+    ram[0x11]=a;T(3);
+    ram[0x10]=y;T(3);
+    for(unsigned i=0;i<4;++i){ram[0x11]=c3_lsr(ram[0x11],&p);T(5);}
+    a=ram[0x53];c3_nz(&p,a);T(3);
+    p&=(uint8_t)~1u;T(2);
+    a=c3_add(a,ram[0x10],&p);T(3);
+    ram[0x13]=a;T(3);
+    a=ram[0x54];c3_nz(&p,a);T(3);
+    a=c3_add(a,0,&p);T(2);
+    ram[0x14]=a;T(3);
+    y=a;c3_nz(&p,y);T(2);
+    a=ram[0x13];c3_nz(&p,a);T(3);
+    for(unsigned i=0;i<5;++i){a=c3_lsr(a,&p);T(2);}
+    a|=fixed_bank[0x3d62u+y];c3_nz(&p,a);T(4u+(y>=0x9eu));
     /* ROM wraps the table-derived page into its 12-entry lookup. */
     for(;;) {
-        c3_cmp(a,12,&p);steps++;
-        steps++; /* BCC $FD24 */
+        c3_cmp(a,12,&p);T(2);
+        T(2u+(!(p&1u))); /* BCC $FD24 */
         if(!(p&1u))break;
-        a=c3_sub(a,12,&p);steps++;
-        steps++; /* JMP $FD1B */
+        a=c3_sub(a,12,&p);T(2);
+        T(3); /* JMP $FD1B */
         if(steps>256u)return -3;
     }
-    y=a;c3_nz(&p,y);steps++;
-    a=fixed_bank[0x3d4du+y];c3_nz(&p,a);steps++;
-    p&=(uint8_t)~1u;steps++;
-    a=c3_add(a,ram[0x11],&p);steps++;
-    y=a;c3_nz(&p,y);steps++;
-    a=ram[0x13];c3_nz(&p,a);steps++;
-    a&=0x10u;c3_nz(&p,a);steps++;
-    steps++; /* BNE $FD40 */
+    y=a;c3_nz(&p,y);T(2);
+    a=fixed_bank[0x3d4du+y];c3_nz(&p,a);T(4);
+    p&=(uint8_t)~1u;T(2);
+    a=c3_add(a,ram[0x11],&p);T(3);
+    y=a;c3_nz(&p,y);T(2);
+    a=ram[0x13];c3_nz(&p,a);T(3);
+    a&=0x10u;c3_nz(&p,a);T(2);
+    T(2u+((p&2u)==0)); /* BNE $FD40 */
     if(!(p&2u))goto low_nibble;
 high_nibble:
-    a=0;c3_nz(&p,a);steps++;
-    ram[0xa2]=a;steps++;
-    a=ram[0x6e0u+y];c3_nz(&p,a);steps++;
-    for(unsigned i=0;i<4;++i){a=c3_lsr(a,&p);steps++;}
-    c3_cmp(a,0,&p);steps++;
+    a=0;c3_nz(&p,a);T(2);
+    ram[0xa2]=a;T(3);
+    a=ram[0x6e0u+y];c3_nz(&p,a);T(4u+(y>=0x20u));
+    for(unsigned i=0;i<4;++i){a=c3_lsr(a,&p);T(2);}
+    c3_cmp(a,0,&p);T(2);
     exit_pc=0xFD3F;goto done;
 low_nibble:
-    a=1;c3_nz(&p,a);steps++;
-    ram[0xa2]=a;steps++;
-    a=ram[0x6e0u+y];c3_nz(&p,a);steps++;
-    a&=0x0fu;c3_nz(&p,a);steps++;
+    a=1;c3_nz(&p,a);T(2);
+    ram[0xa2]=a;T(3);
+    a=ram[0x6e0u+y];c3_nz(&p,a);T(4u+(y>=0x20u));
+    a&=0x0fu;c3_nz(&p,a);T(2);
     exit_pc=0xFD49;goto done;
 zero_exit:
-    a=0;c3_nz(&p,a);steps++;
+    a=0;c3_nz(&p,a);T(2);
 done:
-    steps++; /* RTS */
-    *out=(CviiiCollisionNativeResult){a,x,y,sp,p,steps,exit_pc};
+    T(6); /* RTS */
+    *out=(CviiiCollisionNativeResult){a,x,y,sp,p,steps,cycles,exit_pc};
     return 0;
 }
 
+#undef T
 /* ========== BOUNDED TRANSLATION: cviii_collision_callers_native_v3.h ========== */
 /* Native translation of bounded post-$FCDE caller logic in Japanese PRG bank 14.
  * ROM-specific addresses below are PHYSICAL-BANK matched by the test suite.
@@ -1037,14 +1039,22 @@ static void to_state_v5(CollisionState *dst,const CviiiCollisionMachineV5 *m) {
     dst->mapped_prg_bank=m->mapped_prg_bank;
     dst->mapper_writes=m->mapper_writes;
 }
-CollisionExit Collision_FCDE(CollisionState *state,const uint8_t fixed_prg[COLLISION_FIXED_PRG_BYTES]) {
-    if(!state||!fixed_prg)return ce(0,COLLISION_UNSUPPORTED,0,0,0);
+CollisionTimedExit Collision_FCDE_Timed(CollisionState *state,
+                                          const uint8_t fixed_prg[COLLISION_FIXED_PRG_BYTES]) {
+    CollisionTimedExit result={ce(0,COLLISION_UNSUPPORTED,0,0,0),0};
+    if(!state||!fixed_prg)return result;
     CviiiCollisionNativeResult r;
     int ok=cviii_collision_fcde_native(fixed_prg,state->ram,state->a,state->x,
                                        state->y,state->sp,state->p,&r);
-    if(ok)return ce(0,COLLISION_UNSUPPORTED,0,0,0);
+    if(ok)return result;
     state->a=r.a;state->x=r.x;state->y=r.y;state->sp=r.sp;state->p=r.p;
-    return ce(r.exit_pc,COLLISION_RTS,r.instructions,1,state->p&1u);
+    result.exit=ce(r.exit_pc,COLLISION_RTS,r.instructions,1,state->p&1u);
+    result.cpu_cycles=r.cpu_cycles;
+    return result;
+}
+CollisionExit Collision_FCDE(CollisionState *state,
+                             const uint8_t fixed_prg[COLLISION_FIXED_PRG_BYTES]) {
+    return Collision_FCDE_Timed(state,fixed_prg).exit;
 }
 CollisionExit Collision_Caller(uint16_t pc,CollisionState *state) {
     if(!state)return ce(pc,COLLISION_UNSUPPORTED,0,0,0);

@@ -1,0 +1,16 @@
+{
+  "schema": "cv3dcjp-collision-fcde-cycle-differential-v10",
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "routine_cpu_entry": "0xFCDE",
+  "cpu_cycle_interval": "First opcode PHA through RTS inclusive; caller JSR excluded",
+  "synthetic_native_vs_original_rom_cases": 2200,
+  "cpu_register_ram_instruction_count_and_clock_matches": 2200,
+  "rom_decoded_instruction_addresses_reached": 121,
+  "missing_branch_rule": "Not applicable to this new v10 test; previous v2 proof addresses infeasible edges",
+  "live_mesen2_entry_return_samples_captured_in_v10": 0,
+  "real_cycle_bus_order_equivalence": "NOT TESTED",
+  "cpu_ppu_apu_dma_irq_nmi_mapper_cycle_interleave": "NOT TESTED",
+  "cpu_hook_installed": false,
+  "runtime_commit_authorized": false,
+  "formally_retired_prg_bytes": 0
+}

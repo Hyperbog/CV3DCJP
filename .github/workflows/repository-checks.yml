@@ -35,3 +35,11 @@ jobs:
             src/collision/Collision.c tests/test_collision_api.c \
             -o /tmp/cv3dcjp_collision_test
           /tmp/cv3dcjp_collision_test
+      - name: Build guarded collision shadow boundary (no ROM)
+        run: |
+          cc -std=c11 -Wall -Wextra -Werror -Wno-unused-function \
+            -I src/collision \
+            src/collision/Collision.c src/collision/CollisionLive.c \
+            tests/test_collision_live_no_rom.c \
+            -o /tmp/cv3dcjp_collision_guard
+          /tmp/cv3dcjp_collision_guard

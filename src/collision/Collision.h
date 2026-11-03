@@ -36,6 +36,14 @@ typedef struct CollisionExit {
     uint8_t carry;
 } CollisionExit;
 
+/* Original 6502 CPU cycles for the bounded $FCDE query, including its RTS,
+ * excluding the caller JSR (6 cycles), interrupts, DMC/OAM stalls and bus timing.
+ * Existing CollisionExit ABI is preserved. */
+typedef struct CollisionTimedExit {
+    CollisionExit exit;
+    unsigned cpu_cycles;
+} CollisionTimedExit;
+CollisionTimedExit Collision_FCDE_Timed(CollisionState *state, const uint8_t fixed_prg[COLLISION_FIXED_PRG_BYTES]);
 /* For FCDE, fixed_prg points to physical final 16 KiB (ROM file offset 0x3C010).
  * Function is transactional on invalid bank fingerprint. */
 CollisionExit Collision_FCDE(CollisionState *state, const uint8_t fixed_prg[COLLISION_FIXED_PRG_BYTES]);
