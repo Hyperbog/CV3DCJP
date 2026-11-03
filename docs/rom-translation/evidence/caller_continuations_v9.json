@@ -1,0 +1,143 @@
+{
+  "source_rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "method": "independent instruction-level ROM execution vs canonical C11 CPU state; stop at documented boundaries",
+  "cases": 8000,
+  "call_sites": 16,
+  "new_instruction_addresses": 86,
+  "new_prg_bytes": 171,
+  "executed_instruction_addresses": 102,
+  "observed_branch_outcomes": 75,
+  "existing_verified_instruction_addresses": 16,
+  "zero_retired": true,
+  "call_entry_cases": {
+    "8345": 500,
+    "834E": 500,
+    "83EA": 500,
+    "83F6": 500,
+    "8429": 500,
+    "8450": 500,
+    "84CF": 500,
+    "84D8": 500,
+    "9153": 500,
+    "9164": 500,
+    "97B1": 500,
+    "97BA": 500,
+    "97C5": 500,
+    "97CE": 500,
+    "97E7": 500,
+    "97FC": 500
+  },
+  "bounded_exit_pc_coverage": {
+    "8345": [
+      "834E",
+      "8353"
+    ],
+    "834E": [
+      "8353",
+      "8359"
+    ],
+    "83EA": [
+      "83F5"
+    ],
+    "83F6": [
+      "83FD"
+    ],
+    "8429": [
+      "83CA",
+      "83FE",
+      "8450",
+      "8478",
+      "847B",
+      "8495",
+      "84AB"
+    ],
+    "8450": [
+      "83DA",
+      "83FE",
+      "8478",
+      "847A",
+      "847B",
+      "8495",
+      "84B4"
+    ],
+    "84CF": [
+      "84D8",
+      "84E8"
+    ],
+    "84D8": [
+      "84DF",
+      "84E8"
+    ],
+    "9153": [
+      "9159",
+      "915E"
+    ],
+    "9164": [
+      "9159",
+      "915E",
+      "9176"
+    ],
+    "97B1": [
+      "97BA",
+      "97DB"
+    ],
+    "97BA": [
+      "97D3",
+      "97DB"
+    ],
+    "97C5": [
+      "97CE",
+      "97DB"
+    ],
+    "97CE": [
+      "97D3",
+      "97DB"
+    ],
+    "97E7": [
+      "97F0",
+      "97FC"
+    ],
+    "97FC": [
+      "9805",
+      "981F",
+      "9847",
+      "9848"
+    ]
+  },
+  "unresolved_boundaries": {
+    "external": [
+      "$8353",
+      "$8359",
+      "$84DF",
+      "$84E8",
+      "$97D3",
+      "$97DB",
+      "$97F0",
+      "$9805",
+      "$981F"
+    ],
+    "collision": [
+      "$834E",
+      "$8450",
+      "$84D8",
+      "$97BA",
+      "$97CE",
+      "$97FC"
+    ],
+    "table": [
+      "$915E"
+    ],
+    "untranslated_jump_targets": [
+      "$83CA",
+      "$83DA",
+      "$83FE",
+      "$847B",
+      "$8495",
+      "$84AB",
+      "$84B4",
+      "$9848"
+    ]
+  },
+  "original_runtime_substitution": false,
+  "cycle_parity": false
+}

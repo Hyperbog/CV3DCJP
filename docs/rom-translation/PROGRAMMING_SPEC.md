@@ -104,7 +104,7 @@ player movement effects remain open. The recorded tests cannot establish
 those facts, and this release does not claim collision or physics complete.
 
 Source: `src/cviii_collision_callers_native_v3.h`
-Proof: `docs/rom-translation/evidence/translation_coverage_v3.json`
+Proof: `evidence/translation_coverage_v3.json`
 Ledger: `translation_ledger.json`
 
 ---
@@ -170,3 +170,11 @@ All existing bounded native collision translations from v2–v7 are now consolid
 A **near 1:1 translation** preserves every original instruction's observable effect and flow, not its assembly syntax or an artificial one-C-line-per-opcode ratio. 6502 flag, carry, overflow, stack, timing, bank/mapper, and memory changes must be accounted for; if an effect is not fully covered, keep the code `IMPLEMENTED` rather than `RETIRED`.
 
 Git workflow: source, evidence, tests and ledger live on `collision/canonical-native-translation-v8` (draft PR #19); playable `main` remains unchanged pending review.
+
+## Amendment v9 — `$86FB` branch closure and remaining caller entry continuations
+
+The single canonical `src/collision/Collision.c` now contains bounded native continuations for all **34 captured `JSR $FCDE` caller entries**. This does not imply every transitive downstream call is translated. The additional 16 entry paths stop at authentic unresolved ROM call, table, or code targets and preserve the original registers, flags, stack, and RAM up to that point.
+
+The `$86FB` closure passes 5,007 independent ROM instruction differential cases: **55/55 executed instructions, 31/32 conditional branch directions**, with the final direction statically impossible. The caller increment passes 8,000 distinct comparisons. The ledger adds 86 authentic instruction spans / 171 new bytes; current totals are **1,264 identified code bytes, 1,150 implemented, 114 open, 60 classified data, 0 retired**.
+
+**Still incomplete:** external and table-boundary continuations, full collision/physics code discovery, hardware/timing/interrupt equivalence, and live runtime substitution. `IMPLEMENTED` does not imply retirement.

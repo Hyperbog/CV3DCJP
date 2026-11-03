@@ -34,13 +34,13 @@ int main(void) {
     out=Collision_FCDE(s,NULL);
     assert(!out.ok && memcmp(before,s,sizeof *s)==0);
 
-    /* Identified but not yet fully translated caller: immediate conditional edge only. */
+    /* ROM-based bounded caller returns the next actual JSR at $834E. */
     s->p=(uint8_t)(s->p & ~2u);
     out=Collision_Caller(0x8345,s); /* branch BNE $8353 */
     assert(out.ok && out.next_pc==0x8353);
     s->p=(uint8_t)(s->p | 2u);
     out=Collision_Caller(0x8345,s);
-    assert(out.ok && out.next_pc==0x834a);
+    assert(out.ok && out.next_pc==0x834e && out.kind==COLLISION_QUERY);
 
     free(before);
     free(s);

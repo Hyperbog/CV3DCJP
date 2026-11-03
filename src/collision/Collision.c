@@ -1,6 +1,6 @@
 /* Single canonical C11 translation unit: collision routines from JP ROM.
- * This file consolidates v2 FCDE, v3 caller continuations, v4 dependencies,
- * v5 E648/bank7, and v6/v7 external routines without changing their logic.
+ * This file consolidates v2 FCDE, v3/v9 caller continuations, v4 dependencies,
+ * v5 E648/bank7, and v6/v7 external routines.
  * Instruction semantic equivalence is the goal; no synthetic gameplay rules.
  * The original CPU/mapper/interrupt cycle behavior is NOT yet replaced.
  */
@@ -216,7 +216,7 @@ typedef struct {
 typedef enum {
     CVIII_NEXT_COLLISION=1, CVIII_NEXT_EXTERNAL=2,
     CVIII_NEXT_RETURN=3, CVIII_NEXT_FALLTHROUGH=4,
-    CVIII_NEXT_UNSUPPORTED=5
+    CVIII_NEXT_UNSUPPORTED=5, CVIII_NEXT_JUMP=6
 } CviiiCallerExitV3;
 typedef struct { uint16_t pc; CviiiCallerExitV3 kind; } CviiiCallerResultV3;
 static void cviii_nz_v3(CviiiCollisionCpuV3 *s,uint8_t n) {
@@ -278,6 +278,117 @@ static CviiiCallerResultV3 cviii_query_v3(CviiiCollisionCpuV3*s,
     cviii_ldx_v3(s,x);cviii_lda_v3(s,a);
     return cviii_result_v3(pc,CVIII_NEXT_COLLISION);
 }
+/* V9: remaining 16 ROM-return continuations, bounded at unresolved calls.
+ * The initial flags are those returned by $FCDE; these functions do not
+ * execute the JSR $FCDE again. RAM offsets and comparison order are literal.
+ */
+static void cviii_cmp_v9(CviiiCollisionCpuV3*s,uint8_t b){
+    c3_cmp(s->a,b,&s->p);
+}
+static void cviii_adc_v9(CviiiCollisionCpuV3*s,uint8_t b){
+    s->a=c3_add(s->a,b,&s->p);
+}
+static CviiiCallerResultV3 cviii_collision_remaining_v9(
+    uint16_t call,CviiiCollisionCpuV3*s){
+    int z=(s->p&2u)!=0;
+    switch(call){
+    case 0x8345:
+        if(!z)return cviii_result_v3(0x8353,CVIII_NEXT_EXTERNAL);
+        cviii_lda_v3(s,s->ram[0x08]);cviii_ldx_v3(s,0);
+        return cviii_result_v3(0x834e,CVIII_NEXT_COLLISION);
+    case 0x834e:
+        return cviii_result_v3(z?0x8359:0x8353,CVIII_NEXT_EXTERNAL);
+    case 0x83ea:
+        if(!z){
+            cviii_cmp_v9(s,1);
+            if(!(s->p&2u))cviii_cmp_v9(s,8);
+        }
+        return cviii_result_v3(0x83f5,CVIII_NEXT_RETURN);
+    case 0x83f6:
+        if(!z)cviii_cmp_v9(s,1);
+        return cviii_result_v3(0x83fd,CVIII_NEXT_RETURN);
+    case 0x8429:
+    case 0x8450: {
+        if(z){
+            if(call==0x8450){s->p&=(uint8_t)~1u;
+                return cviii_result_v3(0x847a,CVIII_NEXT_RETURN);}
+            cviii_ldx_v3(s,s->ram[0x08]);cviii_lda_v3(s,0xfbu);
+            return cviii_result_v3(0x8450,CVIII_NEXT_COLLISION);
+        }
+        const uint8_t tests[]={1,2,3,4,5,7};
+        const uint16_t path_8429[]={0x84ab,0x847b,0x8495,0x83ca,0x83fe,0x83fe};
+        const uint16_t path_8450[]={0x84b4,0x847b,0x8495,0x83da,0x83fe,0x83fe};
+        for(unsigned i=0;i<6;++i){
+            cviii_cmp_v9(s,tests[i]);
+            if(s->p&2u)return cviii_result_v3(
+                call==0x8429?path_8429[i]:path_8450[i],CVIII_NEXT_FALLTHROUGH);
+        }
+        cviii_cmp_v9(s,0x0cu);
+        if(s->p&1u)return cviii_result_v3(
+                call==0x8429?0x83ca:0x83da,CVIII_NEXT_FALLTHROUGH);
+        s->p|=1u;
+        return cviii_result_v3(0x8478,CVIII_NEXT_RETURN);
+    }
+    case 0x84cf:
+        if(z){cviii_ldx_v3(s,s->ram[0x08]);cviii_lda_v3(s,0xfbu);
+            return cviii_result_v3(0x84d8,CVIII_NEXT_COLLISION);}
+        goto shared_84e4;
+    case 0x84d8:
+        if(z){cviii_ldx_v3(s,s->ram[0x8e]);
+            return cviii_result_v3(0x84df,CVIII_NEXT_EXTERNAL);}
+shared_84e4:
+        cviii_lda_v3(s,0);s->ram[0x88]=0;
+        return cviii_result_v3(0x84e8,CVIII_NEXT_EXTERNAL);
+    case 0x9153:
+        if(!z){s->p|=1u;return cviii_result_v3(0x9159,CVIII_NEXT_RETURN);}
+        cviii_ldy_v3(s,s->ram[0x7f]);s->ram[0x01]=s->y;
+        return cviii_result_v3(0x915e,CVIII_NEXT_FALLTHROUGH);
+    case 0x9164:
+        if(!z){s->p|=1u;return cviii_result_v3(0x9159,CVIII_NEXT_RETURN);}
+        cviii_lda_v3(s,s->ram[0x01]);s->p&=(uint8_t)~1u;
+        cviii_adc_v9(s,4);cviii_cmp_v9(s,8);
+        if(s->p&1u){s->p&=(uint8_t)~1u;
+            return cviii_result_v3(0x9176,CVIII_NEXT_RETURN);}
+        cviii_ldy_v3(s,s->a);
+        if(!s->y){s->p&=(uint8_t)~1u;
+            return cviii_result_v3(0x9176,CVIII_NEXT_RETURN);}
+        s->ram[0x01]=s->y;
+        return cviii_result_v3(0x915e,CVIII_NEXT_FALLTHROUGH);
+    case 0x97b1:
+        if(z){cviii_ldx_v3(s,8);cviii_lda_v3(s,0xf8u);
+            return cviii_result_v3(0x97ba,CVIII_NEXT_COLLISION);}
+        goto shared_97d6;
+    case 0x97ba:
+    case 0x97ce:
+        if(z)return cviii_result_v3(0x97d3,CVIII_NEXT_EXTERNAL);
+        goto shared_97d6;
+    case 0x97c5:
+        if(z){cviii_ldx_v3(s,8);cviii_lda_v3(s,8);
+            return cviii_result_v3(0x97ce,CVIII_NEXT_COLLISION);}
+shared_97d6:
+        cviii_lda_v3(s,s->ram[0x041c]);s->ram[0x06]=s->a;
+        return cviii_result_v3(0x97db,CVIII_NEXT_EXTERNAL);
+    case 0x97e7:
+        if(z){cviii_ldx_v3(s,0x10);cviii_lda_v3(s,5);
+            return cviii_result_v3(0x97fc,CVIII_NEXT_COLLISION);}
+        cviii_ldx_v3(s,8);cviii_lda_v3(s,0xfbu);
+        return cviii_result_v3(0x97f0,CVIII_NEXT_EXTERNAL);
+    case 0x97fc:
+        if(!z){cviii_ldx_v3(s,8);cviii_lda_v3(s,5);
+            return cviii_result_v3(0x9805,CVIII_NEXT_EXTERNAL);}
+        cviii_lda_v3(s,s->ram[0x88]);cviii_cmp_v9(s,1);
+        if(s->p&2u){cviii_ldx_v3(s,s->ram[0x8e]);
+            return cviii_result_v3(0x981f,CVIII_NEXT_EXTERNAL);}
+        cviii_cmp_v9(s,5);
+        if(!(s->p&2u)){cviii_cmp_v9(s,6);
+            if(!(s->p&2u))return cviii_result_v3(0x9848,CVIII_NEXT_JUMP);}
+        cviii_lda_v3(s,s->ram[0x06]);s->p&=(uint8_t)~1u;
+        cviii_adc_v9(s,s->ram[0x8e]);s->ram[0x041c]=s->a;
+        cviii_lda_v3(s,2);s->ram[0x0565]=s->a;
+        return cviii_result_v3(0x9847,CVIII_NEXT_RETURN);
+    default:return cviii_result_v3(0,CVIII_NEXT_UNSUPPORTED);
+    }
+}
 /* Starting point: the first instruction AFTER the JSR at call.
  * Return boundary is another collision JSR, an external JSR/JMP, or RTS.
  */
@@ -330,7 +441,7 @@ static CviiiCallerResultV3 cviii_collision_caller_native_v3(
         s->p=(uint8_t)(s->p&~1u); /* CLC before RTS */
         return cviii_result_v3(0x83a9,CVIII_NEXT_RETURN);
     }
-    default:return cviii_result_v3(0,CVIII_NEXT_UNSUPPORTED);
+    default:return cviii_collision_remaining_v9(call,s);
     }
     /* Shared $9B9B successful collision exit. LDA #$12; STA $0565; RTS. */
     cviii_lda_v3(s,0x12);s->ram[0x0565]=0x12;
@@ -947,7 +1058,8 @@ CollisionExit Collision_Caller(uint16_t pc,CollisionState *state) {
     to_state_v3(state,&s);
     CollisionExitKind kind=(r.kind==CVIII_NEXT_COLLISION?COLLISION_QUERY:
           r.kind==CVIII_NEXT_EXTERNAL?COLLISION_JSR:
-          r.kind==CVIII_NEXT_RETURN?COLLISION_RTS:COLLISION_FALLTHROUGH);
+          r.kind==CVIII_NEXT_RETURN?COLLISION_RTS:
+          r.kind==CVIII_NEXT_JUMP?COLLISION_JMP:COLLISION_FALLTHROUGH);
     return ce(r.pc,kind,0,1,state->p&1u);
 }
 CollisionExit Collision_Dependency(uint16_t pc,CollisionState *state) {

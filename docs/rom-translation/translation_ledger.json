@@ -54,11 +54,11 @@
     "e648_8723_composite_cases_v5": 1500,
     "v5_retired_bytes": 0,
     "v6_native_source": "src/cviii_collision_external_native_v6.h",
-    "v6_rom_differential": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+    "v6_rom_differential": "evidence/rom_differential_v6_partial.json",
     "v6_verified_isolated_cases": 9900,
     "v6_968a_composite": "FAILED case 359; no retirement or live integration",
     "v6_retired_bytes": 0,
-    "v7_968a_corrected_trace": "docs/rom-translation/evidence/rom_differential_v7.json",
+    "v7_968a_corrected_trace": "evidence/rom_differential_v7.json",
     "v7_mapping": "src/cviii_collision_e648_native_v5.h: cv5_read fixed $E000-$FFFF maps physical file 0x3E010..0x4000F",
     "v7_composite_coverage": "1498 matched, 2 unsupported bus rejected unchanged; case 359 now matches",
     "v7_86fb_branch_closure": "pending: initial branch-closure reporting script failed; targeted branch paths not independently accepted",
@@ -2055,6 +2055,46 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-3834A",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230218,
+      "length": 2,
+      "cpu_pc_observed": "0x834A",
+      "expected_bytes_hex": "a508",
+      "entry_kind": "LDA $08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3834C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230220,
+      "length": 2,
+      "cpu_pc_observed": "0x834C",
+      "expected_bytes_hex": "a200",
+      "entry_kind": "LDX #$00",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-3834E",
       "system": "collision",
       "bank_16k": 14,
@@ -2257,6 +2297,66 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-383EF",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230383,
+      "length": 2,
+      "cpu_pc_observed": "0x83EF",
+      "expected_bytes_hex": "c901",
+      "entry_kind": "CMP #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-383F1",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230385,
+      "length": 2,
+      "cpu_pc_observed": "0x83F1",
+      "expected_bytes_hex": "f002",
+      "entry_kind": "BEQ $83F5",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-383F3",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230387,
+      "length": 2,
+      "cpu_pc_observed": "0x83F3",
+      "expected_bytes_hex": "c908",
+      "entry_kind": "CMP #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-383F6",
       "system": "collision",
       "bank_16k": 14,
@@ -2297,6 +2397,26 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-383FB",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230395,
+      "length": 2,
+      "cpu_pc_observed": "0x83FB",
+      "expected_bytes_hex": "c901",
+      "entry_kind": "CMP #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
     },
     {
       "id": "COLL-CALL-PRG-38429",
@@ -2341,6 +2461,346 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-3842E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230446,
+      "length": 2,
+      "cpu_pc_observed": "0x842E",
+      "expected_bytes_hex": "c901",
+      "entry_kind": "CMP #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38430",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230448,
+      "length": 2,
+      "cpu_pc_observed": "0x8430",
+      "expected_bytes_hex": "f079",
+      "entry_kind": "BEQ $84AB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38432",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230450,
+      "length": 2,
+      "cpu_pc_observed": "0x8432",
+      "expected_bytes_hex": "c902",
+      "entry_kind": "CMP #$02",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38434",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230452,
+      "length": 2,
+      "cpu_pc_observed": "0x8434",
+      "expected_bytes_hex": "f045",
+      "entry_kind": "BEQ $847B",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38436",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230454,
+      "length": 2,
+      "cpu_pc_observed": "0x8436",
+      "expected_bytes_hex": "c903",
+      "entry_kind": "CMP #$03",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38438",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230456,
+      "length": 2,
+      "cpu_pc_observed": "0x8438",
+      "expected_bytes_hex": "f05b",
+      "entry_kind": "BEQ $8495",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3843A",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230458,
+      "length": 2,
+      "cpu_pc_observed": "0x843A",
+      "expected_bytes_hex": "c904",
+      "entry_kind": "CMP #$04",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3843C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230460,
+      "length": 2,
+      "cpu_pc_observed": "0x843C",
+      "expected_bytes_hex": "f08c",
+      "entry_kind": "BEQ $83CA",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3843E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230462,
+      "length": 2,
+      "cpu_pc_observed": "0x843E",
+      "expected_bytes_hex": "c905",
+      "entry_kind": "CMP #$05",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38440",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230464,
+      "length": 2,
+      "cpu_pc_observed": "0x8440",
+      "expected_bytes_hex": "f0bc",
+      "entry_kind": "BEQ $83FE",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38442",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230466,
+      "length": 2,
+      "cpu_pc_observed": "0x8442",
+      "expected_bytes_hex": "c907",
+      "entry_kind": "CMP #$07",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38444",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230468,
+      "length": 2,
+      "cpu_pc_observed": "0x8444",
+      "expected_bytes_hex": "f0b8",
+      "entry_kind": "BEQ $83FE",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38446",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230470,
+      "length": 2,
+      "cpu_pc_observed": "0x8446",
+      "expected_bytes_hex": "c90c",
+      "entry_kind": "CMP #$0C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38448",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230472,
+      "length": 2,
+      "cpu_pc_observed": "0x8448",
+      "expected_bytes_hex": "b080",
+      "entry_kind": "BCS $83CA",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3844A",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230474,
+      "length": 2,
+      "cpu_pc_observed": "0x844A",
+      "expected_bytes_hex": "902b",
+      "entry_kind": "BCC $8477",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3844C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230476,
+      "length": 2,
+      "cpu_pc_observed": "0x844C",
+      "expected_bytes_hex": "a608",
+      "entry_kind": "LDX $08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3844E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230478,
+      "length": 2,
+      "cpu_pc_observed": "0x844E",
+      "expected_bytes_hex": "a9fb",
+      "entry_kind": "LDA #$FB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-38450",
       "system": "collision",
       "bank_16k": 14,
@@ -2381,6 +2841,366 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38455",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230485,
+      "length": 2,
+      "cpu_pc_observed": "0x8455",
+      "expected_bytes_hex": "c901",
+      "entry_kind": "CMP #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38457",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230487,
+      "length": 2,
+      "cpu_pc_observed": "0x8457",
+      "expected_bytes_hex": "f05b",
+      "entry_kind": "BEQ $84B4",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38459",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230489,
+      "length": 2,
+      "cpu_pc_observed": "0x8459",
+      "expected_bytes_hex": "c902",
+      "entry_kind": "CMP #$02",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3845B",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230491,
+      "length": 2,
+      "cpu_pc_observed": "0x845B",
+      "expected_bytes_hex": "f01e",
+      "entry_kind": "BEQ $847B",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3845D",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230493,
+      "length": 2,
+      "cpu_pc_observed": "0x845D",
+      "expected_bytes_hex": "c903",
+      "entry_kind": "CMP #$03",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3845F",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230495,
+      "length": 2,
+      "cpu_pc_observed": "0x845F",
+      "expected_bytes_hex": "f034",
+      "entry_kind": "BEQ $8495",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38461",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230497,
+      "length": 2,
+      "cpu_pc_observed": "0x8461",
+      "expected_bytes_hex": "c904",
+      "entry_kind": "CMP #$04",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38463",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230499,
+      "length": 2,
+      "cpu_pc_observed": "0x8463",
+      "expected_bytes_hex": "d003",
+      "entry_kind": "BNE $8468",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38465",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230501,
+      "length": 3,
+      "cpu_pc_observed": "0x8465",
+      "expected_bytes_hex": "4cda83",
+      "entry_kind": "JMP $83DA",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38468",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230504,
+      "length": 2,
+      "cpu_pc_observed": "0x8468",
+      "expected_bytes_hex": "c905",
+      "entry_kind": "CMP #$05",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3846A",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230506,
+      "length": 2,
+      "cpu_pc_observed": "0x846A",
+      "expected_bytes_hex": "f092",
+      "entry_kind": "BEQ $83FE",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3846C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230508,
+      "length": 2,
+      "cpu_pc_observed": "0x846C",
+      "expected_bytes_hex": "c907",
+      "entry_kind": "CMP #$07",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3846E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230510,
+      "length": 2,
+      "cpu_pc_observed": "0x846E",
+      "expected_bytes_hex": "f08e",
+      "entry_kind": "BEQ $83FE",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38470",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230512,
+      "length": 2,
+      "cpu_pc_observed": "0x8470",
+      "expected_bytes_hex": "c90c",
+      "entry_kind": "CMP #$0C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38472",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230514,
+      "length": 2,
+      "cpu_pc_observed": "0x8472",
+      "expected_bytes_hex": "9003",
+      "entry_kind": "BCC $8477",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38474",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230516,
+      "length": 3,
+      "cpu_pc_observed": "0x8474",
+      "expected_bytes_hex": "4cda83",
+      "entry_kind": "JMP $83DA",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38477",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230519,
+      "length": 1,
+      "cpu_pc_observed": "0x8477",
+      "expected_bytes_hex": "38",
+      "entry_kind": "SEC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-38479",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230521,
+      "length": 1,
+      "cpu_pc_observed": "0x8479",
+      "expected_bytes_hex": "18",
+      "entry_kind": "CLC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
     },
     {
       "id": "COLL-CALL-PRG-384CF",
@@ -2425,6 +3245,46 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-384D4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230612,
+      "length": 2,
+      "cpu_pc_observed": "0x84D4",
+      "expected_bytes_hex": "a608",
+      "entry_kind": "LDX $08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-384D6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230614,
+      "length": 2,
+      "cpu_pc_observed": "0x84D6",
+      "expected_bytes_hex": "a9fb",
+      "entry_kind": "LDA #$FB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-384D8",
       "system": "collision",
       "bank_16k": 14,
@@ -2465,6 +3325,1496 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-384DD",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230621,
+      "length": 2,
+      "cpu_pc_observed": "0x84DD",
+      "expected_bytes_hex": "a68e",
+      "entry_kind": "LDX $8E",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-384E4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230628,
+      "length": 2,
+      "cpu_pc_observed": "0x84E4",
+      "expected_bytes_hex": "a900",
+      "entry_kind": "LDA #$00",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-384E6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 230630,
+      "length": 2,
+      "cpu_pc_observed": "0x84E6",
+      "expected_bytes_hex": "8588",
+      "entry_kind": "STA $88",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-3869E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231070,
+      "length": 2,
+      "cpu_pc_observed": "0x869E",
+      "expected_bytes_hex": "a565",
+      "entry_kind": "LDA $65",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386A0",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231072,
+      "length": 2,
+      "cpu_pc_observed": "0x86A0",
+      "expected_bytes_hex": "2901",
+      "entry_kind": "AND #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386A2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231074,
+      "length": 2,
+      "cpu_pc_observed": "0x86A2",
+      "expected_bytes_hex": "f008",
+      "entry_kind": "BEQ $86AC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386A4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231076,
+      "length": 2,
+      "cpu_pc_observed": "0x86A4",
+      "expected_bytes_hex": "a554",
+      "entry_kind": "LDA $54",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386A6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231078,
+      "length": 2,
+      "cpu_pc_observed": "0x86A6",
+      "expected_bytes_hex": "0553",
+      "entry_kind": "ORA $53",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386A8",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231080,
+      "length": 2,
+      "cpu_pc_observed": "0x86A8",
+      "expected_bytes_hex": "f015",
+      "entry_kind": "BEQ $86BF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386AA",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231082,
+      "length": 2,
+      "cpu_pc_observed": "0x86AA",
+      "expected_bytes_hex": "d00c",
+      "entry_kind": "BNE $86B8",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386AC",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231084,
+      "length": 2,
+      "cpu_pc_observed": "0x86AC",
+      "expected_bytes_hex": "a554",
+      "entry_kind": "LDA $54",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386AE",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231086,
+      "length": 2,
+      "cpu_pc_observed": "0x86AE",
+      "expected_bytes_hex": "c56e",
+      "entry_kind": "CMP $6E",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386B0",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231088,
+      "length": 2,
+      "cpu_pc_observed": "0x86B0",
+      "expected_bytes_hex": "d006",
+      "entry_kind": "BNE $86B8",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386B2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231090,
+      "length": 2,
+      "cpu_pc_observed": "0x86B2",
+      "expected_bytes_hex": "a553",
+      "entry_kind": "LDA $53",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386B4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231092,
+      "length": 2,
+      "cpu_pc_observed": "0x86B4",
+      "expected_bytes_hex": "c930",
+      "entry_kind": "CMP #$30",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386B6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231094,
+      "length": 2,
+      "cpu_pc_observed": "0x86B6",
+      "expected_bytes_hex": "f007",
+      "entry_kind": "BEQ $86BF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386B8",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231096,
+      "length": 3,
+      "cpu_pc_observed": "0x86B8",
+      "expected_bytes_hex": "4cff86",
+      "entry_kind": "JMP $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386BB",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231099,
+      "length": 2,
+      "cpu_pc_observed": "0x86BB",
+      "expected_bytes_hex": "c982",
+      "entry_kind": "CMP #$82",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386BD",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231101,
+      "length": 2,
+      "cpu_pc_observed": "0x86BD",
+      "expected_bytes_hex": "b0df",
+      "entry_kind": "BCS $869E",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386BF",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231103,
+      "length": 3,
+      "cpu_pc_observed": "0x86BF",
+      "expected_bytes_hex": "ad2005",
+      "entry_kind": "LDA $0520",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386C2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231106,
+      "length": 2,
+      "cpu_pc_observed": "0x86C2",
+      "expected_bytes_hex": "3021",
+      "entry_kind": "BMI $86E5",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386C4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231108,
+      "length": 3,
+      "cpu_pc_observed": "0x86C4",
+      "expected_bytes_hex": "0d3705",
+      "entry_kind": "ORA $0537",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386C7",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231111,
+      "length": 2,
+      "cpu_pc_observed": "0x86C7",
+      "expected_bytes_hex": "f031",
+      "entry_kind": "BEQ $86FA",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386C9",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231113,
+      "length": 2,
+      "cpu_pc_observed": "0x86C9",
+      "expected_bytes_hex": "a565",
+      "entry_kind": "LDA $65",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386CB",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231115,
+      "length": 2,
+      "cpu_pc_observed": "0x86CB",
+      "expected_bytes_hex": "2901",
+      "entry_kind": "AND #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386CD",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231117,
+      "length": 2,
+      "cpu_pc_observed": "0x86CD",
+      "expected_bytes_hex": "f030",
+      "entry_kind": "BEQ $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386CF",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231119,
+      "length": 3,
+      "cpu_pc_observed": "0x86CF",
+      "expected_bytes_hex": "ad1c04",
+      "entry_kind": "LDA $041C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386D2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231122,
+      "length": 2,
+      "cpu_pc_observed": "0x86D2",
+      "expected_bytes_hex": "102b",
+      "entry_kind": "BPL $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386D4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231124,
+      "length": 2,
+      "cpu_pc_observed": "0x86D4",
+      "expected_bytes_hex": "a56e",
+      "entry_kind": "LDA $6E",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386D6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231126,
+      "length": 2,
+      "cpu_pc_observed": "0x86D6",
+      "expected_bytes_hex": "c554",
+      "entry_kind": "CMP $54",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386D8",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231128,
+      "length": 2,
+      "cpu_pc_observed": "0x86D8",
+      "expected_bytes_hex": "d006",
+      "entry_kind": "BNE $86E0",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386DA",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231130,
+      "length": 2,
+      "cpu_pc_observed": "0x86DA",
+      "expected_bytes_hex": "a553",
+      "entry_kind": "LDA $53",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386DC",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231132,
+      "length": 2,
+      "cpu_pc_observed": "0x86DC",
+      "expected_bytes_hex": "c930",
+      "entry_kind": "CMP #$30",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386DE",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231134,
+      "length": 2,
+      "cpu_pc_observed": "0x86DE",
+      "expected_bytes_hex": "f01f",
+      "entry_kind": "BEQ $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386E0",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231136,
+      "length": 2,
+      "cpu_pc_observed": "0x86E0",
+      "expected_bytes_hex": "a901",
+      "entry_kind": "LDA #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386E2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231138,
+      "length": 2,
+      "cpu_pc_observed": "0x86E2",
+      "expected_bytes_hex": "8562",
+      "entry_kind": "STA $62",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386E4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231140,
+      "length": 1,
+      "cpu_pc_observed": "0x86E4",
+      "expected_bytes_hex": "60",
+      "entry_kind": "RTS",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386E5",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231141,
+      "length": 2,
+      "cpu_pc_observed": "0x86E5",
+      "expected_bytes_hex": "a565",
+      "entry_kind": "LDA $65",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386E7",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231143,
+      "length": 2,
+      "cpu_pc_observed": "0x86E7",
+      "expected_bytes_hex": "2901",
+      "entry_kind": "AND #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386E9",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231145,
+      "length": 2,
+      "cpu_pc_observed": "0x86E9",
+      "expected_bytes_hex": "d014",
+      "entry_kind": "BNE $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386EB",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231147,
+      "length": 3,
+      "cpu_pc_observed": "0x86EB",
+      "expected_bytes_hex": "ad1c04",
+      "entry_kind": "LDA $041C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386EE",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231150,
+      "length": 2,
+      "cpu_pc_observed": "0x86EE",
+      "expected_bytes_hex": "300f",
+      "entry_kind": "BMI $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386F0",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231152,
+      "length": 2,
+      "cpu_pc_observed": "0x86F0",
+      "expected_bytes_hex": "a553",
+      "entry_kind": "LDA $53",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386F2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231154,
+      "length": 2,
+      "cpu_pc_observed": "0x86F2",
+      "expected_bytes_hex": "0554",
+      "entry_kind": "ORA $54",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386F4",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231156,
+      "length": 2,
+      "cpu_pc_observed": "0x86F4",
+      "expected_bytes_hex": "f009",
+      "entry_kind": "BEQ $86FF",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386F6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231158,
+      "length": 2,
+      "cpu_pc_observed": "0x86F6",
+      "expected_bytes_hex": "a900",
+      "entry_kind": "LDA #$00",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386F8",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231160,
+      "length": 2,
+      "cpu_pc_observed": "0x86F8",
+      "expected_bytes_hex": "8562",
+      "entry_kind": "STA $62",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386FA",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231162,
+      "length": 1,
+      "cpu_pc_observed": "0x86FA",
+      "expected_bytes_hex": "60",
+      "entry_kind": "RTS",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386FB",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231163,
+      "length": 2,
+      "cpu_pc_observed": "0x86FB",
+      "expected_bytes_hex": "a565",
+      "entry_kind": "LDA $65",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386FD",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231165,
+      "length": 2,
+      "cpu_pc_observed": "0x86FD",
+      "expected_bytes_hex": "30bc",
+      "entry_kind": "BMI $86BB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-386FF",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231167,
+      "length": 3,
+      "cpu_pc_observed": "0x86FF",
+      "expected_bytes_hex": "addb04",
+      "entry_kind": "LDA $04DB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-38702",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231170,
+      "length": 1,
+      "cpu_pc_observed": "0x8702",
+      "expected_bytes_hex": "18",
+      "entry_kind": "CLC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-38703",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231171,
+      "length": 3,
+      "cpu_pc_observed": "0x8703",
+      "expected_bytes_hex": "6d3705",
+      "entry_kind": "ADC $0537",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-38706",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231174,
+      "length": 3,
+      "cpu_pc_observed": "0x8706",
+      "expected_bytes_hex": "8ddb04",
+      "entry_kind": "STA $04DB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-38709",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231177,
+      "length": 3,
+      "cpu_pc_observed": "0x8709",
+      "expected_bytes_hex": "ad1c04",
+      "entry_kind": "LDA $041C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-3870C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231180,
+      "length": 3,
+      "cpu_pc_observed": "0x870C",
+      "expected_bytes_hex": "6d2005",
+      "entry_kind": "ADC $0520",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-3870F",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231183,
+      "length": 3,
+      "cpu_pc_observed": "0x870F",
+      "expected_bytes_hex": "8d1c04",
+      "entry_kind": "STA $041C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-86FB-PRG-38712",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 231186,
+      "length": 1,
+      "cpu_pc_observed": "0x8712",
+      "expected_bytes_hex": "60",
+      "entry_kind": "RTS",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [
+        "v5:8723",
+        "v5:E648"
+      ],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
     },
     {
       "id": "COLL-DEPENDENCY-V4-38713",
@@ -5001,6 +7351,98 @@
       "previous_translation_file": "src/cviii_collision_dependencies_native_v4.h"
     },
     {
+      "id": "COLL-V6-8ABD-PRG-38ABD",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 232125,
+      "length": 2,
+      "cpu_pc_observed": "0x8ABD",
+      "expected_bytes_hex": "a900",
+      "entry_kind": "LDA #$00",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-8ABD-PRG-38ABF",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 232127,
+      "length": 3,
+      "cpu_pc_observed": "0x8ABF",
+      "expected_bytes_hex": "8d2005",
+      "entry_kind": "STA $0520",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-8ABD-PRG-38AC2",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 232130,
+      "length": 3,
+      "cpu_pc_observed": "0x8AC2",
+      "expected_bytes_hex": "8d3705",
+      "entry_kind": "STA $0537",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
+      "id": "COLL-V6-8ABD-PRG-38AC5",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 232133,
+      "length": 1,
+      "cpu_pc_observed": "0x8AC5",
+      "expected_bytes_hex": "60",
+      "entry_kind": "RTS",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
+      "dependencies": [],
+      "runtime_observations": null,
+      "approval": null,
+      "unresolved_successors": [
+        "live native replacement",
+        "exact cycles and interrupts",
+        "completed $968A composite test"
+      ],
+      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
+    },
+    {
       "id": "COLL-CALL-PRG-39153",
       "system": "collision",
       "bank_16k": 14,
@@ -5043,6 +7485,66 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-39158",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233816,
+      "length": 1,
+      "cpu_pc_observed": "0x9158",
+      "expected_bytes_hex": "38",
+      "entry_kind": "SEC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3915A",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233818,
+      "length": 2,
+      "cpu_pc_observed": "0x915A",
+      "expected_bytes_hex": "a47f",
+      "entry_kind": "LDY $7F",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3915C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233820,
+      "length": 2,
+      "cpu_pc_observed": "0x915C",
+      "expected_bytes_hex": "8401",
+      "entry_kind": "STY $01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-39164",
       "system": "collision",
       "bank_16k": 14,
@@ -5083,6 +7585,166 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39169",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233833,
+      "length": 2,
+      "cpu_pc_observed": "0x9169",
+      "expected_bytes_hex": "a501",
+      "entry_kind": "LDA $01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3916B",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233835,
+      "length": 1,
+      "cpu_pc_observed": "0x916B",
+      "expected_bytes_hex": "18",
+      "entry_kind": "CLC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3916C",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233836,
+      "length": 2,
+      "cpu_pc_observed": "0x916C",
+      "expected_bytes_hex": "6904",
+      "entry_kind": "ADC #$04",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3916E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233838,
+      "length": 2,
+      "cpu_pc_observed": "0x916E",
+      "expected_bytes_hex": "c908",
+      "entry_kind": "CMP #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39170",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233840,
+      "length": 2,
+      "cpu_pc_observed": "0x9170",
+      "expected_bytes_hex": "b003",
+      "entry_kind": "BCS $9175",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39172",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233842,
+      "length": 1,
+      "cpu_pc_observed": "0x9172",
+      "expected_bytes_hex": "a8",
+      "entry_kind": "TAY",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39173",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233843,
+      "length": 2,
+      "cpu_pc_observed": "0x9173",
+      "expected_bytes_hex": "d0e7",
+      "entry_kind": "BNE $915C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39175",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 233845,
+      "length": 1,
+      "cpu_pc_observed": "0x9175",
+      "expected_bytes_hex": "18",
+      "entry_kind": "CLC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
     },
     {
       "id": "COLL-CALL-PRG-39212",
@@ -6114,6 +8776,46 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-397B6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235446,
+      "length": 2,
+      "cpu_pc_observed": "0x97B6",
+      "expected_bytes_hex": "a208",
+      "entry_kind": "LDX #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397B8",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235448,
+      "length": 2,
+      "cpu_pc_observed": "0x97B8",
+      "expected_bytes_hex": "a9f8",
+      "entry_kind": "LDA #$F8",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-397BA",
       "system": "collision",
       "bank_16k": 14,
@@ -6154,6 +8856,26 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397BF",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235455,
+      "length": 2,
+      "cpu_pc_observed": "0x97BF",
+      "expected_bytes_hex": "f012",
+      "entry_kind": "BEQ $97D3",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
     },
     {
       "id": "COLL-CALL-PRG-397C5",
@@ -6198,6 +8920,46 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-397CA",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235466,
+      "length": 2,
+      "cpu_pc_observed": "0x97CA",
+      "expected_bytes_hex": "a208",
+      "entry_kind": "LDX #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397CC",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235468,
+      "length": 2,
+      "cpu_pc_observed": "0x97CC",
+      "expected_bytes_hex": "a908",
+      "entry_kind": "LDA #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-397CE",
       "system": "collision",
       "bank_16k": 14,
@@ -6238,6 +9000,46 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397D6",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235478,
+      "length": 3,
+      "cpu_pc_observed": "0x97D6",
+      "expected_bytes_hex": "ad1c04",
+      "entry_kind": "LDA $041C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397D9",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235481,
+      "length": 2,
+      "cpu_pc_observed": "0x97D9",
+      "expected_bytes_hex": "8506",
+      "entry_kind": "STA $06",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
     },
     {
       "id": "COLL-CALL-PRG-397E7",
@@ -6282,6 +9084,86 @@
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
     },
     {
+      "id": "COLL-CALLER-V9-PRG-397EC",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235500,
+      "length": 2,
+      "cpu_pc_observed": "0x97EC",
+      "expected_bytes_hex": "a208",
+      "entry_kind": "LDX #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397EE",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235502,
+      "length": 2,
+      "cpu_pc_observed": "0x97EE",
+      "expected_bytes_hex": "a9fb",
+      "entry_kind": "LDA #$FB",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397F8",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235512,
+      "length": 2,
+      "cpu_pc_observed": "0x97F8",
+      "expected_bytes_hex": "a210",
+      "entry_kind": "LDX #$10",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-397FA",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235514,
+      "length": 2,
+      "cpu_pc_observed": "0x97FA",
+      "expected_bytes_hex": "a905",
+      "entry_kind": "LDA #$05",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
       "id": "COLL-CALL-PRG-397FC",
       "system": "collision",
       "bank_16k": 14,
@@ -6322,6 +9204,366 @@
       ],
       "approval": null,
       "previous_translation_file": "src/cviii_collision_callers_native_v3.h"
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39801",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235521,
+      "length": 2,
+      "cpu_pc_observed": "0x9801",
+      "expected_bytes_hex": "a208",
+      "entry_kind": "LDX #$08",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39803",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235523,
+      "length": 2,
+      "cpu_pc_observed": "0x9803",
+      "expected_bytes_hex": "a905",
+      "entry_kind": "LDA #$05",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3980D",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235533,
+      "length": 2,
+      "cpu_pc_observed": "0x980D",
+      "expected_bytes_hex": "a588",
+      "entry_kind": "LDA $88",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3980F",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235535,
+      "length": 2,
+      "cpu_pc_observed": "0x980F",
+      "expected_bytes_hex": "c901",
+      "entry_kind": "CMP #$01",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39811",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235537,
+      "length": 2,
+      "cpu_pc_observed": "0x9811",
+      "expected_bytes_hex": "f00a",
+      "entry_kind": "BEQ $981D",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39813",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235539,
+      "length": 2,
+      "cpu_pc_observed": "0x9813",
+      "expected_bytes_hex": "c905",
+      "entry_kind": "CMP #$05",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39815",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235541,
+      "length": 2,
+      "cpu_pc_observed": "0x9815",
+      "expected_bytes_hex": "f034",
+      "entry_kind": "BEQ $984B",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39817",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235543,
+      "length": 2,
+      "cpu_pc_observed": "0x9817",
+      "expected_bytes_hex": "c906",
+      "entry_kind": "CMP #$06",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39819",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235545,
+      "length": 2,
+      "cpu_pc_observed": "0x9819",
+      "expected_bytes_hex": "f030",
+      "entry_kind": "BEQ $984B",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3981B",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235547,
+      "length": 2,
+      "cpu_pc_observed": "0x981B",
+      "expected_bytes_hex": "d02b",
+      "entry_kind": "BNE $9848",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3981D",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235549,
+      "length": 2,
+      "cpu_pc_observed": "0x981D",
+      "expected_bytes_hex": "a68e",
+      "entry_kind": "LDX $8E",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39842",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235586,
+      "length": 2,
+      "cpu_pc_observed": "0x9842",
+      "expected_bytes_hex": "a902",
+      "entry_kind": "LDA #$02",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39844",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235588,
+      "length": 3,
+      "cpu_pc_observed": "0x9844",
+      "expected_bytes_hex": "8d6505",
+      "entry_kind": "STA $0565",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3984B",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235595,
+      "length": 2,
+      "cpu_pc_observed": "0x984B",
+      "expected_bytes_hex": "a506",
+      "entry_kind": "LDA $06",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3984D",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235597,
+      "length": 1,
+      "cpu_pc_observed": "0x984D",
+      "expected_bytes_hex": "18",
+      "entry_kind": "CLC",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-3984E",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235598,
+      "length": 2,
+      "cpu_pc_observed": "0x984E",
+      "expected_bytes_hex": "658e",
+      "entry_kind": "ADC $8E",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39850",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235600,
+      "length": 3,
+      "cpu_pc_observed": "0x9850",
+      "expected_bytes_hex": "8d1c04",
+      "entry_kind": "STA $041C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
+    },
+    {
+      "id": "COLL-CALLER-V9-PRG-39853",
+      "system": "collision",
+      "bank_16k": 14,
+      "prg_offset": 235603,
+      "length": 3,
+      "cpu_pc_observed": "0x9853",
+      "expected_bytes_hex": "4c4298",
+      "entry_kind": "JMP $9842",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/caller_continuations_v9.json",
+      "approval": null,
+      "unresolved_successors": [
+        "external call / ROM-table / target continuation if reached",
+        "native game substitution",
+        "cycle/IRQ/mapper parity"
+      ]
     },
     {
       "id": "COLL-CALL-PRG-39B3C",
@@ -7534,136 +10776,6 @@
       "previous_translation_file": "src/cviii_collision_e648_native_v5.h"
     },
     {
-      "id": "COLL-FCDE-ENTRY",
-      "system": "collision",
-      "bank_16k": 15,
-      "prg_offset": 261245,
-      "length": 208,
-      "cpu_pc_observed": "0xFCDE",
-      "expected_bytes_hex": "a9006068186d3804a885138a186d1c04c5cd90ec38e9338511b004a9ffd002a90085138410984a4a4a4a4a8512a513300d18a553651190131869104ccffc18a5536511b00638e9104ccffcc9f0900318691029f04a186512a8a5102910d064f05448a565309d68186d3804a88a186d1c0438e9209057c9c0b053851184104611461146114611a5531865108513a55469008514a8a5134a4a4a4a4a1962fdc90c9005e90c4c1bfda8b94dfd186511a8a5132910d00ea90085a2b9e0064a4a4a4ac90060a90185a2b9e006290f60a90060",
-      "entry_kind": "Entry $FCDE plus complete statically reachable instruction interval $FC7D-$FD4C",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "runtime_observations": 37494,
-      "dependencies": [],
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/collision_fcde_branch_coverage.json",
-      "unresolved_successors": [
-        "native replacement not yet integrated into live NESRecomp game",
-        "cycle/timing and interrupt-interleave equivalence unverified",
-        "34 observed collision callers and subsequent movement state effects not translated"
-      ],
-      "approval": null,
-      "side_effects_proven": false,
-      "timing_proven": false,
-      "integration_proven": false,
-      "original_instructions": 121,
-      "native_differential_inputs": 2300,
-      "distinct_differential_paths": 59,
-      "branch_edges_tested": 26,
-      "branch_edges_total": 28,
-      "branch_edges_statically_unreachable": [
-        "$FC9A not taken: immediately preceding LDA #$FF",
-        "$FCDC not taken: fallthrough from BNE $FD40 requires Z=1"
-      ],
-      "translation_scope": "fixed bank15, only $FCDE query and its reachable instruction interval; not whole collision physics",
-      "translation_sha256": "3c3594c4c5f6cf08ee35026afe64894b74acadfafce0016708359ce0d6b5f76f",
-      "test_report_sha256": "e7aea6455cb8ae96a7149e2bcf9721294e0f58fbad2b895378feb7d4148f379f",
-      "previous_translation_file": "collision_fcde_native_v2/src/cviii_collision_fcde_native.h"
-    },
-    {
-      "id": "COLL-V6-8ABD-PRG-38ABD",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 232125,
-      "length": 2,
-      "cpu_pc_observed": "0x8ABD",
-      "expected_bytes_hex": "a900",
-      "entry_kind": "LDA #$00",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-8ABD-PRG-38ABF",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 232127,
-      "length": 3,
-      "cpu_pc_observed": "0x8ABF",
-      "expected_bytes_hex": "8d2005",
-      "entry_kind": "STA $0520",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-8ABD-PRG-38AC2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 232130,
-      "length": 3,
-      "cpu_pc_observed": "0x8AC2",
-      "expected_bytes_hex": "8d3705",
-      "entry_kind": "STA $0537",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-8ABD-PRG-38AC5",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 232133,
-      "length": 1,
-      "cpu_pc_observed": "0x8AC5",
-      "expected_bytes_hex": "60",
-      "entry_kind": "RTS",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
       "id": "COLL-V6-EF91-PRG-3EF91",
       "system": "collision",
       "bank_16k": 15,
@@ -8354,1436 +11466,6 @@
       "previous_translation_file": "src/cviii_collision_external_native_v6.h"
     },
     {
-      "id": "COLL-V6-86FB-PRG-3869E",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231070,
-      "length": 2,
-      "cpu_pc_observed": "0x869E",
-      "expected_bytes_hex": "a565",
-      "entry_kind": "LDA $65",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386A0",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231072,
-      "length": 2,
-      "cpu_pc_observed": "0x86A0",
-      "expected_bytes_hex": "2901",
-      "entry_kind": "AND #$01",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386A2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231074,
-      "length": 2,
-      "cpu_pc_observed": "0x86A2",
-      "expected_bytes_hex": "f008",
-      "entry_kind": "BEQ $86AC",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386A4",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231076,
-      "length": 2,
-      "cpu_pc_observed": "0x86A4",
-      "expected_bytes_hex": "a554",
-      "entry_kind": "LDA $54",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386A6",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231078,
-      "length": 2,
-      "cpu_pc_observed": "0x86A6",
-      "expected_bytes_hex": "0553",
-      "entry_kind": "ORA $53",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386A8",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231080,
-      "length": 2,
-      "cpu_pc_observed": "0x86A8",
-      "expected_bytes_hex": "f015",
-      "entry_kind": "BEQ $86BF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386AA",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231082,
-      "length": 2,
-      "cpu_pc_observed": "0x86AA",
-      "expected_bytes_hex": "d00c",
-      "entry_kind": "BNE $86B8",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386AC",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231084,
-      "length": 2,
-      "cpu_pc_observed": "0x86AC",
-      "expected_bytes_hex": "a554",
-      "entry_kind": "LDA $54",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386AE",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231086,
-      "length": 2,
-      "cpu_pc_observed": "0x86AE",
-      "expected_bytes_hex": "c56e",
-      "entry_kind": "CMP $6E",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386B0",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231088,
-      "length": 2,
-      "cpu_pc_observed": "0x86B0",
-      "expected_bytes_hex": "d006",
-      "entry_kind": "BNE $86B8",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386B2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231090,
-      "length": 2,
-      "cpu_pc_observed": "0x86B2",
-      "expected_bytes_hex": "a553",
-      "entry_kind": "LDA $53",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386B4",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231092,
-      "length": 2,
-      "cpu_pc_observed": "0x86B4",
-      "expected_bytes_hex": "c930",
-      "entry_kind": "CMP #$30",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386B6",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231094,
-      "length": 2,
-      "cpu_pc_observed": "0x86B6",
-      "expected_bytes_hex": "f007",
-      "entry_kind": "BEQ $86BF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386B8",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231096,
-      "length": 3,
-      "cpu_pc_observed": "0x86B8",
-      "expected_bytes_hex": "4cff86",
-      "entry_kind": "JMP $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386BB",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231099,
-      "length": 2,
-      "cpu_pc_observed": "0x86BB",
-      "expected_bytes_hex": "c982",
-      "entry_kind": "CMP #$82",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386BD",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231101,
-      "length": 2,
-      "cpu_pc_observed": "0x86BD",
-      "expected_bytes_hex": "b0df",
-      "entry_kind": "BCS $869E",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386BF",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231103,
-      "length": 3,
-      "cpu_pc_observed": "0x86BF",
-      "expected_bytes_hex": "ad2005",
-      "entry_kind": "LDA $0520",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386C2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231106,
-      "length": 2,
-      "cpu_pc_observed": "0x86C2",
-      "expected_bytes_hex": "3021",
-      "entry_kind": "BMI $86E5",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386C4",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231108,
-      "length": 3,
-      "cpu_pc_observed": "0x86C4",
-      "expected_bytes_hex": "0d3705",
-      "entry_kind": "ORA $0537",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386C7",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231111,
-      "length": 2,
-      "cpu_pc_observed": "0x86C7",
-      "expected_bytes_hex": "f031",
-      "entry_kind": "BEQ $86FA",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386C9",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231113,
-      "length": 2,
-      "cpu_pc_observed": "0x86C9",
-      "expected_bytes_hex": "a565",
-      "entry_kind": "LDA $65",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386CB",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231115,
-      "length": 2,
-      "cpu_pc_observed": "0x86CB",
-      "expected_bytes_hex": "2901",
-      "entry_kind": "AND #$01",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386CD",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231117,
-      "length": 2,
-      "cpu_pc_observed": "0x86CD",
-      "expected_bytes_hex": "f030",
-      "entry_kind": "BEQ $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386CF",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231119,
-      "length": 3,
-      "cpu_pc_observed": "0x86CF",
-      "expected_bytes_hex": "ad1c04",
-      "entry_kind": "LDA $041C",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386D2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231122,
-      "length": 2,
-      "cpu_pc_observed": "0x86D2",
-      "expected_bytes_hex": "102b",
-      "entry_kind": "BPL $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386D4",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231124,
-      "length": 2,
-      "cpu_pc_observed": "0x86D4",
-      "expected_bytes_hex": "a56e",
-      "entry_kind": "LDA $6E",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386D6",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231126,
-      "length": 2,
-      "cpu_pc_observed": "0x86D6",
-      "expected_bytes_hex": "c554",
-      "entry_kind": "CMP $54",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386D8",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231128,
-      "length": 2,
-      "cpu_pc_observed": "0x86D8",
-      "expected_bytes_hex": "d006",
-      "entry_kind": "BNE $86E0",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386DA",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231130,
-      "length": 2,
-      "cpu_pc_observed": "0x86DA",
-      "expected_bytes_hex": "a553",
-      "entry_kind": "LDA $53",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386DC",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231132,
-      "length": 2,
-      "cpu_pc_observed": "0x86DC",
-      "expected_bytes_hex": "c930",
-      "entry_kind": "CMP #$30",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386DE",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231134,
-      "length": 2,
-      "cpu_pc_observed": "0x86DE",
-      "expected_bytes_hex": "f01f",
-      "entry_kind": "BEQ $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386E0",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231136,
-      "length": 2,
-      "cpu_pc_observed": "0x86E0",
-      "expected_bytes_hex": "a901",
-      "entry_kind": "LDA #$01",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386E2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231138,
-      "length": 2,
-      "cpu_pc_observed": "0x86E2",
-      "expected_bytes_hex": "8562",
-      "entry_kind": "STA $62",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386E4",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231140,
-      "length": 1,
-      "cpu_pc_observed": "0x86E4",
-      "expected_bytes_hex": "60",
-      "entry_kind": "RTS",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386E5",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231141,
-      "length": 2,
-      "cpu_pc_observed": "0x86E5",
-      "expected_bytes_hex": "a565",
-      "entry_kind": "LDA $65",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386E7",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231143,
-      "length": 2,
-      "cpu_pc_observed": "0x86E7",
-      "expected_bytes_hex": "2901",
-      "entry_kind": "AND #$01",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386E9",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231145,
-      "length": 2,
-      "cpu_pc_observed": "0x86E9",
-      "expected_bytes_hex": "d014",
-      "entry_kind": "BNE $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386EB",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231147,
-      "length": 3,
-      "cpu_pc_observed": "0x86EB",
-      "expected_bytes_hex": "ad1c04",
-      "entry_kind": "LDA $041C",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386EE",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231150,
-      "length": 2,
-      "cpu_pc_observed": "0x86EE",
-      "expected_bytes_hex": "300f",
-      "entry_kind": "BMI $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386F0",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231152,
-      "length": 2,
-      "cpu_pc_observed": "0x86F0",
-      "expected_bytes_hex": "a553",
-      "entry_kind": "LDA $53",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386F2",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231154,
-      "length": 2,
-      "cpu_pc_observed": "0x86F2",
-      "expected_bytes_hex": "0554",
-      "entry_kind": "ORA $54",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386F4",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231156,
-      "length": 2,
-      "cpu_pc_observed": "0x86F4",
-      "expected_bytes_hex": "f009",
-      "entry_kind": "BEQ $86FF",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386F6",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231158,
-      "length": 2,
-      "cpu_pc_observed": "0x86F6",
-      "expected_bytes_hex": "a900",
-      "entry_kind": "LDA #$00",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386F8",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231160,
-      "length": 2,
-      "cpu_pc_observed": "0x86F8",
-      "expected_bytes_hex": "8562",
-      "entry_kind": "STA $62",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386FA",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231162,
-      "length": 1,
-      "cpu_pc_observed": "0x86FA",
-      "expected_bytes_hex": "60",
-      "entry_kind": "RTS",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386FB",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231163,
-      "length": 2,
-      "cpu_pc_observed": "0x86FB",
-      "expected_bytes_hex": "a565",
-      "entry_kind": "LDA $65",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386FD",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231165,
-      "length": 2,
-      "cpu_pc_observed": "0x86FD",
-      "expected_bytes_hex": "30bc",
-      "entry_kind": "BMI $86BB",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-386FF",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231167,
-      "length": 3,
-      "cpu_pc_observed": "0x86FF",
-      "expected_bytes_hex": "addb04",
-      "entry_kind": "LDA $04DB",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-38702",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231170,
-      "length": 1,
-      "cpu_pc_observed": "0x8702",
-      "expected_bytes_hex": "18",
-      "entry_kind": "CLC",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-38703",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231171,
-      "length": 3,
-      "cpu_pc_observed": "0x8703",
-      "expected_bytes_hex": "6d3705",
-      "entry_kind": "ADC $0537",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-38706",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231174,
-      "length": 3,
-      "cpu_pc_observed": "0x8706",
-      "expected_bytes_hex": "8ddb04",
-      "entry_kind": "STA $04DB",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-38709",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231177,
-      "length": 3,
-      "cpu_pc_observed": "0x8709",
-      "expected_bytes_hex": "ad1c04",
-      "entry_kind": "LDA $041C",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-3870C",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231180,
-      "length": 3,
-      "cpu_pc_observed": "0x870C",
-      "expected_bytes_hex": "6d2005",
-      "entry_kind": "ADC $0520",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-3870F",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231183,
-      "length": 3,
-      "cpu_pc_observed": "0x870F",
-      "expected_bytes_hex": "8d1c04",
-      "entry_kind": "STA $041C",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
-      "id": "COLL-V6-86FB-PRG-38712",
-      "system": "collision",
-      "bank_16k": 14,
-      "prg_offset": 231186,
-      "length": 1,
-      "cpu_pc_observed": "0x8712",
-      "expected_bytes_hex": "60",
-      "entry_kind": "RTS",
-      "role": "code",
-      "status": "IMPLEMENTED",
-      "translation_file": "src/collision/Collision.c",
-      "test_report": "docs/rom-translation/evidence/rom_differential_v6_partial.json",
-      "dependencies": [
-        "v5:8723",
-        "v5:E648"
-      ],
-      "runtime_observations": null,
-      "approval": null,
-      "unresolved_successors": [
-        "live native replacement",
-        "exact cycles and interrupts",
-        "completed $968A composite test"
-      ],
-      "previous_translation_file": "src/cviii_collision_external_native_v6.h"
-    },
-    {
       "id": "COLL-V6-FIXED-EFD2-POINTER-TABLE",
       "system": "collision",
       "bank_16k": 15,
@@ -9802,6 +11484,44 @@
       "runtime_observations": null,
       "approval": null,
       "unresolved_successors": []
+    },
+    {
+      "id": "COLL-FCDE-ENTRY",
+      "system": "collision",
+      "bank_16k": 15,
+      "prg_offset": 261245,
+      "length": 208,
+      "cpu_pc_observed": "0xFCDE",
+      "expected_bytes_hex": "a9006068186d3804a885138a186d1c04c5cd90ec38e9338511b004a9ffd002a90085138410984a4a4a4a4a8512a513300d18a553651190131869104ccffc18a5536511b00638e9104ccffcc9f0900318691029f04a186512a8a5102910d064f05448a565309d68186d3804a88a186d1c0438e9209057c9c0b053851184104611461146114611a5531865108513a55469008514a8a5134a4a4a4a4a1962fdc90c9005e90c4c1bfda8b94dfd186511a8a5132910d00ea90085a2b9e0064a4a4a4ac90060a90185a2b9e006290f60a90060",
+      "entry_kind": "Entry $FCDE plus complete statically reachable instruction interval $FC7D-$FD4C",
+      "role": "code",
+      "status": "IMPLEMENTED",
+      "runtime_observations": 37494,
+      "dependencies": [],
+      "translation_file": "src/collision/Collision.c",
+      "test_report": "docs/rom-translation/evidence/collision_fcde_branch_coverage.json",
+      "unresolved_successors": [
+        "native replacement not yet integrated into live NESRecomp game",
+        "cycle/timing and interrupt-interleave equivalence unverified",
+        "34 observed collision callers and subsequent movement state effects not translated"
+      ],
+      "approval": null,
+      "side_effects_proven": false,
+      "timing_proven": false,
+      "integration_proven": false,
+      "original_instructions": 121,
+      "native_differential_inputs": 2300,
+      "distinct_differential_paths": 59,
+      "branch_edges_tested": 26,
+      "branch_edges_total": 28,
+      "branch_edges_statically_unreachable": [
+        "$FC9A not taken: immediately preceding LDA #$FF",
+        "$FCDC not taken: fallthrough from BNE $FD40 requires Z=1"
+      ],
+      "translation_scope": "fixed bank15, only $FCDE query and its reachable instruction interval; not whole collision physics",
+      "translation_sha256": "3c3594c4c5f6cf08ee35026afe64894b74acadfafce0016708359ce0d6b5f76f",
+      "test_report_sha256": "e7aea6455cb8ae96a7149e2bcf9721294e0f58fbad2b895378feb7d4148f379f",
+      "previous_translation_file": "collision_fcde_native_v2/src/cviii_collision_fcde_native.h"
     }
   ],
   "boundary_anchors": [

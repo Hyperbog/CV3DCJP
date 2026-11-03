@@ -1,0 +1,19 @@
+{
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "tested_cases": 5007,
+  "decoded_instructions": 55,
+  "executed_instructions": 55,
+  "observed_branch_directions": 31,
+  "total_branch_directions": 32,
+  "infeasible": [
+    {
+      "pc": "$86AA",
+      "direction": "not taken",
+      "reason": "$86A8 BEQ falls through only when Z=0; $86AA BNE must branch"
+    }
+  ],
+  "native_source": "src/collision/Collision.c",
+  "verified_against_independent_rom_instruction_execution": true,
+  "live_game_integration": false,
+  "retired_bytes": 0
+}

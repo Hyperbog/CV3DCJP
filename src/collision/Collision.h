@@ -39,7 +39,9 @@ typedef struct CollisionExit {
 /* For FCDE, fixed_prg points to physical final 16 KiB (ROM file offset 0x3C010).
  * Function is transactional on invalid bank fingerprint. */
 CollisionExit Collision_FCDE(CollisionState *state, const uint8_t fixed_prg[COLLISION_FIXED_PRG_BYTES]);
-/* Each post-JSR caller boundary; 16 callers remain branch-only until translated. */
+/* All 34 observed post-JSR caller entries have bounded native continuations.
+ * Exits at unresolved subroutines, ROM-table reads and outside targets are explicit.
+ * The downstream caller graph is NOT yet complete or runtime integrated. */
 CollisionExit Collision_Caller(uint16_t call_pc, CollisionState *state);
 /* ROM $89EB, $9B5E, $8723 are bounded bank-14 translations.
  * $8723 alone may suspend at JSR $E648 and must be resumed through E648. */
