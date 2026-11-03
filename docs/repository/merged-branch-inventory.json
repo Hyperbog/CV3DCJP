@@ -1,0 +1,78 @@
+{
+  "repository": "Hyperbog/CV3DCJP",
+  "default_branch": "main",
+  "created": "2026-11-02",
+  "policy": "Delete only after PR is merged and remote branch SHA equals expected_sha; preserve PR history and SHA below.",
+  "branches": [
+    {
+      "name": "build/isolated-rom-baseline",
+      "expected_sha": "f97e9a225ec0cb898b50d9346a6b7ce51cbedeaa",
+      "merged_pr": 9
+    },
+    {
+      "name": "chore/rom-authoritative-repository-foundation",
+      "expected_sha": "e87343c39b11220e22de3fdc39305c61d82ff996",
+      "merged_pr": 1
+    },
+    {
+      "name": "docs/record-original-rom-gameplay-baseline",
+      "expected_sha": "a01c7cc3a9a97100c27d7f1436a9549a9d20cb58",
+      "merged_pr": 10
+    },
+    {
+      "name": "feat/import-original-jp-modules",
+      "expected_sha": "d3bbdb176d47ec4c2a099d7193ddbf15d76cbc2f",
+      "merged_pr": 5
+    },
+    {
+      "name": "feat/import-rom-backed-source",
+      "expected_sha": "5aca7c4f1997e68df6f60e4fc007a3f21016daf0",
+      "merged_pr": 4
+    },
+    {
+      "name": "feat/rom-content-catalog-v1",
+      "expected_sha": "5d4af8448207b4549bb8dfac4e4e928e5dc63268",
+      "merged_pr": 11
+    },
+    {
+      "name": "feat/stage0-observation-audit-v2",
+      "expected_sha": "d659c82eed6afd49afe4cd4a978b3bdef0da673b",
+      "merged_pr": 14
+    },
+    {
+      "name": "feat/stage0-ppu-commit-vrc6-probe-v4",
+      "expected_sha": "a044d3094560a304dad70708e85f02b6b8cacd39",
+      "merged_pr": 18
+    },
+    {
+      "name": "feat/stage0-single-run-timeline-v3",
+      "expected_sha": "00685fa4342b7b0686455acb471672c000c2bd2d",
+      "merged_pr": 15
+    },
+    {
+      "name": "feat/stage0-v3-rom-writer-attribution",
+      "expected_sha": "ad9f7e1786945424ffa159651efd9142755c1d32",
+      "merged_pr": 17
+    },
+    {
+      "name": "fix/5h8f-diagnostic-dependencies",
+      "expected_sha": "b134d3d06254a5cf55679351995550ee1753a277",
+      "merged_pr": 7
+    },
+    {
+      "name": "import/5h8f-diagnostics",
+      "expected_sha": "9aa055976a115f165a4b7faef90dbc8d0a0eabc2",
+      "merged_pr": 8
+    },
+    {
+      "name": "import/5h8f-host",
+      "expected_sha": "ed34918feffc11aa29afa6617e3cc06601da583f",
+      "merged_pr": 6
+    },
+    {
+      "name": "collision/canonical-native-translation-v8",
+      "expected_sha": "952fd79f9a669e40f541c8064e669c509b0ceccb",
+      "merged_pr": 19
+    }
+  ]
+}

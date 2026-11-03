@@ -1,28 +1,26 @@
 # CV3DCJP
 
-**Castlevania III: Dracula's Curse — Japanese ROM-authoritative PC-native reconstruction**
+**Castlevania III: Dracula's Curse — Japanese ROM-authoritative PC-native reconstruction.**
 
-> **Status: ROM-backed original gameplay owner-confirmed on Windows (2026-10-31).** The owner reports that the original Japanese ROM loads and plays as natively intended using the recovered host. This does **not** establish complete frame parity or a verified native widescreen renderer; see [docs/STATUS.md](docs/STATUS.md).
+**Status:** ROM-backed original gameplay has been observed running on Windows. Full native game reimplementation, widescreen, original-frame parity and all-stage timing correctness are **not complete**. See [verified project status](docs/STATUS.md).
 
-## Non-negotiable source of truth
+## Source of truth
 
-The **original Japanese game ROM** is the only authority for original tile layouts, graphics, palettes, collision, game rules, CPU behavior, object lifecycles, and room transitions. Evidence from a matching ROM execution may be used to verify those facts. Community maps and documentation are supporting references only; they cannot override ROM-derived results. **No guessed placements or behaviors may be labeled verified.**
+The authenticated original Japanese ROM is authoritative for original geometry, graphics, collision, player and enemy behaviors, audio, camera transitions and hardware behavior. Only ROM-derived or independently observed and reproduced behavior may be described as verified. Unknown data remains unknown.
 
-## Technical direction
+## Current development workflow: one permanent branch
 
-Build a modern, resolution-independent PC engine. Keep the game world, independent 2D camera, native graphics renderer, and gameplay state separate. Use ROM-backed execution for behavior until specific routines have been matched and replaced by verified native implementations. Do not reuse the experimental NES framebuffer/margin-stitching approach for the native display.
+**`main` is the only permanent development branch.** Each 6502 subsystem is translated into a canonical C module, e.g. [`src/collision/Collision.c`](src/collision/Collision.c), and tracked with an exact physical-PRG-byte [translation ledger](docs/rom-translation/translation_ledger.json). A routine is **not retired** merely because its C source compiles or passes offline tests: live substitution, timing and side-effect parity are required.
 
-## Repository rules
+Temporary review branches must be merged and removed promptly. See [repository maintenance audit](docs/repository/GIT_AUDIT_2026-11-02.md) and [branch cleanup](tools/git/Prune-Merged-Branches.ps1). Never replace the protected ROM-backed gameplay build or launcher with a diagnostic test application.
 
-- Submit changes on focused branches via reviewed pull requests.
-- Keep verified original behavior separate from optional enhancements.
-- Record evidence and verification scope for gameplay and graphics changes.
-- Treat Windows builds **and** live visual/gameplay parity as acceptance gates; compilation and unit tests alone are not proof of correctness.
-- Do **not** commit game ROMs, decrypted/extracted proprietary graphics, private captures, save data, or large generated asset databases.
-- Track incomplete integration and failing parity in [docs/STATUS.md](docs/STATUS.md).
+## Repository layout
 
-## Next action
+- `src/`: native subsystem translations. Collision is implemented in isolation; not connected to live gameplay.
+- `legacy/rom-backed/`: original ROM-backed C source, launcher interfaces, historic presentation and extraction tools; preserved pending reviewed migration.
+- `tools/`: owner-side ROM extraction, regression scripts, guarded Git maintenance.
+- `tests/`: public ROM-free CI and owner-local ROM-verified tests.
+- `docs/`: programming specification, status, evidence and audit records.
+- `data/`: public schemas and non-proprietary metadata. Private generated content stays outside Git.
 
-Preserve the **owner-confirmed original-ROM gameplay baseline** and verify a ROM-accurate Stage 0 asset compiler, global room placement and original-frame parity before reconnecting the modern renderer. Do not promote W8–W13 experimental renderer outputs as verified world maps.
-
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/ROM_AUTHORITY.md](docs/ROM_AUTHORITY.md), and [CONTRIBUTING.md](CONTRIBUTING.md) for the current verification and development contracts.
+Read [architecture](docs/ARCHITECTURE.md), [ROM authority](docs/ROM_AUTHORITY.md), [status](docs/STATUS.md), and [contributing policy](CONTRIBUTING.md). Never commit the commercial game ROM, ripped CHR/audio assets, private captures, save files or build artifacts.

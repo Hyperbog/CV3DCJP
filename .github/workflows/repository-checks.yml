@@ -23,3 +23,15 @@ jobs:
         run: python tools/check_repository.py
       - name: Test repository checks
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+  collision-native-smoke:
+    name: Collision C11 (ROM-free)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run bounded native collision interface test
+        run: |
+          cc -std=c11 -Wall -Wextra -Werror -Wno-unused-function \
+            -I src/collision \
+            src/collision/Collision.c tests/test_collision_api.c \
+            -o /tmp/cv3dcjp_collision_test
+          /tmp/cv3dcjp_collision_test
