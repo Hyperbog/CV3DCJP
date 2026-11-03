@@ -1,0 +1,39 @@
+{
+  "source_rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "method": "C11 native state transformation vs independent ROM-byte 6502 instruction interpreter",
+  "status": "PARTIAL: three isolated routines match; combined $968A fails",
+  "verified_isolated_cases": {
+    "8ABD": 1400,
+    "EF91": 3500,
+    "86FB": 5000
+  },
+  "coverage_executed_instruction_addresses": {
+    "8ABD": 4,
+    "EF91": 30,
+    "86FB": 52
+  },
+  "coverage_static_instruction_addresses": {
+    "8ABD": 4,
+    "EF91": 30,
+    "86FB": 55
+  },
+  "observed_conditional_branch_edges": {
+    "8ABD": 0,
+    "EF91": 4,
+    "86FB": 25
+  },
+  "combined_test": {
+    "entry": "0x968A",
+    "failed_case_index": 359,
+    "error": "v6_968a case 359: ex=0, PC 8712, diff byte 0, native AXYp 90,AC,10,E6 ref FF,01,F6,A4",
+    "state": "FAILED",
+    "hypothesis": "Need trace first divergence of v4/v5 composite path; do not assume E648 or stack parity",
+    "verified_cases_before_failure": 359
+  },
+  "limitations": [
+    "Execution and RAM state only: no per-cycle verification, IRQ, NMI, DMA, PPU/APU, live substitution",
+    "Synthetic RAM states, not replayed actual ROM runtime state",
+    "C ROM sanity checks use entry bytes; test harness validates full ROM SHA-256",
+    "Three statically decoded instructions in $86FB closure were not reached by isolated 5,000-case test"
+  ]
+}

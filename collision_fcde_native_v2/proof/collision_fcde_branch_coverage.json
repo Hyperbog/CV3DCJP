@@ -1,0 +1,117 @@
+{
+  "status": "Differential instruction-path test evidence; NOT runtime integration or cycle parity",
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "entry_cpu_pc": "0xFCDE",
+  "physical_prg_start": "0x3FC7D",
+  "covered_cpu_range": "0xFC7D-0xFD4C",
+  "original_instructions": 121,
+  "original_code_bytes": 208,
+  "test_inputs": 2300,
+  "distinct_execution_paths": 59,
+  "instruction_addresses_executed": 121,
+  "conditional_branch_instructions": 14,
+  "conditional_edge_cases": 28,
+  "conditional_edges_observed": 26,
+  "unobserved_edges": [
+    {
+      "pc": "0xFC9A",
+      "edge": "not_taken"
+    },
+    {
+      "pc": "0xFCDC",
+      "edge": "not_taken"
+    }
+  ],
+  "branches": [
+    {
+      "pc": "0xFC8F",
+      "instruction": "BCC $FC7D",
+      "taken": 548,
+      "not_taken": 602
+    },
+    {
+      "pc": "0xFC96",
+      "instruction": "BCS $FC9C",
+      "taken": 573,
+      "not_taken": 29
+    },
+    {
+      "pc": "0xFC9A",
+      "instruction": "BNE $FC9E",
+      "taken": 29,
+      "not_taken": 0
+    },
+    {
+      "pc": "0xFCAC",
+      "instruction": "BMI $FCBB",
+      "taken": 29,
+      "not_taken": 573
+    },
+    {
+      "pc": "0xFCB3",
+      "instruction": "BCC $FCC8",
+      "taken": 310,
+      "not_taken": 263
+    },
+    {
+      "pc": "0xFCC0",
+      "instruction": "BCS $FCC8",
+      "taken": 25,
+      "not_taken": 4
+    },
+    {
+      "pc": "0xFCCA",
+      "instruction": "BCC $FCCF",
+      "taken": 289,
+      "not_taken": 46
+    },
+    {
+      "pc": "0xFCDA",
+      "instruction": "BNE $FD40",
+      "taken": 279,
+      "not_taken": 323
+    },
+    {
+      "pc": "0xFCDC",
+      "instruction": "BEQ $FD32",
+      "taken": 323,
+      "not_taken": 0
+    },
+    {
+      "pc": "0xFCE1",
+      "instruction": "BMI $FC80",
+      "taken": 1150,
+      "not_taken": 1150
+    },
+    {
+      "pc": "0xFCF1",
+      "instruction": "BCC $FD4A",
+      "taken": 126,
+      "not_taken": 1024
+    },
+    {
+      "pc": "0xFCF5",
+      "instruction": "BCS $FD4A",
+      "taken": 134,
+      "not_taken": 890
+    },
+    {
+      "pc": "0xFD1D",
+      "instruction": "BCC $FD24",
+      "taken": 890,
+      "not_taken": 7722
+    },
+    {
+      "pc": "0xFD30",
+      "instruction": "BNE $FD40",
+      "taken": 450,
+      "not_taken": 440
+    }
+  ],
+  "limitations": [
+    "The oracle is a software 6502 interpreter, not a live emulator",
+    "Randomized inputs include states that may never occur in the game",
+    "No cycle accounting or integrated native gameplay tests",
+    "All 34 executed JSR callers remain awaiting caller-side translation"
+  ]
+}

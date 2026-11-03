@@ -1,0 +1,721 @@
+{
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "caller_sites": 34,
+  "bounded_native_entry_sites": 18,
+  "differential_executions": 3240,
+  "first_instruction_checks": 165,
+  "captured_return_checks": 37494,
+  "distinct_bounded_instructions": 64,
+  "distinct_first_branch_sites": 33,
+  "bounded_cpu_pcs": [
+    "0x83A0",
+    "0x83A2",
+    "0x83A4",
+    "0x83A6",
+    "0x83A8",
+    "0x9215",
+    "0x9217",
+    "0x9219",
+    "0x921C",
+    "0x921F",
+    "0x9222",
+    "0x9225",
+    "0x96D2",
+    "0x96D4",
+    "0x96D6",
+    "0x96DB",
+    "0x96DD",
+    "0x96E7",
+    "0x96E9",
+    "0x96EB",
+    "0x96F0",
+    "0x96F2",
+    "0x96F4",
+    "0x96F6",
+    "0x96F8",
+    "0x96FA",
+    "0x96FB",
+    "0x970E",
+    "0x9710",
+    "0x9712",
+    "0x9717",
+    "0x9719",
+    "0x9723",
+    "0x9725",
+    "0x9727",
+    "0x972C",
+    "0x972E",
+    "0x9730",
+    "0x9732",
+    "0x9735",
+    "0x9738",
+    "0x9B3F",
+    "0x9B41",
+    "0x9B43",
+    "0x9B48",
+    "0x9B4A",
+    "0x9B4C",
+    "0x9B51",
+    "0x9B53",
+    "0x9B55",
+    "0x9B57",
+    "0x9B5C",
+    "0x9B7E",
+    "0x9B80",
+    "0x9B82",
+    "0x9B87",
+    "0x9B89",
+    "0x9B8B",
+    "0x9B90",
+    "0x9B92",
+    "0x9B94",
+    "0x9B99",
+    "0x9B9B",
+    "0x9B9D"
+  ],
+  "distinct_bounded_instruction_bytes": 169,
+  "status": "IMPLEMENTED/OFFLINE_VERIFIED; NO RUNTIME INTEGRATION OR RETIREMENT",
+  "external_boundaries": "outside this component; not simulated",
+  "instructions": [
+    {
+      "cpu_pc": "0x8348",
+      "physical_prg_offset": "0x38348",
+      "file_offset": "0x38358",
+      "opcode_bytes": "d009",
+      "instruction": "BNE $8353",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x8351",
+      "physical_prg_offset": "0x38351",
+      "file_offset": "0x38361",
+      "opcode_bytes": "f006",
+      "instruction": "BEQ $8359",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x83A0",
+      "physical_prg_offset": "0x383A0",
+      "file_offset": "0x383B0",
+      "opcode_bytes": "c905",
+      "instruction": "CMP #$05",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x83A2",
+      "physical_prg_offset": "0x383A2",
+      "file_offset": "0x383B2",
+      "opcode_bytes": "f006",
+      "instruction": "BEQ $83AA",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x83A4",
+      "physical_prg_offset": "0x383A4",
+      "file_offset": "0x383B4",
+      "opcode_bytes": "c907",
+      "instruction": "CMP #$07",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x83A6",
+      "physical_prg_offset": "0x383A6",
+      "file_offset": "0x383B6",
+      "opcode_bytes": "f002",
+      "instruction": "BEQ $83AA",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x83A8",
+      "physical_prg_offset": "0x383A8",
+      "file_offset": "0x383B8",
+      "opcode_bytes": "18",
+      "instruction": "CLC",
+      "length": 1
+    },
+    {
+      "cpu_pc": "0x83ED",
+      "physical_prg_offset": "0x383ED",
+      "file_offset": "0x383FD",
+      "opcode_bytes": "f006",
+      "instruction": "BEQ $83F5",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x83F9",
+      "physical_prg_offset": "0x383F9",
+      "file_offset": "0x38409",
+      "opcode_bytes": "f002",
+      "instruction": "BEQ $83FD",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x842C",
+      "physical_prg_offset": "0x3842C",
+      "file_offset": "0x3843C",
+      "opcode_bytes": "f01e",
+      "instruction": "BEQ $844C",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x8453",
+      "physical_prg_offset": "0x38453",
+      "file_offset": "0x38463",
+      "opcode_bytes": "f024",
+      "instruction": "BEQ $8479",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x84D2",
+      "physical_prg_offset": "0x384D2",
+      "file_offset": "0x384E2",
+      "opcode_bytes": "d010",
+      "instruction": "BNE $84E4",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x84DB",
+      "physical_prg_offset": "0x384DB",
+      "file_offset": "0x384EB",
+      "opcode_bytes": "d007",
+      "instruction": "BNE $84E4",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9156",
+      "physical_prg_offset": "0x39156",
+      "file_offset": "0x39166",
+      "opcode_bytes": "f002",
+      "instruction": "BEQ $915A",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9167",
+      "physical_prg_offset": "0x39167",
+      "file_offset": "0x39177",
+      "opcode_bytes": "d0ef",
+      "instruction": "BNE $9158",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9215",
+      "physical_prg_offset": "0x39215",
+      "file_offset": "0x39225",
+      "opcode_bytes": "d011",
+      "instruction": "BNE $9228",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9217",
+      "physical_prg_offset": "0x39217",
+      "file_offset": "0x39227",
+      "opcode_bytes": "a68e",
+      "instruction": "LDX $8E",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9219",
+      "physical_prg_offset": "0x39219",
+      "file_offset": "0x39229",
+      "opcode_bytes": "bd0905",
+      "instruction": "LDA $0509,X",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x921C",
+      "physical_prg_offset": "0x3921C",
+      "file_offset": "0x3922C",
+      "opcode_bytes": "8d0905",
+      "instruction": "STA $0509",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x921F",
+      "physical_prg_offset": "0x3921F",
+      "file_offset": "0x3922F",
+      "opcode_bytes": "bdf204",
+      "instruction": "LDA $04F2,X",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x9222",
+      "physical_prg_offset": "0x39222",
+      "file_offset": "0x39232",
+      "opcode_bytes": "8df204",
+      "instruction": "STA $04F2",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x9225",
+      "physical_prg_offset": "0x39225",
+      "file_offset": "0x39235",
+      "opcode_bytes": "4c2387",
+      "instruction": "JMP $8723",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x96D2",
+      "physical_prg_offset": "0x396D2",
+      "file_offset": "0x396E2",
+      "opcode_bytes": "d024",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96D4",
+      "physical_prg_offset": "0x396D4",
+      "file_offset": "0x396E4",
+      "opcode_bytes": "a2f0",
+      "instruction": "LDX #$F0",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96D6",
+      "physical_prg_offset": "0x396D6",
+      "file_offset": "0x396E6",
+      "opcode_bytes": "a908",
+      "instruction": "LDA #$08",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96DB",
+      "physical_prg_offset": "0x396DB",
+      "file_offset": "0x396EB",
+      "opcode_bytes": "d01b",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96DD",
+      "physical_prg_offset": "0x396DD",
+      "file_offset": "0x396ED",
+      "opcode_bytes": "4c8d96",
+      "instruction": "JMP $968D",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x96E7",
+      "physical_prg_offset": "0x396E7",
+      "file_offset": "0x396F7",
+      "opcode_bytes": "d00f",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96E9",
+      "physical_prg_offset": "0x396E9",
+      "file_offset": "0x396F9",
+      "opcode_bytes": "a2f0",
+      "instruction": "LDX #$F0",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96EB",
+      "physical_prg_offset": "0x396EB",
+      "file_offset": "0x396FB",
+      "opcode_bytes": "a908",
+      "instruction": "LDA #$08",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96F0",
+      "physical_prg_offset": "0x396F0",
+      "file_offset": "0x39700",
+      "opcode_bytes": "d006",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96F2",
+      "physical_prg_offset": "0x396F2",
+      "file_offset": "0x39702",
+      "opcode_bytes": "a901",
+      "instruction": "LDA #$01",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96F4",
+      "physical_prg_offset": "0x396F4",
+      "file_offset": "0x39704",
+      "opcode_bytes": "a000",
+      "instruction": "LDY #$00",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96F6",
+      "physical_prg_offset": "0x396F6",
+      "file_offset": "0x39706",
+      "opcode_bytes": "f03a",
+      "instruction": "BEQ $9732",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96F8",
+      "physical_prg_offset": "0x396F8",
+      "file_offset": "0x39708",
+      "opcode_bytes": "a900",
+      "instruction": "LDA #$00",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x96FA",
+      "physical_prg_offset": "0x396FA",
+      "file_offset": "0x3970A",
+      "opcode_bytes": "a8",
+      "instruction": "TAY",
+      "length": 1
+    },
+    {
+      "cpu_pc": "0x96FB",
+      "physical_prg_offset": "0x396FB",
+      "file_offset": "0x3970B",
+      "opcode_bytes": "f035",
+      "instruction": "BEQ $9732",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x970E",
+      "physical_prg_offset": "0x3970E",
+      "file_offset": "0x3971E",
+      "opcode_bytes": "d0e8",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9710",
+      "physical_prg_offset": "0x39710",
+      "file_offset": "0x39720",
+      "opcode_bytes": "a2f0",
+      "instruction": "LDX #$F0",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9712",
+      "physical_prg_offset": "0x39712",
+      "file_offset": "0x39722",
+      "opcode_bytes": "a9f8",
+      "instruction": "LDA #$F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9717",
+      "physical_prg_offset": "0x39717",
+      "file_offset": "0x39727",
+      "opcode_bytes": "d0df",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9719",
+      "physical_prg_offset": "0x39719",
+      "file_offset": "0x39729",
+      "opcode_bytes": "4c8d96",
+      "instruction": "JMP $968D",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x9723",
+      "physical_prg_offset": "0x39723",
+      "file_offset": "0x39733",
+      "opcode_bytes": "d0d3",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9725",
+      "physical_prg_offset": "0x39725",
+      "file_offset": "0x39735",
+      "opcode_bytes": "a2f0",
+      "instruction": "LDX #$F0",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9727",
+      "physical_prg_offset": "0x39727",
+      "file_offset": "0x39737",
+      "opcode_bytes": "a9f8",
+      "instruction": "LDA #$F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x972C",
+      "physical_prg_offset": "0x3972C",
+      "file_offset": "0x3973C",
+      "opcode_bytes": "d0ca",
+      "instruction": "BNE $96F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x972E",
+      "physical_prg_offset": "0x3972E",
+      "file_offset": "0x3973E",
+      "opcode_bytes": "a9ff",
+      "instruction": "LDA #$FF",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9730",
+      "physical_prg_offset": "0x39730",
+      "file_offset": "0x39740",
+      "opcode_bytes": "a000",
+      "instruction": "LDY #$00",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9732",
+      "physical_prg_offset": "0x39732",
+      "file_offset": "0x39742",
+      "opcode_bytes": "8c0905",
+      "instruction": "STY $0509",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x9735",
+      "physical_prg_offset": "0x39735",
+      "file_offset": "0x39745",
+      "opcode_bytes": "8df204",
+      "instruction": "STA $04F2",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x9738",
+      "physical_prg_offset": "0x39738",
+      "file_offset": "0x39748",
+      "opcode_bytes": "4c8a96",
+      "instruction": "JMP $968A",
+      "length": 3
+    },
+    {
+      "cpu_pc": "0x97B4",
+      "physical_prg_offset": "0x397B4",
+      "file_offset": "0x397C4",
+      "opcode_bytes": "d020",
+      "instruction": "BNE $97D6",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x97BD",
+      "physical_prg_offset": "0x397BD",
+      "file_offset": "0x397CD",
+      "opcode_bytes": "d017",
+      "instruction": "BNE $97D6",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x97C8",
+      "physical_prg_offset": "0x397C8",
+      "file_offset": "0x397D8",
+      "opcode_bytes": "d00c",
+      "instruction": "BNE $97D6",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x97D1",
+      "physical_prg_offset": "0x397D1",
+      "file_offset": "0x397E1",
+      "opcode_bytes": "d003",
+      "instruction": "BNE $97D6",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x97EA",
+      "physical_prg_offset": "0x397EA",
+      "file_offset": "0x397FA",
+      "opcode_bytes": "f00c",
+      "instruction": "BEQ $97F8",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x97FF",
+      "physical_prg_offset": "0x397FF",
+      "file_offset": "0x3980F",
+      "opcode_bytes": "f00c",
+      "instruction": "BEQ $980D",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B3F",
+      "physical_prg_offset": "0x39B3F",
+      "file_offset": "0x39B4F",
+      "opcode_bytes": "d014",
+      "instruction": "BNE $9B55",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B41",
+      "physical_prg_offset": "0x39B41",
+      "file_offset": "0x39B51",
+      "opcode_bytes": "a212",
+      "instruction": "LDX #$12",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B43",
+      "physical_prg_offset": "0x39B43",
+      "file_offset": "0x39B53",
+      "opcode_bytes": "a9fe",
+      "instruction": "LDA #$FE",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B48",
+      "physical_prg_offset": "0x39B48",
+      "file_offset": "0x39B58",
+      "opcode_bytes": "f051",
+      "instruction": "BEQ $9B9B",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B4A",
+      "physical_prg_offset": "0x39B4A",
+      "file_offset": "0x39B5A",
+      "opcode_bytes": "a21a",
+      "instruction": "LDX #$1A",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B4C",
+      "physical_prg_offset": "0x39B4C",
+      "file_offset": "0x39B5C",
+      "opcode_bytes": "a9fe",
+      "instruction": "LDA #$FE",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B51",
+      "physical_prg_offset": "0x39B51",
+      "file_offset": "0x39B61",
+      "opcode_bytes": "f048",
+      "instruction": "BEQ $9B9B",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B53",
+      "physical_prg_offset": "0x39B53",
+      "file_offset": "0x39B63",
+      "opcode_bytes": "d009",
+      "instruction": "BNE $9B5E",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B55",
+      "physical_prg_offset": "0x39B55",
+      "file_offset": "0x39B65",
+      "opcode_bytes": "a21a",
+      "instruction": "LDX #$1A",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B57",
+      "physical_prg_offset": "0x39B57",
+      "file_offset": "0x39B67",
+      "opcode_bytes": "a902",
+      "instruction": "LDA #$02",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B5C",
+      "physical_prg_offset": "0x39B5C",
+      "file_offset": "0x39B6C",
+      "opcode_bytes": "f03d",
+      "instruction": "BEQ $9B9B",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B7E",
+      "physical_prg_offset": "0x39B7E",
+      "file_offset": "0x39B8E",
+      "opcode_bytes": "d012",
+      "instruction": "BNE $9B92",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B80",
+      "physical_prg_offset": "0x39B80",
+      "file_offset": "0x39B90",
+      "opcode_bytes": "a212",
+      "instruction": "LDX #$12",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B82",
+      "physical_prg_offset": "0x39B82",
+      "file_offset": "0x39B92",
+      "opcode_bytes": "a9fe",
+      "instruction": "LDA #$FE",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B87",
+      "physical_prg_offset": "0x39B87",
+      "file_offset": "0x39B97",
+      "opcode_bytes": "f012",
+      "instruction": "BEQ $9B9B",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B89",
+      "physical_prg_offset": "0x39B89",
+      "file_offset": "0x39B99",
+      "opcode_bytes": "a20a",
+      "instruction": "LDX #$0A",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B8B",
+      "physical_prg_offset": "0x39B8B",
+      "file_offset": "0x39B9B",
+      "opcode_bytes": "a9fe",
+      "instruction": "LDA #$FE",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B90",
+      "physical_prg_offset": "0x39B90",
+      "file_offset": "0x39BA0",
+      "opcode_bytes": "f0cc",
+      "instruction": "BEQ $9B5E",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B92",
+      "physical_prg_offset": "0x39B92",
+      "file_offset": "0x39BA2",
+      "opcode_bytes": "a20a",
+      "instruction": "LDX #$0A",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B94",
+      "physical_prg_offset": "0x39B94",
+      "file_offset": "0x39BA4",
+      "opcode_bytes": "a902",
+      "instruction": "LDA #$02",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B99",
+      "physical_prg_offset": "0x39B99",
+      "file_offset": "0x39BA9",
+      "opcode_bytes": "f0c3",
+      "instruction": "BEQ $9B5E",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B9B",
+      "physical_prg_offset": "0x39B9B",
+      "file_offset": "0x39BAB",
+      "opcode_bytes": "a912",
+      "instruction": "LDA #$12",
+      "length": 2
+    },
+    {
+      "cpu_pc": "0x9B9D",
+      "physical_prg_offset": "0x39B9D",
+      "file_offset": "0x39BAD",
+      "opcode_bytes": "8d6505",
+      "instruction": "STA $0565",
+      "length": 3
+    }
+  ]
+}

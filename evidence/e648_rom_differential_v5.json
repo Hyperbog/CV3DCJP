@@ -1,0 +1,594 @@
+{
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "reference": "Original 6502 opcodes decoded and executed per instruction, mapper7/14 memory bus modeled",
+  "counts": {
+    "cases": 4000,
+    "directed_cases": 2700,
+    "bank7_carry_set": 1350,
+    "bank7_carry_clear": 5350,
+    "unique_paths": 14,
+    "integrated_8723": 1500
+  },
+  "executed_rom_instructions": 91,
+  "executed_branch_directions": 23,
+  "seen_rom_instruction_locations": [
+    {
+      "bank": 7,
+      "cpu": "0xB437",
+      "prg_offset": "0x1F437"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB439",
+      "prg_offset": "0x1F439"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB43B",
+      "prg_offset": "0x1F43B"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB43D",
+      "prg_offset": "0x1F43D"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB43E",
+      "prg_offset": "0x1F43E"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB43F",
+      "prg_offset": "0x1F43F"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB442",
+      "prg_offset": "0x1F442"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB444",
+      "prg_offset": "0x1F444"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB447",
+      "prg_offset": "0x1F447"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB449",
+      "prg_offset": "0x1F449"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB44B",
+      "prg_offset": "0x1F44B"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB44C",
+      "prg_offset": "0x1F44C"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB44E",
+      "prg_offset": "0x1F44E"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB44F",
+      "prg_offset": "0x1F44F"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB450",
+      "prg_offset": "0x1F450"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB452",
+      "prg_offset": "0x1F452"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB453",
+      "prg_offset": "0x1F453"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB455",
+      "prg_offset": "0x1F455"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB457",
+      "prg_offset": "0x1F457"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB459",
+      "prg_offset": "0x1F459"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB45A",
+      "prg_offset": "0x1F45A"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB45C",
+      "prg_offset": "0x1F45C"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB45E",
+      "prg_offset": "0x1F45E"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB460",
+      "prg_offset": "0x1F460"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB461",
+      "prg_offset": "0x1F461"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB462",
+      "prg_offset": "0x1F462"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB464",
+      "prg_offset": "0x1F464"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB466",
+      "prg_offset": "0x1F466"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB467",
+      "prg_offset": "0x1F467"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB469",
+      "prg_offset": "0x1F469"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB46A",
+      "prg_offset": "0x1F46A"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB46B",
+      "prg_offset": "0x1F46B"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB46E",
+      "prg_offset": "0x1F46E"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB470",
+      "prg_offset": "0x1F470"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB472",
+      "prg_offset": "0x1F472"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB474",
+      "prg_offset": "0x1F474"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB476",
+      "prg_offset": "0x1F476"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB478",
+      "prg_offset": "0x1F478"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB47A",
+      "prg_offset": "0x1F47A"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB47B",
+      "prg_offset": "0x1F47B"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB47E",
+      "prg_offset": "0x1F47E"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB480",
+      "prg_offset": "0x1F480"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB482",
+      "prg_offset": "0x1F482"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB484",
+      "prg_offset": "0x1F484"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB486",
+      "prg_offset": "0x1F486"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB489",
+      "prg_offset": "0x1F489"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48B",
+      "prg_offset": "0x1F48B"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48D",
+      "prg_offset": "0x1F48D"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48F",
+      "prg_offset": "0x1F48F"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB491",
+      "prg_offset": "0x1F491"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB492",
+      "prg_offset": "0x1F492"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB494",
+      "prg_offset": "0x1F494"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB496",
+      "prg_offset": "0x1F496"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB498",
+      "prg_offset": "0x1F498"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB499",
+      "prg_offset": "0x1F499"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB49B",
+      "prg_offset": "0x1F49B"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB49E",
+      "prg_offset": "0x1F49E"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4A1",
+      "prg_offset": "0x1F4A1"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4A3",
+      "prg_offset": "0x1F4A3"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4A6",
+      "prg_offset": "0x1F4A6"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4A8",
+      "prg_offset": "0x1F4A8"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4AB",
+      "prg_offset": "0x1F4AB"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4AD",
+      "prg_offset": "0x1F4AD"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4AF",
+      "prg_offset": "0x1F4AF"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4B1",
+      "prg_offset": "0x1F4B1"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4B3",
+      "prg_offset": "0x1F4B3"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4B4",
+      "prg_offset": "0x1F4B4"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4B5",
+      "prg_offset": "0x1F4B5"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4B6",
+      "prg_offset": "0x1F4B6"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4B7",
+      "prg_offset": "0x1F4B7"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4BA",
+      "prg_offset": "0x1F4BA"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4BC",
+      "prg_offset": "0x1F4BC"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4BE",
+      "prg_offset": "0x1F4BE"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4C0",
+      "prg_offset": "0x1F4C0"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4C3",
+      "prg_offset": "0x1F4C3"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4C6",
+      "prg_offset": "0x1F4C6"
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4C7",
+      "prg_offset": "0x1F4C7"
+    },
+    {
+      "bank": 14,
+      "cpu": "0x8786",
+      "prg_offset": "0x38786"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2CA",
+      "prg_offset": "0x3E2CA"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2CB",
+      "prg_offset": "0x3E2CB"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2CD",
+      "prg_offset": "0x3E2CD"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2CF",
+      "prg_offset": "0x3E2CF"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2D0",
+      "prg_offset": "0x3E2D0"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2D2",
+      "prg_offset": "0x3E2D2"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE2D5",
+      "prg_offset": "0x3E2D5"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE62D",
+      "prg_offset": "0x3E62D"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE62F",
+      "prg_offset": "0x3E62F"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE648",
+      "prg_offset": "0x3E648"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE64A",
+      "prg_offset": "0x3E64A"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE64D",
+      "prg_offset": "0x3E64D"
+    },
+    {
+      "bank": 15,
+      "cpu": "0xE650",
+      "prg_offset": "0x3E650"
+    }
+  ],
+  "observed_branch_directions": [
+    {
+      "bank": 7,
+      "cpu": "0xB439",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB439",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB457",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB457",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB45E",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB45E",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB464",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB464",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB46E",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB46E",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB474",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB474",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB476",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB47E",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB47E",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB484",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB484",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48B",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48B",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48F",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB48F",
+      "taken": true
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4BC",
+      "taken": false
+    },
+    {
+      "bank": 7,
+      "cpu": "0xB4BC",
+      "taken": true
+    }
+  ],
+  "limits": [
+    "No live game integration or IRQ/NMI timing",
+    "Synthetic RAM input; not a Mesen2 captured $E648 CPU trace",
+    "Real audio and PPU time effects not modeled",
+    "No 6502 cycle counts claimed"
+  ]
+}
