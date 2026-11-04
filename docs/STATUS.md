@@ -74,3 +74,15 @@ New live Mesen samples: 0; cycle-interleaved bus and hardware parity: untested;
 NESRecomp CPU dispatch substitution: not installed; retired executable bytes: 0.
 The collision ledger remains 1,264 identified code bytes, 1,150 implemented,
 114 open and 60 classified data. The original gameplay baseline is untouched.
+
+## Collision v11 dispatch source integrated — owner execution pending
+
+Original ROM hash and the two instruction-hook opcode keys at `$FCDE`
+(`48 A5 65 30`) and `$8348` (`D0 09 A5 08`) verified from the
+owner-supplied Japanese ROM. The opt-in, read-only collision dispatch adapter
+is compiled into the compatibility game only when explicitly enabled.
+Upstream-pinned NESRecomp hook and host source compile in CI. Owner-private
+native and MesenCE CSV capture scripts now exist, but **neither runtime was
+executed in this environment**. No CPU/PPU/APU/DMA/VRC6 bus-interleaving
+verification or live native substitution has occurred. Source is ready for
+owner-side diagnostic build and trace collection; **0 code bytes retired**.
