@@ -23,5 +23,8 @@ int CollisionDispatchV11_Register(void);
 int CollisionDispatchV11_LoadRom(const char *path);
 /* Enable the two read-only hooks after cyc_hooks_validate(). */
 int CollisionDispatchV11_Enable(void);
+/* Writes the 15-column entry/return CSV into a new owner-local file. */
+int CollisionDispatchV11_TraceOpen(const char *path);
+void CollisionDispatchV11_TraceClose(void);
 void CollisionDispatchV11_GetStats(CollisionDispatchV11Stats *out);
 #endif
