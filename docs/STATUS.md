@@ -113,3 +113,30 @@ state, ROM opcode-cycle and DMA comparator with synthetic contract tests
 is committed. No native capture has yet been provided, and the old
 Mesen data has no controller history or per-cycle DMC events. Hardware
 and DMC causality therefore remain unverified; 0 PRG bytes retired.
+
+
+## Collision v11.2 — authenticated synchronized DMC/IRQ owner capture
+
+Owner ZIP SHA-256: 08d78c01b26921b72b7606c441331aa7862a4ff080d92c9225b661137b151d9a.
+All three MesenCE-labeled CSVs are complete. Authentic Japanese ROM
+identity, the 36-site JSR stack/bank strict preflight and 128/128 DMC
+caller/cycle/ordinal pair checks passed. Observed callers:
+$8429=100, $96E4=14, $96ED=14.
+
+Original-ROM opcode replay matches 128/128 return register and status
+states, 127/128 complete 2-KiB RAM states, and 112/128 instruction-clock
+totals. 15 additional cases each have +4 clocks with exactly one DMC
+reader-address advance and a one-byte remaining decrement. All 112
+exact-clock cases have no DMC address change. The remaining sample
+(#101, caller $96ED) has +246 elapsed clocks plus one DMC read and eight
+stack bytes that exactly match the original ROM $E0F5 IRQ handler
+prologue, saved PC $FCEB and original RAM $00/$01.
+
+Controller history: 9,749 input-poll records, including a continuous
+post-reset epoch spanning frames 2..9227. Input/PPU synchronization
+with NESRecomp is not yet proven. The private ZIP, ROM and RAM snapshots
+were NOT committed. Aggregate evidence:
+docs/rom-translation/evidence/fcde_v11_2_sync_dmc_irq_owner_capture.json.
+Original collision source: 1,150 / 1,264 completed (114 open);
+0 original PRG bytes retired. No native paired runtime capture or
+CPU/DMA per-bus-cycle equivalence proof.
