@@ -100,3 +100,16 @@ proven. The optional NESRecomp observer was extended to these caller paths;
 upstream-pinned compilation passes CI. The uploaded capture has not been run
 through actual native C in this environment. No native runtime or hardware
 bus-cycle parity proof; no code retired. Private ROM and CSV stay out of Git.
+
+
+## Collision v11.2 — paired DMA timing gate prepared
+
+The original 128 owner Mesen observations still show 18 unexplained +4
+cycle residuals. NESRecomp's pinned per-cycle trace callback now feeds
+an opt-in per-call DMA event sidecar while original guest code executes.
+Conservative DMC sample-address advances and OAM DMA writes are counted
+without modifying machine execution. A strict Mesen/native paired CPU
+state, ROM opcode-cycle and DMA comparator with synthetic contract tests
+is committed. No native capture has yet been provided, and the old
+Mesen data has no controller history or per-cycle DMC events. Hardware
+and DMC causality therefore remain unverified; 0 PRG bytes retired.
