@@ -20,7 +20,9 @@
 static uint8_t rom[COLLISION_ROM_BYTES];
 static unsigned loaded, pending;
 static CollisionLivePreview expected;
+static CollisionLiveSnapshot started;
 static CollisionDispatchV11Stats stats;
+static FILE *trace;
 
 static uint64_t rom_fnv(const uint8_t *bytes, size_t count)
 {
@@ -76,9 +78,40 @@ static int fcde_entry(uint16_t pc)
         ++stats.probe_rejected;
         return 0;
     }
+    started=snapshot;
     pending=1;
     ++stats.shadow_ready;
     return 0;
+}
+
+static void write_ram(const uint8_t *ram)
+{
+    static const char hex[]="0123456789abcdef";
+    for (unsigned i=0;i<COLLISION_RAM_BYTES;++i) {
+        fputc(hex[ram[i]>>4],trace);
+        fputc(hex[ram[i]&15u],trace);
+    }
+}
+
+/* Exactly the 15 original Mesen CSV columns, from the original NESRecomp run.
+ * These are guest instruction-boundary observations, not invented cycles. */
+static void write_trace(void)
+{
+    if (!trace) return;
+    const CollisionLiveSnapshot *b=&started;
+    const uint8_t *ram=cyc_cpu_ram();
+    if (!ram) return;
+    fprintf(trace,"%u,%llu,%llu,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,",
+            (unsigned)JP_CALLER,
+            (unsigned long long)b->cpu_cycles,
+            (unsigned long long)cyc_cycle_count(),
+            b->cpu.a,b->cpu.x,b->cpu.y,b->cpu.sp,b->cpu.p,
+            cpu.a,cpu.x,cpu.y,cpu.s,cpu_get_p(0));
+    write_ram(b->cpu.ram);
+    fputc(',',trace);
+    write_ram(ram);
+    fputc('\n',trace);
+    fflush(trace);
 }
 
 static int fcde_return(uint16_t pc)
@@ -87,6 +120,7 @@ static int fcde_return(uint16_t pc)
     pending=0;
     if (!loaded || pc!=JP_RETURN || cpu.pc!=pc || !original_mapping() ||
         !cyc_cpu_ram()) { ++stats.mismatched_return; return 0; }
+    write_trace();
     const CollisionLiveSnapshot *s=&expected.after;
     if (s->pc==cpu.pc && s->cpu_cycles==cyc_cycle_count() &&
         s->cpu.a==cpu.a && s->cpu.x==cpu.x && s->cpu.y==cpu.y &&
@@ -95,6 +129,24 @@ static int fcde_return(uint16_t pc)
         ++stats.matched_return;
     else ++stats.mismatched_return;
     return 0;
+}
+
+int CollisionDispatchV11_TraceOpen(const char *path)
+{
+    if (trace || !path || !*path) return 0;
+    FILE *existing=fopen(path,"rb");
+    if (existing) { fclose(existing); return 0; }
+    trace=fopen(path,"wb");
+    if (!trace) return 0;
+    fputs("caller_pc,entry_cycle,return_cycle,entry_a,entry_x,entry_y,"
+          "entry_sp,entry_p,return_a,return_x,return_y,return_sp,"
+          "return_p,entry_ram_hex,return_ram_hex\n",trace);
+    fflush(trace);
+    return 1;
+}
+void CollisionDispatchV11_TraceClose(void)
+{
+    if (trace) { fclose(trace); trace=NULL; }
 }
 
 int CollisionDispatchV11_Register(void)
