@@ -165,3 +165,40 @@ cycles beyond independent ROM instruction timing, or mismatched
 cross-engine clock totals. It does NOT establish Mesen per-bus-cycle
 parity, authentic input/movie provenance, or DMC DMA causality from the
 existing Mesen CSV. New native execution samples: 0. Retired PRG bytes: 0.
+
+
+## v11.2 MesenCE synchronized capture (new recording, not historical data)
+
+The previous 128-row owner capture cannot retroactively supply input history
+or DMC reader state. The new optional, read-only Lua script is:
+
+    tools/instrumentation/mesen2_collision_fcde_sync_v11.lua
+
+Its MesenCE APIs and field names were checked against:
+- Core/Debugger/LuaApi.cpp: getInput, getState, inputPolled
+- Core/NES/Input/NesController.h: standard NES A/B/Select/Start/Up/Down/Left/Right
+- Core/NES/APU/DeltaModulationChannel.cpp: currentAddr, bytesRemaining,
+  bufferEmpty (and bundled NesDmcCapture.lua)
+- the original Japanese ROM's pinned SHA-1, checked before file creation
+
+Run it in MesenCE with the original ROM and Lua file access enabled.
+**Reset the emulated console after the Lua script is active**, then replay
+the intended input sequence. Stop the script to flush three files in the
+script-data directory with one shared timestamp:
+
+- cv3dcjp-fcde-sync-v11-TIMESTAMP.csv — same 15-column collision format;
+- cv3dcjp-fcde-dmc-v11-TIMESTAMP.csv — aligned original Mesen DMC
+  current-reader address/bytes-remaining/buffer-empty boundary states;
+- cv3dcjp-controller-v11-TIMESTAMP.csv — one row per inputPoll event,
+  recorded frame number, CPU clock, both controller masks and reset epoch.
+
+Controller bit positions are source-verified: A=bit0, B=bit1,
+Select=bit2, Start=bit3, Up=bit4, Down=bit5, Left=bit6, Right=bit7.
+The raw input log is **not automatically equivalent** to NESRecomp's
+--input FILE frame schedule. Confirm first-frame alignment and reset/PPU
+phase before converting or claiming matched replay. The earlier capture's
+18 four-cycle deltas remain unexplained until corroborating DMA data
+are actually collected. Lua source correctness is static/source-verified;
+no new Lua session has been executed here.
+
+Retain the three original user-side CSV files outside public Git.
