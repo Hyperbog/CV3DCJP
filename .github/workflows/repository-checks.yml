@@ -74,3 +74,8 @@ jobs:
             -I legacy/rom-backed/JP/recomp/native/nesrecomp_modern \
             -c legacy/rom-backed/JP/recomp/native/nesrecomp_modern/cviii_modern_host.c \
             -o /tmp/cv3dcjp_collision_host_v11.o
+
+      - name: Validate v11.2 capture verifier and ROM-free IRQ stack contracts
+        run: |
+          python3 -m py_compile tools/instrumentation/verify_fcde_sync_dmc_irq_v11.py
+          python3 -m unittest discover -s tests -p 'test_collision_sync_dmc_irq_v11.py' -v
