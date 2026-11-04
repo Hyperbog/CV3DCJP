@@ -3,6 +3,9 @@
  * The PPU/mapper/CPU/gameplay state is never modified by these effects.
  */
 #include "cyc_host_extras.h"
+#ifdef CVIII_COLLISION_V11_SHADOW
+#include "CollisionDispatchV11.h"
+#endif
 #include "cyc_core.h"
 #include "cyc_render.h"
 #include "cviii_sprite_layers_0608.h"
@@ -100,6 +103,10 @@ static bool cviii_option(void *context, const char *name, const char *value)
     uint8_t percent;
     CviiiVolumeChannel channel;
     if (!name || !value) return false;
+#ifdef CVIII_COLLISION_V11_SHADOW
+    if (!strcmp(name, "--collision-v11-rom"))
+        return CollisionDispatchV11_LoadRom(value) && CollisionDispatchV11_Enable();
+#endif
     if (!strcmp(name, "--edition")) return cviii_edition(state, value);
     if (!strcmp(name, "--asset-index")) return cviii_room_diag_load_chr(value);
     if (!strcmp(name, "--room-resources")) return cviii_room_diag_load_rooms(value);
@@ -294,6 +301,9 @@ static const RecompRuntimeUiCallbacks cviii_menu_callbacks = {
 #endif
 
 static const CycHostOption cviii_options[] = {
+#ifdef CVIII_COLLISION_V11_SHADOW
+    {"--collision-v11-rom", true, "Opt-in read-only FCDE dispatch shadow; authentic local ROM path"},
+#endif
     {"--edition", true, "Original or Enhanced host mode (Original default)"},
     {"--unlimited-sprites", true, "EXPERIMENTAL: draw all OAM pieces (0/1)"},
     {"--stable-sprites", true, "EXPERIMENTAL: JP0645 OAM continuity (0/1)"},
@@ -333,5 +343,17 @@ static const CycHostExtras cviii_extras = {
 
 const CycHostExtras *cyc_host_extras(void)
 {
+#ifdef CVIII_COLLISION_V11_SHADOW
+    /* This is called by option discovery before cyc_hooks_validate() when
+     * --collision-v11-rom is supplied. No flag means no runtime hook use. */
+    static int registered;
+    if (!registered) {
+        if (!CollisionDispatchV11_Register()) {
+            fprintf(stderr,"Collision v11: mod hook registration rejected\n");
+            return NULL;
+        }
+        registered=1;
+    }
+#endif
     return &cviii_extras;
 }
