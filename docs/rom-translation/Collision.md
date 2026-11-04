@@ -164,3 +164,50 @@ callers plus original `$8345` (five hook sites including the shared entry).
 It is read-only, still disabled by default. It has not been executed here.
 No native C parity from this CSV, synchronized cross-engine replay or complete
 hardware bus cycle timing has been established. **Zero PRG code bytes retired.**
+
+
+
+## v11.2 — actual NESRecomp DMA event sidecar and paired verifier
+
+**Source is committed and the pinned NESRecomp ABI compile job passes.**
+No new NESRecomp gameplay run or Mesen DMA event capture is available yet.
+
+The opt-in adapter chains the upstream cyc_trace_cycle_hook defined in pinned
+runner/cyc/cyc_trace.h. It counts real DMA cycles while the original $FCDE
+instruction sequence runs. Every paired call emits a separate DMA sidecar row:
+guest entry/return clocks, native C instruction-cycle prediction, real DMA
+cycles, halt/read/write subdivisions, conservative DMC source-address
+advances and OAM $2004 writes. Nothing changes CPU or hardware cycles.
+A Mesen +4 clock discrepancy is never silently normalized as DMA.
+
+The host must be started with --hash-out FILE, which enables its real cycle
+tracer, BEFORE the adapter's --collision-v11-dma-trace FILE option.
+Without tracing, the adapter refuses to capture DMA instead of reporting
+fake zero stalls. An existing trace callback is chained, not overwritten.
+
+The following are arguments for the owner-built private
+jp_akumajou_densetsu_modern executable (not a standalone command).
+Supply a verified input schedule using --input FILE as well:
+
+    --frames 2000
+    --hash-out C:\NESDev\capture\native-hashes.txt
+    --collision-v11-rom "C:\NESDev\AkumajouDensetsu\Akumajou Densetsu (Japan).nes"
+    --collision-v11-trace C:\NESDev\capture\collision-native.csv
+    --collision-v11-dma-trace C:\NESDev\capture\collision-native-dma.csv
+    --input C:\NESDev\capture\same-controls.txt
+
+A genuine paired execution also requires matching reset, PPU phase, and
+controller history. The original 128 Mesen rows contain neither the
+per-frame inputs nor per-cycle bus/DMC activity. Do not infer they describe
+the same execution as a future native trace.
+
+Run the fail-closed verifier after capturing the native files:
+
+    py -3 tools/instrumentation/verify_fcde_paired_dma_v11.py --rom "C:\NESDev\AkumajouDensetsu\Akumajou Densetsu (Japan).nes" --mesen "C:\NESDev\capture\cv3dcjp-fcde-v11-20261103-211957.csv" --native "C:\NESDev\capture\collision-native.csv" --dma "C:\NESDev\capture\collision-native-dma.csv" --report "C:\NESDev\capture\collision-paired-v11.json"
+
+The paired verifier rejects missing/out-of-order samples, different full
+entry/return CPU state, native DMA not accounting for actual elapsed
+cycles beyond independent ROM instruction timing, or mismatched
+cross-engine clock totals. It does NOT establish Mesen per-bus-cycle
+parity, authentic input/movie provenance, or DMC DMA causality from the
+existing Mesen CSV. New native execution samples: 0. Retired PRG bytes: 0.
