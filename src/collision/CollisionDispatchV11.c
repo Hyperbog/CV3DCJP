@@ -9,6 +9,7 @@
 #include "hw.h"
 #include "mod_function_hooks.h"
 #include "cyc_trace.h"
+#include "hw_internal.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -39,6 +40,8 @@ static FILE *trace;
 static FILE *dma_trace;
 static uint64_t dma_cycles, dma_halts, dma_reads, dma_writes;
 static uint64_t observed_pairs;
+static uint64_t dmc_reads_confirmed, oam_dma_writes;
+static ApuDmcView previous_dmc;
 static void (*previous_cycle_hook)(const CycTraceCycle *);
 static int cycle_hook_installed;
 
@@ -48,11 +51,26 @@ static int cycle_hook_installed;
  * DMA records do not distinguish DMC from OAM without device evidence. */
 static void collision_cycle_observer(const CycTraceCycle *cycle)
 {
-    if (pending && cycle && cycle->dma) {
-        ++dma_cycles;
-        if (cycle->halt) ++dma_halts;
-        else if (cycle->kind=='R') ++dma_reads;
-        else if (cycle->kind=='W') ++dma_writes;
+    if (pending && cycle) {
+        ApuDmcView dmc;
+        apu_debug_dmc(&dmc); /* Device-owned state, observation only. */
+        if (cycle->dma) {
+            ++dma_cycles;
+            if (cycle->halt) ++dma_halts;
+            else if (cycle->kind=='R') ++dma_reads;
+            else if (cycle->kind=='W') ++dma_writes;
+            if (cycle->kind=='W' && cycle->addr==0x2004u)
+                ++oam_dma_writes;
+            /* Conservative sample-fetch evidence: a DMA read at the old
+             * DMC source address and an actual one-byte source advance.
+             * One-byte loop resets can evade this lower-bound counter. */
+            if (!cycle->halt && cycle->kind=='R' &&
+                cycle->addr==previous_dmc.addr &&
+                dmc.addr==(uint16_t)(previous_dmc.addr==0xFFFFu
+                                      ? 0x8000u : previous_dmc.addr+1u))
+                ++dmc_reads_confirmed;
+        }
+        previous_dmc=dmc;
     }
     if (previous_cycle_hook) previous_cycle_hook(cycle);
 }
@@ -115,6 +133,8 @@ static int fcde_entry(uint16_t pc)
         return 0;
     }
     dma_cycles=dma_halts=dma_reads=dma_writes=0;
+    dmc_reads_confirmed=oam_dma_writes=0;
+    apu_debug_dmc(&previous_dmc);
     started=snapshot;
     active_caller=site->caller;
     active_return=site->return_pc;
@@ -162,7 +182,7 @@ static int fcde_return(uint16_t pc)
     ++observed_pairs;
     write_trace();
     if (dma_trace) {
-        fprintf(dma_trace,"%llu,%u,%llu,%llu,%u,%llu,%llu,%llu,%llu\n",
+        fprintf(dma_trace,"%llu,%u,%llu,%llu,%u,%llu,%llu,%llu,%llu,%llu,%llu\n",
                 (unsigned long long)observed_pairs,
                 (unsigned)active_caller,
                 (unsigned long long)started.cpu_cycles,
@@ -171,7 +191,9 @@ static int fcde_return(uint16_t pc)
                 (unsigned long long)dma_cycles,
                 (unsigned long long)dma_halts,
                 (unsigned long long)dma_reads,
-                (unsigned long long)dma_writes);
+                (unsigned long long)dma_writes,
+                (unsigned long long)dmc_reads_confirmed,
+                (unsigned long long)oam_dma_writes);
         fflush(dma_trace);
     }
     const CollisionLiveSnapshot *s=&expected.after;
@@ -213,7 +235,8 @@ int CollisionDispatchV11_DmaTraceOpen(const char *path)
     FILE *f=fopen(path,"wb");
     if (!f) return 0;
     fputs("sample,caller_pc,entry_cycle,return_cycle,instruction_cycles,"
-          "dma_cycles,dma_halt_cycles,dma_read_cycles,dma_write_cycles\n",f);
+          "dma_cycles,dma_halt_cycles,dma_read_cycles,dma_write_cycles,"
+          "dmc_fetches_confirmed,oam_dma_writes\n",f);
     fflush(f);
     dma_trace=f;
     previous_cycle_hook=cyc_trace_cycle_hook;
