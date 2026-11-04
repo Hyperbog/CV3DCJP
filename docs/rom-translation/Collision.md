@@ -146,3 +146,21 @@ Neither MesenCE nor the Windows game host is installed in this environment.
 **Real owner-side capture rows: 0; observed native callbacks: 0; real cross-
 engine matches: untested; hardware bus-cycle parity: untested; retired bytes: 0.**
 See [COLLISION_V11_CAPTURE_DISPATCH.md](COLLISION_V11_CAPTURE_DISPATCH.md).
+
+## v11 — owner-supplied 128-row Mesen capture and ROM replay
+
+An owner-supplied `cv3dcjp-fcde-v11-20261103-211957.csv` (SHA-256
+`ca19f8453f2b0909f51704e75b809eaeacf0243109a7a4e1efff3b5d1ebbaf19`)
+passed the strict v11 CSV preflight: **128 calls** at authenticated original
+bank-14 `$8429` (66), `$96E4` (31), and `$96ED` (31). Independent
+original-ROM opcode replay reproduced **all 128** A/X/Y/P/SP and 2-KiB RAM
+return states. CPU-clock totals matched exactly for **110**; the remaining
+**18** recorded four extra cycles (+4 each; no other residuals). An APU DMC
+DMA stall is a *hypothesis*, not verified from this CSV because bus/DMC events
+were not captured. See `evidence/fcde_v11_mesen_128_capture_rom_replay.json`.
+
+The opt-in NESRecomp dispatch observer now includes the three captured
+callers plus original `$8345` (five hook sites including the shared entry).
+It is read-only, still disabled by default. It has not been executed here.
+No native C parity from this CSV, synchronized cross-engine replay or complete
+hardware bus cycle timing has been established. **Zero PRG code bytes retired.**
