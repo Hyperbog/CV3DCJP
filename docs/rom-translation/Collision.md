@@ -211,3 +211,32 @@ cycles beyond independent ROM instruction timing, or mismatched
 cross-engine clock totals. It does NOT establish Mesen per-bus-cycle
 parity, authentic input/movie provenance, or DMC DMA causality from the
 existing Mesen CSV. New native execution samples: 0. Retired PRG bytes: 0.
+
+
+## v11.2 owner synchronized DMC and IRQ observations
+
+A new MesenCE-labeled three-file synchronized capture was uploaded
+(owner ZIP SHA-256 08d78c01b26921b72b7606c441331aa7862a4ff080d92c9225b661137b151d9a).
+ROM-verified original bank-14 callers: $8429 (100), $96E4 (14),
+$96ED (14), all 128 precisely matched to the DMC boundary sidecar.
+
+The independent original-ROM 6502 reference matches all 128 returned
+A/X/Y/SP/P and 127 of 128 complete 2-KiB RAM states. CPU instruction
+time equals measured elapsed clocks in 112 samples. Fifteen samples
+have +4 clocks each, and all fifteen show DMC source address +1 and
+bytes remaining -1; no exact-cycle sample changes the DMC source
+address. Sample #101 at $96ED has +246 clocks and one DMC reader
+advance. Its eight extra stack writes exactly reproduce the original
+Japanese ROM IRQ vector $FFFE -> $E0F5, handler's first 11 opcodes
+(48 8A 48 98 48 A5 00 48 A5 01 48), saved return PC $FCEB,
+and two original zero-page values. This explains why an uninterrupted
+$FCDE-only interpreter cannot match the interrupt-overlap sample.
+
+The controller trace has 9,749 input polls; a consecutive post-reset
+sequence covers frames 2..9227. No NESRecomp session has been paired
+against the same input, reset and PPU phase. Neither exact IRQ cycles
+nor actual Mesen bus transactions are proven. The new fail-closed
+ROM+ZIP analyzer is tools/instrumentation/verify_fcde_sync_dmc_irq_v11.py.
+Aggregate evidence only: evidence/fcde_v11_2_sync_dmc_irq_owner_capture.json.
+No raw private RAM/ROM/CSV in Git, no native substitution,
+no original machine-code bytes retired.
