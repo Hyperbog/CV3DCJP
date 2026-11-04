@@ -13,16 +13,19 @@ Real supported callback path: `runner/cyc/cyc_hooks.c`,
 It operates before instruction fetch; returning **zero** leaves the original
 instructions, all CPU bus accesses, and the PPU/APU/DMA/VRC6 clocks intact.
 
-Initial slice: verified bank 14 `JSR $FCDE` at `$8345`, return at `$8348`.
-The two hook-site bytes are recorded in
+The first read-only hook watches `$FCDE` and four independently ROM-checked
+caller-return paths: `$8345 -> $8348`, `$8429 -> $842C`,
+`$96E4 -> $96E7`, and `$96ED -> $96F0`. The three additional callers
+were actually observed in the owner's 128-row v11 capture.
+The five instruction-hook keys are recorded in
 `tools/instrumentation/collision_v11_hook_sites.toml`.
-Only the fixed bank and original physical bank 14 are accepted. Other
-`$FCDE` callers are counted but NOT claimed as measured in this slice.
+The fixed bank and original physical bank 14 are required. All other
+`$FCDE` calls still execute unchanged without shadow comparison.
 
 ## Opt-in build (never the default)
 
 1. Start from a **private copy** of the working `game.toml`; append the
-   two `[[mod_function_hook]]` records exactly as in the snippet. Do not
+   five `[[mod_function_hook]]` records exactly as in the snippet. Do not
    use the snippet as a complete game configuration.
 2. In the existing compatibility CMake build set
    `-DJP_COLLISION_V11_SHADOW=ON`,
@@ -31,7 +34,7 @@ Only the fixed bank and original physical bank 14 are accepted. Other
 3. Launch that isolated diagnostic build with
    `--collision-v11-rom <private-Japanese-ROM>` and
    `--collision-v11-trace <new-private-native-CSV-path>`.
-   This loads a private verified image and enables the two read-only callbacks.
+   This loads a private verified image and enables the five read-only callbacks.
    Do not enable these callbacks in the shipped default executable.
 4. The native CSV uses the same 15-column register/RAM/cycle format as MesenCE.
    The file is created only when the optional trace path is supplied; each
@@ -55,8 +58,9 @@ Open the **original** Japanese ROM in MesenCE. In Lua settings enable
 `tools/instrumentation/mesen2_collision_fcde_gate_v11.lua` from its Lua
 console while playing the game or replaying your own input movie. End the script
 to close the CSV, then inspect its logged absolute path in the script-data folder.
-The capture is bounded to 128 rows. No capture has been executed in this
-environment: MesenCE is not installed here.
+The capture is bounded to 128 rows. The owner uploaded one complete 128-row
+CSV, independently replayed against the original ROM. MesenCE itself was
+not executed in this environment.
 
 The v11 CSV retains the strict 15-column v10 schema. Check it with:
 
@@ -78,9 +82,37 @@ established. **Zero original PRG bytes are retired.**
 
 ## Open gates
 
-- Run the owner-side MesenCE script and verify its produced CSV.
+- The owner-side MesenCE capture is available: 128/128 structurally valid;
+  110/128 match original-ROM instruction CPU-clock totals. All 18 timing
+  residuals are +4 cycles, while all 128 register/flag/stack/RAM results match.
+  DMA is a plausible hypothesis, NOT an observed bus-event fact.
 - Run the isolated NESRecomp opt-in build and capture the stats.
 - Compare the same deterministic input sequence and ROM in both machines.
 - Add real per-cycle bus transaction observation and CPU/PPU/APU/DMA/VRC6
   interrupts comparison before authorizing *any* replacement.
-- Expand beyond the one verified `$8345` caller only when live evidence exists.
+- Expand native coverage only where the owner trace and original ROM establish
+  the caller/return sites; the three observed sites are now instrumented.
+
+### Replaying the supplied 128-row capture
+
+The owner supplied `cv3dcjp-fcde-v11-20261103-211957.csv`, SHA-256
+`ca19f8453f2b0909f51704e75b809eaeacf0243109a7a4e1efff3b5d1ebbaf19`.
+The original ROM interpreter matched every recorded register, status-flag,
+stack-pointer and 2-KiB RAM return; 110/128 clock totals agreed exactly;
+the remaining 18 were **four more observed cycles** than 6502 instruction
+cycles, spread across all three callers. The CSV did not log DMC/DMA events.
+The timing discrepancy must not be silently normalized away. The original
+runtime has not been replaced. The native C module has not been compared against
+this particular CSV in the current execution environment.
+
+Owner-side ROM opcode replay:
+
+```powershell
+py -3 tools/instrumentation/verify_fcde_rom_capture_v11.py \`
+  --rom 'C:\NESDev\AkumajouDensetsu\Akumajou Densetsu (Japan).nes' \`
+  --trace 'PATH_TO_CAPTURE\cv3dcjp-fcde-v11-20261103-211957.csv' \`
+  --report 'data/generated/collision-v11-rom-replay.json'
+```
+
+Privacy: the complete owner CSV and ROM are not committed. Public evidence is
+aggregate only: `evidence/fcde_v11_mesen_128_capture_rom_replay.json`.
