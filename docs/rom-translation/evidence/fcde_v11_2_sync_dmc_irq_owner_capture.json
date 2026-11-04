@@ -1,0 +1,70 @@
+{
+  "schema": "cv3dcjp-jp-fcde-sync-dmc-v11-2-observed-rom-replay",
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "owner_zip_sha256": "08d78c01b26921b72b7606c441331aa7862a4ff080d92c9225b661137b151d9a",
+  "csv_sha256": {
+    "collision": "2d4cbcc6d022b0d181a9e1c4ad6070b0b88b2fc30495fd4868d4d6df8a01b798",
+    "dmc": "33ecf1ea22c675e60ba8d24864e56fca4c0d63ac65b1eed420a2e2eeb2ad34de",
+    "controller": "b494715718dbe2bb4463bf7947b336a513fe6c9be47fa8900f2d5b0188eba26c"
+  },
+  "owner_capture_emulator_attribution": "MesenCE-labeled, uploader-provided; provenance not independently authenticated",
+  "strict_rom_sha_and_36_callsite_preflight": "pass",
+  "sample_count": 128,
+  "dmc_collisions_exactly_aligned": 128,
+  "caller_counts": {
+    "0x8429": 100,
+    "0x96E4": 14,
+    "0x96ED": 14
+  },
+  "rom_reference_cpu_registers_flags_sp_matches": 128,
+  "rom_reference_complete_2k_ram_matches": 127,
+  "exact_instruction_cycle_matches": 112,
+  "elapsed_minus_rom_instruction_cpu_cycles": {
+    "0": 112,
+    "4": 15,
+    "246": 1
+  },
+  "dmc_reader_transition": {
+    "unchanged_address_unchanged_remaining": 112,
+    "address_plus_1_remaining_minus_1": 16
+  },
+  "dmc_fetch_correspondence": {
+    "15_simple_plus4_cases": "all 15 have a 1-byte DMC sample-read advancement",
+    "246_cycle_outlier": "also has a 1-byte DMC sample-read advancement",
+    "112_no_extra_cycle_cases": "none have a sample-read advancement"
+  },
+  "irq_interrupt_evidence": {
+    "sample": 101,
+    "caller": "0x96ED",
+    "return_stack_pc": "0xFCEB",
+    "irq_vector_rom": "0xE0F5",
+    "handler_rom_first_11_bytes": "48 8a 48 98 48 a5 00 48 a5 01 48",
+    "verified_irq_stack_pushes": 8,
+    "affected_internal_ram_addresses": [
+      "0x01EA",
+      "0x01EB",
+      "0x01EC",
+      "0x01ED",
+      "0x01EE",
+      "0x01EF",
+      "0x01F0",
+      "0x01F1"
+    ],
+    "stack_bytes_match_irq_entry_handler_and_ram0_ram1": true,
+    "exact_interrupt_bus_trace_available": false,
+    "precise_irq_cycles_proven": false
+  },
+  "controller_input_poll_rows": 9749,
+  "reset_epochs": {
+    "0": 523,
+    "1": 9226
+  },
+  "post_reset_epoch_1_frames": "2..9227, contiguous",
+  "second_controller_nonzero_rows": 0,
+  "original_rom_opcode_replay_performed": true,
+  "paired_native_nesrecomp_trace_available": false,
+  "dmc_per_cycle_bus_hardware_parity_established": false,
+  "runtime_native_substitution_enabled": false,
+  "retired_original_6502_code_bytes": 0,
+  "privacy": "Only aggregate evidence is committed, never ROM, RAM snapshots, CSV rows, or private input history."
+}
