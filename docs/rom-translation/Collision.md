@@ -99,3 +99,31 @@ py -3 tools/instrumentation/verify_fcde_live_trace_v10.py `
   --trace 'PATH_TO_MESEN_SCRIPT_DATA\cv3dcjp-fcde-v10-TIMESTAMP.csv' `
   --report 'data/generated/collision-v10-live-evidence.json'
 ```
+
+
+## v11 — ROM-authenticated live-trace preflight (2026-11-03)
+
+The new tools/instrumentation/verify_fcde_trace_gate_v11.py validates the
+Japanese ROM SHA-256 and all 36 Mesen-v10 instrumented bank-14 JSR $FCDE sites
+before running the native shadow comparison. It rejects malformed CSV,
+non-decimal and out-of-range CPU states, nonpositive clock deltas,
+invalid return-stack bytes, and non-bank-14 entry RAM. It records
+the observed subset of instrumented callers and the CSV SHA-256. The capture
+hash does NOT prove Mesen generated the file.
+
+The collision translation ledger lists 34 observed caller continuations,
+whereas the Mesen instrument script monitors 36 ROM-confirmed JSR sites.
+These are distinct scopes and MUST NOT be reported as the same coverage
+population. Other JSR-looking ROM byte sequences have NOT been established
+as executed code.
+
+No new Mesen2 live capture was run in v11. No CPU-bus, PPU, APU, DMA, VRC6,
+IRQ or NMI cycle-interleaving parity has been established. No CPU instruction
+dispatch hook has been installed in NESRecomp. Game runtime is untouched,
+native runtime substitution remains prohibited, and zero PRG bytes are retired.
+
+Owner-side run after capturing with the existing v10 Mesen Lua script:
+
+    py -3 tools/instrumentation/verify_fcde_trace_gate_v11.py --rom ROM.nes --trace Mesen-v10.csv --report data/generated/collision-v11-preflight.json
+
+This is a stricter read-only, ROM-checked preflight, NOT live substitution.
