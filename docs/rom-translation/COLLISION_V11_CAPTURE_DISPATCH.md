@@ -202,3 +202,35 @@ are actually collected. Lua source correctness is static/source-verified;
 no new Lua session has been executed here.
 
 Retain the three original user-side CSV files outside public Git.
+
+
+## v11.2 first synchronized owner ZIP: analyzed and archived as evidence
+
+Strict ROM/JSR/stack preflight: PASS. Collision + DMC alignment:
+128/128. CPU registers, stack pointer, flags: 128/128 exact.
+Whole RAM: 127/128 exact. ROM instruction clocks: 112/128 exact.
+The 15 +4 clock cases each coincide with DMC sample reader +1 /
+remaining bytes -1. The 246-clock anomaly (sample 101) has the same
+DMC change and an original-ROM IRQ handler stack signature, saved
+return PC $FCEB and original vector $E0F5. No exact-cycle case has
+a DMC reader advance. These Mesen DMC boundary observations
+corroborate DMC sample fetching but do not give the individual DMA
+bus-cycle timestamps. The 246-clock IRQ span cannot be normalized
+or declared per-bus-cycle equivalent without an actual instruction trace.
+
+Controller input-poll records: 9,749; continuous post-reset epoch:
+9,226 records (frames 2..9227). The data does not yet establish
+identical frame-zero and PPU phase for NESRecomp. The original
+128-row Mesen v11 CSV remains a separate unsynchronized capture.
+
+Run the public, fail-closed analyzer against a PRIVATE ZIP:
+python3 tools/instrumentation/verify_fcde_sync_dmc_irq_v11.py
+  --rom <private-Japanese-ROM> --zip <private-three-CSV-ZIP>
+  --report <private-analysis.json> --residuals-csv <private-details.csv>
+
+The ZIP SHA and aggregate results are committed in
+docs/rom-translation/evidence/fcde_v11_2_sync_dmc_irq_owner_capture.json.
+The original ROM, CSVs and complete 2-KiB RAM states remain untracked.
+The next gate remains an actual matched-input NESRecomp native CSV and
+hardware DMA-cycle sidecar, plus instruction/bus traces around the IRQ.
+No native substitution, no retirement of original PRG code.
