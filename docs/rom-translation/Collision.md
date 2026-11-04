@@ -127,3 +127,22 @@ Owner-side run after capturing with the existing v10 Mesen Lua script:
     py -3 tools/instrumentation/verify_fcde_trace_gate_v11.py --rom ROM.nes --trace Mesen-v10.csv --report data/generated/collision-v11-preflight.json
 
 This is a stricter read-only, ROM-checked preflight, NOT live substitution.
+
+## v11 — CPU dispatch observer & owner-run MesenCE capture
+
+The project contains the optional `src/collision/CollisionDispatchV11.c` NESRecomp
+hook adapter. It compiles against pinned upstream `2b4fcdb98c9e702be3fb365cfc645003c50b5fc1`
+and observes `$FCDE` plus the original bank-14 `$8345 -> $8348` path. Both
+callbacks return zero to execute the original 6502 code and all its bus cycles.
+The default build leaves it out (`JP_COLLISION_V11_SHADOW=OFF`). An opt-in
+build needs two `[[mod_function_hook]]` entries in an owner-local game.toml.
+An owner-private original-ROM file is loaded after full-ROM FNV64 checking;
+CMake still verifies the Japanese ROM SHA-256. `--collision-v11-rom` enables
+the observer, and `--collision-v11-trace` records an optional 15-column CSV.
+
+`tools/instrumentation/mesen2_collision_fcde_gate_v11.lua` uses MesenCE's
+`emu.getCpuCycleCount()` and retains the v11 strict verifier CSV contract.
+Neither MesenCE nor the Windows game host is installed in this environment.
+**Real owner-side capture rows: 0; observed native callbacks: 0; real cross-
+engine matches: untested; hardware bus-cycle parity: untested; retired bytes: 0.**
+See [COLLISION_V11_CAPTURE_DISPATCH.md](COLLISION_V11_CAPTURE_DISPATCH.md).
