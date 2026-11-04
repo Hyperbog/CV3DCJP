@@ -8,6 +8,7 @@
 #include "cpu6502.h"
 #include "hw.h"
 #include "mod_function_hooks.h"
+#include "cyc_trace.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -35,6 +36,26 @@ static CollisionLivePreview expected;
 static CollisionLiveSnapshot started;
 static CollisionDispatchV11Stats stats;
 static FILE *trace;
+static FILE *dma_trace;
+static uint64_t dma_cycles, dma_halts, dma_reads, dma_writes;
+static uint64_t observed_pairs;
+static void (*previous_cycle_hook)(const CycTraceCycle *);
+static int cycle_hook_installed;
+
+/* Observes exact machine-owned cycle transactions. It never changes them.
+ * The existing observer is chained, not discarded. Cycles are collected
+ * only while the original $FCDE routine executes (pending = 1).
+ * DMA records do not distinguish DMC from OAM without device evidence. */
+static void collision_cycle_observer(const CycTraceCycle *cycle)
+{
+    if (pending && cycle && cycle->dma) {
+        ++dma_cycles;
+        if (cycle->halt) ++dma_halts;
+        else if (cycle->kind=='R') ++dma_reads;
+        else if (cycle->kind=='W') ++dma_writes;
+    }
+    if (previous_cycle_hook) previous_cycle_hook(cycle);
+}
 
 static uint64_t rom_fnv(const uint8_t *bytes, size_t count)
 {
@@ -93,6 +114,7 @@ static int fcde_entry(uint16_t pc)
         ++stats.probe_rejected;
         return 0;
     }
+    dma_cycles=dma_halts=dma_reads=dma_writes=0;
     started=snapshot;
     active_caller=site->caller;
     active_return=site->return_pc;
@@ -137,7 +159,21 @@ static int fcde_return(uint16_t pc)
     pending=0;
     if (!loaded || cpu.pc!=pc || !original_mapping() ||
         !cyc_cpu_ram()) { ++stats.mismatched_return; return 0; }
+    ++observed_pairs;
     write_trace();
+    if (dma_trace) {
+        fprintf(dma_trace,"%llu,%u,%llu,%llu,%u,%llu,%llu,%llu,%llu\n",
+                (unsigned long long)observed_pairs,
+                (unsigned)active_caller,
+                (unsigned long long)started.cpu_cycles,
+                (unsigned long long)cyc_cycle_count(),
+                (unsigned)expected.query.cpu_cycles,
+                (unsigned long long)dma_cycles,
+                (unsigned long long)dma_halts,
+                (unsigned long long)dma_reads,
+                (unsigned long long)dma_writes);
+        fflush(dma_trace);
+    }
     const CollisionLiveSnapshot *s=&expected.after;
     if (s->pc==cpu.pc && s->cpu_cycles==cyc_cycle_count() &&
         s->cpu.a==cpu.a && s->cpu.x==cpu.x && s->cpu.y==cpu.y &&
@@ -164,6 +200,36 @@ int CollisionDispatchV11_TraceOpen(const char *path)
 void CollisionDispatchV11_TraceClose(void)
 {
     if (trace) { fclose(trace); trace=NULL; }
+}
+
+int CollisionDispatchV11_DmaTraceOpen(const char *path)
+{
+    /* --hash-out must activate the pinned engine's actual cycle tracer.
+     * Never silently enable/disable tracing or overwrite another callback. */
+    if (!cyc_trace_enabled || dma_trace || !path || !*path) return 0;
+    if (cyc_trace_cycle_hook==collision_cycle_observer) return 0;
+    FILE *existing=fopen(path,"rb");
+    if (existing) { fclose(existing); return 0; }
+    FILE *f=fopen(path,"wb");
+    if (!f) return 0;
+    fputs("sample,caller_pc,entry_cycle,return_cycle,instruction_cycles,"
+          "dma_cycles,dma_halt_cycles,dma_read_cycles,dma_write_cycles\n",f);
+    fflush(f);
+    dma_trace=f;
+    previous_cycle_hook=cyc_trace_cycle_hook;
+    cyc_trace_cycle_hook=collision_cycle_observer;
+    cycle_hook_installed=1;
+    return 1;
+}
+void CollisionDispatchV11_DmaTraceClose(void)
+{
+    if (cycle_hook_installed) {
+        if (cyc_trace_cycle_hook==collision_cycle_observer)
+            cyc_trace_cycle_hook=previous_cycle_hook;
+        cycle_hook_installed=0;
+        previous_cycle_hook=NULL;
+    }
+    if (dma_trace) { fclose(dma_trace); dma_trace=NULL; }
 }
 
 int CollisionDispatchV11_Register(void)
