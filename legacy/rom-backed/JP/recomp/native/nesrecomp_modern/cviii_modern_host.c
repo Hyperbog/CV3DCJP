@@ -106,6 +106,8 @@ static bool cviii_option(void *context, const char *name, const char *value)
 #ifdef CVIII_COLLISION_V11_SHADOW
     if (!strcmp(name, "--collision-v11-rom"))
         return CollisionDispatchV11_LoadRom(value) && CollisionDispatchV11_Enable();
+    if (!strcmp(name, "--collision-v11-trace"))
+        return CollisionDispatchV11_TraceOpen(value);
 #endif
     if (!strcmp(name, "--edition")) return cviii_edition(state, value);
     if (!strcmp(name, "--asset-index")) return cviii_room_diag_load_chr(value);
@@ -303,6 +305,7 @@ static const RecompRuntimeUiCallbacks cviii_menu_callbacks = {
 static const CycHostOption cviii_options[] = {
 #ifdef CVIII_COLLISION_V11_SHADOW
     {"--collision-v11-rom", true, "Opt-in read-only FCDE dispatch shadow; authentic local ROM path"},
+    {"--collision-v11-trace", true, "New private CSV of original NESRecomp FCDE entry/return states"},
 #endif
     {"--edition", true, "Original or Enhanced host mode (Original default)"},
     {"--unlimited-sprites", true, "EXPERIMENTAL: draw all OAM pieces (0/1)"},
