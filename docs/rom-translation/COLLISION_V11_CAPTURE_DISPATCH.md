@@ -29,10 +29,14 @@ Only the fixed bank and original physical bank 14 are accepted. Other
    `-DJP_GAME_CONFIG=<private-complete-game.toml>`,
    and the original `-DJP_ORIGINAL_JP_ROM=<private-Japanese-ROM>`.
 3. Launch that isolated diagnostic build with
-   `--collision-v11-rom <private-Japanese-ROM>`.
+   `--collision-v11-rom <private-Japanese-ROM>` and
+   `--collision-v11-trace <new-private-native-CSV-path>`.
    This loads a private verified image and enables the two read-only callbacks.
    Do not enable these callbacks in the shipped default executable.
-4. `CollisionDispatchV11_GetStats()` exposes:
+4. The native CSV uses the same 15-column register/RAM/cycle format as MesenCE.
+   The file is created only when the optional trace path is supplied; each
+   completed entry/return is flushed immediately. No file is added to Git.
+5. `CollisionDispatchV11_GetStats()` exposes:
    entry hits, shadow-ready, rejected probes, matched returns, mismatches,
    and abandoned nested entries. A match is an **instruction-boundary**
    comparison of A/X/Y/P/SP, 2-KiB RAM, PC and total guest CPU cycles.
@@ -64,7 +68,10 @@ py -3 tools/instrumentation/verify_fcde_trace_gate_v11.py `
 ```
 
 The report is evidence of *reported* emulator register/cycle totals only.
-CSV file SHA-256 cannot prove the capture was made by MesenCE. We require
+CSV file SHA-256 cannot prove the capture was made by MesenCE. The native
+CSV is a separate original-emulator execution observation; two files from
+different runs are NOT a paired comparison without identical inputs and
+replay state. We require
 paired input/movie, emulator build identity, and native side trace before
 accepting parity. No per-cycle PPU/APU/DMA/IRQ/NMI/VRC6 equivalence has been
 established. **Zero original PRG bytes are retired.**
