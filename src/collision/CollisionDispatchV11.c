@@ -114,6 +114,17 @@ static int fcde_entry(uint16_t pc)
 {
     ++stats.entry_hits;
     if (pending) { pending=0; ++stats.abandoned_entry; }
+    /* Pinned host applies custom options BEFORE --hash-out activates tracing.
+     * Enforce cycle collection here, at execution time, not during Open(). */
+    if (dma_trace && !cyc_trace_enabled) {
+        static int warned;
+        if (!warned) {
+            fprintf(stderr,"Collision v11 DMA trace requires --hash-out at execution\n");
+            warned=1;
+        }
+        ++stats.probe_rejected;
+        return 0;
+    }
     if (!loaded || pc!=0xFCDEu || cpu.pc!=pc || !original_mapping() ||
         !cyc_cpu_ram()) { ++stats.probe_rejected; return 0; }
     uint8_t sp=cpu.s;
@@ -228,7 +239,9 @@ int CollisionDispatchV11_DmaTraceOpen(const char *path)
 {
     /* --hash-out must activate the pinned engine's actual cycle tracer.
      * Never silently enable/disable tracing or overwrite another callback. */
-    if (!cyc_trace_enabled || dma_trace || !path || !*path) return 0;
+    /* cyc_trace_enabled is set AFTER cyc_session_start in pinned cyc_host.c.
+     * The entry hook verifies tracing when execution actually begins. */
+    if (dma_trace || !path || !*path) return 0;
     if (cyc_trace_cycle_hook==collision_cycle_observer) return 0;
     FILE *existing=fopen(path,"rb");
     if (existing) { fclose(existing); return 0; }
