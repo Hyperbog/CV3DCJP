@@ -1,5 +1,5 @@
 /* NESRecomp cycle-backend read-only FCDE shadow; never handles a call.
- * Initial verified slice: bank14 JSR $8345 -> $FCDE -> $8348.
+ * Authentic bank-14 callers: $8345, $8429, $96E4, $96ED.
  * This is instruction-boundary parity, NOT per-bus-cycle parity.
  */
 #include "CollisionDispatchV11.h"
@@ -12,13 +12,25 @@
 #include <string.h>
 
 #define ENTRY_ID "cv3dcjp.collision.v11.entry"
-#define RETURN_ID "cv3dcjp.collision.v11.return.8348"
 #define JP_FNV64 UINT64_C(0x76615b120049ad3f)
-#define JP_CALLER 0x8345u
-#define JP_RETURN 0x8348u
+
+typedef struct {
+    const char *id;
+    uint16_t caller, return_pc;
+} CollisionHookSiteV11;
+/* All caller JSRs and four return opcodes independently verified from the
+ * original Japanese ROM. These are NOT a claim of complete caller coverage. */
+static const CollisionHookSiteV11 sites[] = {
+    {"cv3dcjp.collision.v11.return.8348",0x8345u,0x8348u},
+    {"cv3dcjp.collision.v11.return.842c",0x8429u,0x842cu},
+    {"cv3dcjp.collision.v11.return.96e7",0x96e4u,0x96e7u},
+    {"cv3dcjp.collision.v11.return.96f0",0x96edu,0x96f0u}
+};
+#define N_SITES (sizeof sites / sizeof sites[0])
 
 static uint8_t rom[COLLISION_ROM_BYTES];
 static unsigned loaded, pending;
+static uint16_t active_caller, active_return;
 static CollisionLivePreview expected;
 static CollisionLiveSnapshot started;
 static CollisionDispatchV11Stats stats;
@@ -69,16 +81,21 @@ static int fcde_entry(uint16_t pc)
     const uint8_t *ram=cyc_cpu_ram();
     uint16_t stored=(uint16_t)ram[0x100u+(uint8_t)(sp+1u)] |
          (uint16_t)((uint16_t)ram[0x100u+(uint8_t)(sp+2u)]<<8);
-    if (stored!=JP_CALLER+2u) return 0;  /* all other known callers are out of slice */
+    const CollisionHookSiteV11 *site=NULL;
+    for (size_t i=0;i<N_SITES;++i)
+        if (stored==(uint16_t)(sites[i].caller+2u)) { site=&sites[i]; break; }
+    if (!site) return 0; /* Unknown callers remain on the original CPU. */
     CollisionLiveSnapshot snapshot;
     capture(&snapshot);
-    if (CollisionLive_ProbeFCDE(&snapshot,JP_CALLER,rom,sizeof rom,&expected)
+    if (CollisionLive_ProbeFCDE(&snapshot,site->caller,rom,sizeof rom,&expected)
         !=COLLISION_LIVE_READY_FOR_SHADOW ||
         expected.runtime_commit_authorized) {
         ++stats.probe_rejected;
         return 0;
     }
     started=snapshot;
+    active_caller=site->caller;
+    active_return=site->return_pc;
     pending=1;
     ++stats.shadow_ready;
     return 0;
@@ -102,7 +119,7 @@ static void write_trace(void)
     const uint8_t *ram=cyc_cpu_ram();
     if (!ram) return;
     fprintf(trace,"%u,%llu,%llu,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,",
-            (unsigned)JP_CALLER,
+            (unsigned)active_caller,
             (unsigned long long)b->cpu_cycles,
             (unsigned long long)cyc_cycle_count(),
             b->cpu.a,b->cpu.x,b->cpu.y,b->cpu.sp,b->cpu.p,
@@ -116,9 +133,9 @@ static void write_trace(void)
 
 static int fcde_return(uint16_t pc)
 {
-    if (!pending) return 0;
+    if (!pending || pc!=active_return) return 0;
     pending=0;
-    if (!loaded || pc!=JP_RETURN || cpu.pc!=pc || !original_mapping() ||
+    if (!loaded || cpu.pc!=pc || !original_mapping() ||
         !cyc_cpu_ram()) { ++stats.mismatched_return; return 0; }
     write_trace();
     const CollisionLiveSnapshot *s=&expected.after;
@@ -153,7 +170,11 @@ int CollisionDispatchV11_Register(void)
 {
     if (!nes_mod_register_function_entry_plugin(ENTRY_ID,0xFCDEu,fcde_entry))
         return 0;
-    return nes_mod_register_function_entry_plugin(RETURN_ID,JP_RETURN,fcde_return);
+    for (size_t i=0;i<N_SITES;++i)
+        if (!nes_mod_register_function_entry_plugin(sites[i].id,
+                sites[i].return_pc,fcde_return))
+            return 0;
+    return 1;
 }
 
 int CollisionDispatchV11_LoadRom(const char *path)
@@ -174,9 +195,12 @@ int CollisionDispatchV11_LoadRom(const char *path)
 
 int CollisionDispatchV11_Enable(void)
 {
-    if (!loaded) return 0;
-    if (!nes_mod_set_function_hook_enabled(ENTRY_ID,1)) return 0;
-    if (nes_mod_set_function_hook_enabled(RETURN_ID,1)) return 1;
+    if (!loaded || !nes_mod_set_function_hook_enabled(ENTRY_ID,1)) return 0;
+    size_t i=0;
+    for (;i<N_SITES;++i)
+        if (!nes_mod_set_function_hook_enabled(sites[i].id,1)) break;
+    if (i==N_SITES) return 1;
+    while (i>0) (void)nes_mod_set_function_hook_enabled(sites[--i].id,0);
     (void)nes_mod_set_function_hook_enabled(ENTRY_ID,0);
     return 0;
 }
