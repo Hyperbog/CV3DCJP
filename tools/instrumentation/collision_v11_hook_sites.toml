@@ -1,0 +1,13 @@
+# MERGE these records into an owner-local, complete game.toml.
+# NOT a stand-alone game.toml and NOT enabled in the default release.
+# Verified against Japanese ROM SHA256 958a4b5e...d7a28.
+# The callbacks always return 0, executing original 6502 CPU cycles.
+[[mod_function_hook]]
+id = "cv3dcjp.collision.v11.entry"
+addr = 0xFCDE
+bytes = "48 A5 65 30"
+
+[[mod_function_hook]]
+id = "cv3dcjp.collision.v11.return.8348"
+addr = 0x8348
+bytes = "D0 09 A5 08"
