@@ -108,9 +108,9 @@ this particular CSV in the current execution environment.
 Owner-side ROM opcode replay:
 
 ```powershell
-py -3 tools/instrumentation/verify_fcde_rom_capture_v11.py \`
-  --rom 'C:\NESDev\AkumajouDensetsu\Akumajou Densetsu (Japan).nes' \`
-  --trace 'PATH_TO_CAPTURE\cv3dcjp-fcde-v11-20261103-211957.csv' \`
+py -3 tools/instrumentation/verify_fcde_rom_capture_v11.py `
+  --rom 'C:\NESDev\AkumajouDensetsu\Akumajou Densetsu (Japan).nes' `
+  --trace 'PATH_TO_CAPTURE\cv3dcjp-fcde-v11-20261103-211957.csv' `
   --report 'data/generated/collision-v11-rom-replay.json'
 ```
 
