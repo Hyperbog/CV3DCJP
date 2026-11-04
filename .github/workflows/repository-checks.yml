@@ -65,3 +65,12 @@ jobs:
           cc -std=c11 -Wall -Wextra -Werror -Wno-unused-function \
             -I src/collision -c src/collision/CollisionLive.c \
             -o /tmp/cv3dcjp_collision_live_v11.o
+          cc -std=c11 -Wall -Wextra -Wno-unused-function \
+            -DCVIII_COLLISION_V11_SHADOW=1 \
+            -I src/collision \
+            -I upstream/nesrecomp/runner/cyc \
+            -I upstream/nesrecomp/runner/include \
+            -I legacy/rom-backed/JP/recomp/native/enhanced \
+            -I legacy/rom-backed/JP/recomp/native/nesrecomp_modern \
+            -c legacy/rom-backed/JP/recomp/native/nesrecomp_modern/cviii_modern_host.c \
+            -o /tmp/cv3dcjp_collision_host_v11.o
