@@ -6,6 +6,7 @@ set(NESRECOMP_EXTERNAL_ROOT "" CACHE PATH "Existing upstream mstan/nesrecomp che
 set(JP_ORIGINAL_JP_ROM "" CACHE FILEPATH "Private authenticated Japanese ROM")
 set(JP_GAME_CONFIG "" CACHE FILEPATH "Optional game.toml")
 option(JP_CYCLE_HEADLESS "Compile without SDL2 window/audio" OFF)
+option(JP_COLLISION_V11_SHADOW "Opt-in read-only CPU dispatch shadow; requires hook-aware game.toml" OFF)
 
 if(NOT EXISTS "${NESRECOMP_EXTERNAL_ROOT}/runner/cyc/project.cmake")
     message(FATAL_ERROR "Set NESRECOMP_EXTERNAL_ROOT to your existing NESRecomp checkout")
@@ -20,6 +21,9 @@ file(SHA256 "${JP_ORIGINAL_JP_ROM}" JP_ROM_SHA256)
 set(JP_EXPECTED_SHA256 "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28")
 if(NOT JP_ROM_SIZE EQUAL 393232 OR NOT JP_ROM_SHA256 STREQUAL JP_EXPECTED_SHA256)
     message(FATAL_ERROR "Refusing different or modified ROM: expected Japanese Mapper 24 SHA256 ${JP_EXPECTED_SHA256}")
+endif()
+if(JP_COLLISION_V11_SHADOW AND NOT JP_GAME_CONFIG)
+    message(FATAL_ERROR "v11 shadow requires owner-local game.toml with both explicitly declared [[mod_function_hook]] sites")
 endif()
 if(JP_GAME_CONFIG AND NOT EXISTS "${JP_GAME_CONFIG}")
     message(FATAL_ERROR "JP_GAME_CONFIG was supplied but the file does not exist")
@@ -99,6 +103,21 @@ nesrecomp_add_cycle_game(jp_akumajou_densetsu_modern
     ROM "${JP_ORIGINAL_JP_ROM}"
     HOST_EXTRAS ${JP_MODERN_HOST_SOURCES}
     ${JP_GAME_OPTIONS})
+# v11 opt-in: only a read-only CPU dispatch observation; never replaces code.
+# Preserve the default game, tests, and upstream checkout unchanged.
+if(JP_COLLISION_V11_SHADOW)
+    set(JP_COLLISION_V11_DIR "${CMAKE_CURRENT_LIST_DIR}/../../../../../../src/collision")
+    target_sources(jp_akumajou_densetsu_modern PRIVATE
+        "${JP_COLLISION_V11_DIR}/Collision.c"
+        "${JP_COLLISION_V11_DIR}/CollisionLive.c"
+        "${JP_COLLISION_V11_DIR}/CollisionDispatchV11.c")
+    target_include_directories(jp_akumajou_densetsu_modern PRIVATE
+        "${JP_COLLISION_V11_DIR}"
+        "${NESRECOMP_EXTERNAL_ROOT}/runner/include")
+    target_compile_definitions(jp_akumajou_densetsu_modern PRIVATE
+        CVIII_COLLISION_V11_SHADOW=1)
+endif()
+
 target_sources(jp_akumajou_densetsu_modern PRIVATE
     "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_native_5h8s.c"
     "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_native_5h8u.c") # CVIII-5H8U
