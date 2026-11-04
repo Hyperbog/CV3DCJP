@@ -86,3 +86,17 @@ native and MesenCE CSV capture scripts now exist, but **neither runtime was
 executed in this environment**. No CPU/PPU/APU/DMA/VRC6 bus-interleaving
 verification or live native substitution has occurred. Source is ready for
 owner-side diagnostic build and trace collection; **0 code bytes retired**.
+
+## Collision v11 actual Mesen capture analyzed — 2026-11-03
+
+Owner uploaded a complete v11 CSV (SHA-256
+`ca19f8453f2b0909f51704e75b809eaeacf0243109a7a4e1efff3b5d1ebbaf19`).
+The authentic Japanese ROM and strict preflight passed. The recorded 128
+`$FCDE` calls originate at `$8429` (66), `$96E4` (31), and `$96ED` (31).
+ROM-opcode replay reproduced 128/128 registers, status flags, stack and RAM;
+110/128 exact instruction-cycle totals and 18 additional **+4-cycle** elapsed
+clock differences. DMC DMA is not recorded; no hardware explanation is yet
+proven. The optional NESRecomp observer was extended to these caller paths;
+upstream-pinned compilation passes CI. The uploaded capture has not been run
+through actual native C in this environment. No native runtime or hardware
+bus-cycle parity proof; no code retired. Private ROM and CSV stay out of Git.
