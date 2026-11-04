@@ -26,5 +26,8 @@ int CollisionDispatchV11_Enable(void);
 /* Writes the 15-column entry/return CSV into a new owner-local file. */
 int CollisionDispatchV11_TraceOpen(const char *path);
 void CollisionDispatchV11_TraceClose(void);
+/* Requires upstream per-cycle tracing enabled by --hash-out FILE. */
+int CollisionDispatchV11_DmaTraceOpen(const char *path);
+void CollisionDispatchV11_DmaTraceClose(void);
 void CollisionDispatchV11_GetStats(CollisionDispatchV11Stats *out);
 #endif
