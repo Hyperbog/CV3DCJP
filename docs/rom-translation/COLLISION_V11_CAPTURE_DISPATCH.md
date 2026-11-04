@@ -132,9 +132,12 @@ advances and OAM $2004 writes. Nothing changes CPU or hardware cycles.
 A Mesen +4 clock discrepancy is never silently normalized as DMA.
 
 The host must be started with --hash-out FILE, which enables its real cycle
-tracer, BEFORE the adapter's --collision-v11-dma-trace FILE option.
-Without tracing, the adapter refuses to capture DMA instead of reporting
-fake zero stalls. An existing trace callback is chained, not overwritten.
+tracer. The pinned host applies the game's command-line options before it
+turns tracing on. Consequently the sidecar registers during option processing
+and checks cyc_trace_enabled at each $FCDE execution boundary. Without real
+tracing it refuses to capture that interval, counts the rejected probe, and
+prints a warning once. It never reports fake zero DMA stalls.
+An existing trace callback is chained, not overwritten.
 
 The following are arguments for the owner-built private
 jp_akumajou_densetsu_modern executable (not a standalone command).
