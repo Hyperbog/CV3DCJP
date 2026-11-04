@@ -1,0 +1,45 @@
+{
+  "schema": "cv3dcjp-jp-fcde-live-capture-rom-opcode-replay-v11",
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "capture_csv_sha256": "ca19f8453f2b0909f51704e75b809eaeacf0243109a7a4e1efff3b5d1ebbaf19",
+  "capture_filename": "cv3dcjp-fcde-v11-20261103-211957.csv",
+  "capture_kind": "owner-uploaded CSV attributed to MesenCE; emulator provenance cannot be independently authenticated",
+  "rom_identity_pass": true,
+  "strict_trace_preflight_pass": true,
+  "samples": 128,
+  "distinct_caller_pcs": [
+    "0x8429",
+    "0x96E4",
+    "0x96ED"
+  ],
+  "caller_counts": {
+    "0x8429": 66,
+    "0x96E4": 31,
+    "0x96ED": 31
+  },
+  "original_rom_rts_pcs": {
+    "0xFD3F": 80,
+    "0xFD49": 48
+  },
+  "unique_original_rom_instruction_addresses_executed": 60,
+  "exact_register_ram_flags_and_instruction_cycle_matches": 110,
+  "register_ram_flags_stack_matches": 128,
+  "cycle_mismatch_samples": 18,
+  "cycle_residuals_observed_minus_rom": {
+    "0": 110,
+    "4": 18
+  },
+  "plus4_residuals_by_caller": {
+    "0x8429": 12,
+    "0x96E4": 3,
+    "0x96ED": 3
+  },
+  "dma_stall_hypothesis": "Compatible with 4-cycle DMC DMA; not independently proved because no DMC/bus event trace was collected",
+  "original_rom_instruction_reference_executed": true,
+  "canonical_native_C_compared_with_uploaded_csv": false,
+  "live_nesrecomp_capture_samples": 0,
+  "hardware_bus_cycle_parity_verified": false,
+  "native_runtime_substitution_executed": false,
+  "retired_prg_bytes": 0,
+  "privacy_note": "Only aggregate measurements and capture SHA-256 committed; no private ROM/CSV/RAM snapshots tracked."
+}
