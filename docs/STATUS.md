@@ -56,3 +56,21 @@ Owner supplied a private single-run v3 capture (SHA-256 `e4896489df9fa6bbc6f5a86
 ## Collision native CPU-cycle shadow — v10 (2026-11-03)
 
 The native C translation of original JP $FCDE now reports exact NMOS 6502 CPU-cycle totals for 2,200 synthetic ROM-reference comparisons (all 121 decoded instructions exercised), matching registers, flags, stack state and 2 KiB RAM. A read-only, fail-closed substitution probe validates mapper, caller JSR, return stack and ROM fingerprint. The original NESRecomp host currently has no validated CPU instruction-fetch/bus-cycle interception hook. **No live native substitution was executed; no original machine-code bytes have been retired.** Mesen2 source capture and offline verifier are included but have not been run as a new live capture. Collision inventory unchanged: 1,264 known executable bytes, 1,150 natively implemented, 114 open, 0 retired. See [Collision.md](rom-translation/Collision.md).
+
+
+## Collision v11 ROM-backed trace preflight — 2026-11-03
+
+Original owner-supplied Japanese ROM SHA-256 independently matched the project
+fingerprint. The new strict v11 offline capture gate validates 36 original
+bank-14 JSR $FCDE sites and entry-stack/selector/cycle CSV invariants before
+invoking the existing v10 C shadow verifier. Five synthetic preflight tests
+pass; this does not authenticate provenance of a purported Mesen2 CSV.
+A raw bank-14 scan finds 88 matching three-byte opcode sequences, NOT 88
+proven executable callers. The prior 34 bounded translated caller entries
+remain a separate count. See docs/rom-translation/Collision.md and
+docs/rom-translation/evidence/fcde_v11_rom_callsite_audit.json.
+
+New live Mesen samples: 0; cycle-interleaved bus and hardware parity: untested;
+NESRecomp CPU dispatch substitution: not installed; retired executable bytes: 0.
+The collision ledger remains 1,264 identified code bytes, 1,150 implemented,
+114 open and 60 classified data. The original gameplay baseline is untouched.
