@@ -140,3 +140,28 @@ docs/rom-translation/evidence/fcde_v11_2_sync_dmc_irq_owner_capture.json.
 Original collision source: 1,150 / 1,264 completed (114 open);
 0 original PRG bytes retired. No native paired runtime capture or
 CPU/DMA per-bus-cycle equivalence proof.
+
+
+## Collision Phase 1 — native replay input prepared, runtime pending (2026-11-04)
+
+Authentic owner Mesen v11.2 input history (9,226 post-reset polls) reduced
+losslessly to 23 controller-state runs including the released baseline.
+The 128 collision calls fall between CPU clocks 26,000,844 and
+28,950,229, near Mesen input-poll frames 874 through 973.
+
+The public ROM-guarded input converter produces three UNVERIFIED native
+frame-origin candidates (0/1/2) and a manifest. The isolated Windows
+native launch script is committed, checks pinned NESRecomp and the ROM,
+copies the private game configuration, builds the opt-in observer, runs
+CTest, and captures CPU/DMA and IRQ-frame bus observations. The owner
+original-mode build is not modified.
+
+The paired verifier now treats the ROM-proven IRQ overlap as a distinct
+timing case: no CPU-instruction-plus-DMA false acceptance for the +246
+case. Regression tests cover input semantics and IRQ clock accounting.
+No owner-private complete game.toml or Windows executable is present
+in the current environment, so there are **zero actual new NESRecomp
+gameplay traces**. Frame synchronization, DMC event bus parity and
+native substitution remain open. Original code retired: 0 bytes.
+
+See docs/rom-translation/COLLISION_V11_PHASE1_INPUT_REPLAY.md.
