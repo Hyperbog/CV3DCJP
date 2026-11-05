@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests' / 'references'))
 import fcde_reference as reference
 import verify_fcde_trace_gate_v11 as gate
+import verify_fcde_sync_dmc_irq_v11 as synchronized
 
 DMA_COLUMNS = ('sample', 'caller_pc', 'entry_cycle', 'return_cycle',
                'instruction_cycles', 'dma_cycles', 'dma_halt_cycles',
@@ -69,6 +70,37 @@ def reference_cycles(rom, row):
     return output.cycles
 
 
+def original_irq_signature(rom, row, reference_cpu_cycles, observed_cpu_cycles):
+    """Recognize original ROM IRQ stack footprint; NEVER guess IRQ clock cost.
+
+    Only invoked for substantial unexplained Mesen clock residuals.
+    Exact CPU-side RAM/stack evidence is mandatory; no stack pattern shortcut.
+    """
+    if observed_cpu_cycles-reference_cpu_cycles < 20:
+        return False
+    if len(rom)!=393232 or hashlib.sha256(rom).hexdigest()!=reference.ROM_SHA:
+        return False
+    cycles, regs, flags, diffs, before, after = synchronized.rom_cycles_and_state(rom,row)
+    if cycles!=reference_cpu_cycles or not regs or not flags:
+        return False
+    return synchronized.irq_stack_matches(rom,row,diffs,before,after)
+
+
+def compare_clock(residual_cpu, native_cpu, original_cpu, dma, irq_overlap):
+    """Returns observed timing errors, and whether IRQ bus timing is OPEN."""
+    errors=[]
+    if residual_cpu!=native_cpu:errors.append('cross_emulator_total_cycles')
+    if irq_overlap:
+        # The original IRQ handler adds instructions and writes RAM; its cost
+        # cannot be treated as an ordinary DMC stall or silently subtracted.
+        if dma>native_cpu-original_cpu:
+            errors.append('native_dma_exceeds_excess_elapsed_time')
+        return errors,True
+    if native_cpu!=original_cpu+dma:
+        errors.append('native_dma_time_not_accounted')
+    return errors,False
+
+
 def verify(rom_path, mesen_csv, native_csv, native_dma_csv, report_path):
     rom = Path(rom_path).read_bytes()
     # Both images are checked independently. This also enforces the
@@ -81,6 +113,7 @@ def verify(rom_path, mesen_csv, native_csv, native_dma_csv, report_path):
     if len(mesen) != len(native) or len(mesen) != len(dma):
         raise ValueError('capture lengths differ: cannot pair samples')
     failures, results = [], []
+    irq_unresolved=0
     for i, (m, n, d) in enumerate(zip(mesen, native, dma), 1):
         errors = []
         caller = unsigned(m, 'caller_pc', i, 65535)
@@ -117,11 +150,13 @@ def verify(rom_path, mesen_csv, native_csv, native_dma_csv, report_path):
         if rom_clocks is not None:
             if unsigned(d,'instruction_cycles',i) != rom_clocks:
                 errors.append('native_shadow_rom_instruction_cycles')
-            if native_clocks != rom_clocks + stalls:
-                errors.append('native_dma_time_not_accounted')
-            if mesen_clocks != native_clocks:
-                errors.append('cross_emulator_total_cycles')
+            interrupt_overlap=original_irq_signature(rom,m,rom_clocks,mesen_clocks)
+            cycle_errors,open_irq=compare_clock(mesen_clocks,native_clocks,
+                                               rom_clocks,stalls,interrupt_overlap)
+            errors.extend(cycle_errors)
+            if open_irq:irq_unresolved+=1
         else:
+            interrupt_overlap=False
             errors.append('rom_instruction_unavailable')
         item = {'sample':i, 'caller':f'0x{caller:04X}',
                 'mesen_cycles':mesen_clocks,
@@ -131,6 +166,8 @@ def verify(rom_path, mesen_csv, native_csv, native_dma_csv, report_path):
                 'nesrecomp_dmc_fetches_confirmed':dmc,
                 'mesen_clock_residual':None if rom_clocks is None
                                          else mesen_clocks-rom_clocks,
+                'irq_rom_stack_signature_observed':interrupt_overlap,
+                'irq_bus_cycle_proof_pending':interrupt_overlap,
                 'equal':not errors, 'differences':errors}
         results.append(item)
         if errors: failures.append(item)
@@ -142,6 +179,8 @@ def verify(rom_path, mesen_csv, native_csv, native_dma_csv, report_path):
         'native_dma_sha256':hashlib.sha256(Path(native_dma_csv).read_bytes()).hexdigest(),
         'samples':len(results), 'pairs_matching':len(results)-len(failures),
         'pairs_failing':len(failures),
+        'interrupt_bus_cycle_unresolved_samples':irq_unresolved,
+        'full_timing_acceptance':len(failures)==0 and irq_unresolved==0,
         'synchronized_start_and_movie_provenance_verified':False,
         'native_execution_performed_by_this_script':False,
         'mesen_dmc_bus_events_available':False,
@@ -164,7 +203,8 @@ def main():
     r=verify(args.rom,args.mesen,args.native,args.dma,args.report)
     print(f"Paired FCDE: {r['pairs_matching']}/{r['samples']} "
           "entry/return/timing/DMA checks; no bus or DMC parity claim")
-    return int(bool(r['pairs_failing']))
+    return int(bool(r['pairs_failing'] or
+                    r['interrupt_bus_cycle_unresolved_samples']))
 
 
 if __name__=='__main__':
