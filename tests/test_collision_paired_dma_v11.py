@@ -93,6 +93,21 @@ class PairedContract(unittest.TestCase):
         r=self.verify()
         self.assertIn('dma_sequence',r['failures'][0]['differences'])
 
+    def test_rom_proven_irq_is_not_mistaken_for_dma_cycles(self):
+        errors,pending=paired.compare_clock(398,398,152,4,True)
+        self.assertEqual(errors,[])
+        self.assertTrue(pending)
+        wrong,pending=paired.compare_clock(398,398,152,4,False)
+        self.assertIn('native_dma_time_not_accounted',wrong)
+        self.assertFalse(pending)
+
+    def test_irq_cannot_hide_clock_or_dma_mismatch(self):
+        errors,pending=paired.compare_clock(398,397,152,4,True)
+        self.assertTrue(pending)
+        self.assertIn('cross_emulator_total_cycles',errors)
+        bad,_=paired.compare_clock(398,398,152,247,True)
+        self.assertIn('native_dma_exceeds_excess_elapsed_time',bad)
+
     def test_incorrect_rom_preflight_must_reject(self):
         with self.assertRaisesRegex(ValueError,'size/SHA256'):
             paired.verify(self.rom,self.mesen,self.native,
