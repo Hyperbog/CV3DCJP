@@ -79,3 +79,8 @@ jobs:
         run: |
           python3 -m py_compile tools/instrumentation/verify_fcde_sync_dmc_irq_v11.py
           python3 -m unittest discover -s tests -p 'test_collision_sync_dmc_irq_v11.py' -v
+
+      - name: Validate v11.2 controller replay conversion contracts
+        run: |
+          python3 -m py_compile tools/instrumentation/collision_v11_make_native_input.py
+          python3 -m unittest discover -s tests -p 'test_collision_v11_input_replay.py' -v
