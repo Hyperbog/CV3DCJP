@@ -84,3 +84,4 @@ jobs:
         run: |
           python3 -m py_compile tools/instrumentation/collision_v11_make_native_input.py
           python3 -m unittest discover -s tests -p 'test_collision_v11_input_replay.py' -v
+          python3 -m unittest discover -s tests -p 'test_collision_paired_dma_v11.py' -v
