@@ -199,3 +199,39 @@ frame/input alignment and native substitution remain open.
 0 original PRG bytes retired. See
 docs/rom-translation/evidence/fcde_v11_3_native_212_call_rom_dma_owner_capture.json
 and tools/instrumentation/verify_fcde_native_zip_v11.py.
+
+
+## Collision v11.4 — all three owner replay shifts analyzed (2026-11-05)
+
+The complete owner diagnostic ZIP (SHA-256
+851c6d9d662e7f45fa62093527f9e3ff0dc08de3813d056c61bd6b24b46df694)
+contains the pinned original-ROM native CPU/DMA traces for
+shift 0 (212 calls), shift 1 (209) and shift 2 (206).
+The native binary hash equals all three execution receipts.
+Original-ROM 6502 replay and C shadow predicted registers,
+status flags and instruction clocks match 627/627; 625
+uninterrupted samples match full RAM and elapsed ROM+DMA
+clocks. Two samples are ROM-vector and bus-trace verified
+IRQ overlaps, separately classified as +242 CPU clocks
+and eight handler stack writes.
+
+Shift 1 reproduces ALL 128 Mesen caller sites in order, with
+128/128 CPU register/flag state and bounded ROM write-sequence
+matches. 32/128 CPU entry clocks match exactly; median
+entry delta is 2 clocks. RAM snapshots still differ in
+2–8 historical bytes per call, restricted across all calls
+to nine addresses. ROM opcodes demonstrate none of the
+observed differences are read before they are written
+on the bounded $FCDE paths. This does NOT prove full
+RAM-equivalence of the whole machine.
+
+Cross-machine DMC event phase remains different: 98/128
+same elapsed clocks, 16 Mesen-only four-cycle reader
+advances, 14 native-only four-cycle stalls. At the
+corresponding sample 101, both machines enter at CPU
+28,683,874 and original IRQ vector reaches $E0F5,
+but Mesen returns +4 clocks later with one DMC reader
+advance absent in the native interval. No per-bus-cycle
+Mesen DMC event trace or VRC6/IRQ source parity exists.
+Original CPU remains active. Zero code bytes retired.
+See docs/rom-translation/evidence/fcde_v11_4_three_shift_owner_sync_rom_audit.json.
