@@ -118,9 +118,19 @@ if(JP_COLLISION_V11_SHADOW)
         CVIII_COLLISION_V11_SHADOW=1)
 endif()
 
-target_sources(jp_akumajou_densetsu_modern PRIVATE
-    "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_native_5h8s.c"
-    "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_native_5h8u.c") # CVIII-5H8U
+# The 5H8S/5H8U selector observer functions rely on private cycle-engine
+# function-pointer symbols absent from clean pinned mstan/nesrecomp.
+# The read-only headless collision v11 diagnostic does not capture selector
+# writes. Link explicit HOST-only disabled entry points rather than inventing
+# engine callback pointers or editing the protected/original game build.
+if(JP_COLLISION_V11_SHADOW AND JP_CYCLE_HEADLESS)
+    target_sources(jp_akumajou_densetsu_modern PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_unavailable_collision_v11.c")
+else()
+    target_sources(jp_akumajou_densetsu_modern PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_native_5h8s.c"
+        "${CMAKE_CURRENT_LIST_DIR}/cviii_selector_native_5h8u.c")
+endif() # CVIII-5H8U
 target_compile_definitions(jp_akumajou_densetsu_modern PRIVATE CVIII_SELECTOR_TRACE_5H8S)
 # BEGIN CVIII-5H8S, game target only; existing tests are untouched.
 target_sources(jp_akumajou_densetsu_modern PRIVATE
