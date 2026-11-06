@@ -165,3 +165,37 @@ gameplay traces**. Frame synchronization, DMC event bus parity and
 native substitution remain open. Original code retired: 0 bytes.
 
 See docs/rom-translation/COLLISION_V11_PHASE1_INPUT_REPLAY.md.
+
+
+## Collision v11.3 — actual first pinned NESRecomp run analyzed (2026-11-05)
+
+Owner ZIP SHA-256:
+eb2bb7e3631273243756cceaa06a9f01511460254c8d0572c9434b1dd73fbcf6.
+Pinned original-ROM NESRecomp build at engine
+2b4fcdb98c9e702be3fb365cfc645003c50b5fc1 executed 1,000
+headless frames at input shift 0, PPU align 0, with read-only hooks.
+Captured **212 authentic collision CPU calls and 212 DMA sidecar rows**:
+$8429=128, $96E4=42, $96ED=42. Original JP ROM JSR bytes,
+bank selector and return stack passed on all 212. Independent original
+ROM opcode replay reproduced **212/212 full return registers, flags,
+stack and 2-KiB RAM**, and **212/212 native C-predicted CPU cycles**.
+Actual elapsed CPU clocks equal ROM instruction clocks plus observer
+DMA cycles for all **212/212** calls. DMA histogram: 193 no DMA,
+16 four-cycle stalls and 3 three-cycle stalls, 19 confirmed DMC fetches;
+zero unexplained residuals. These are original CPU runs, not executed
+native replacement.
+
+**Cross-emulator parity remains UNPROVEN**. Across all original
+128 Mesen and 212 native calls, **zero have an identical full caller,
+entry register/flags and 2-KiB RAM snapshot**; near clock alignment
+alone cannot authorize pairing. 66 Mesen calls have a native same-caller
+event within 100 clocks, but even the closest RAM snapshots differ
+by at least 15 bytes. Three compared calls have identical entry clocks
+yet 17–33 different RAM bytes. Native traced original ROM IRQ handler
+$E0F5 at cycle 28,654,127, **outside** captured collision calls;
+Mesen sample 101 shows an IRQ **inside** $96ED at
+cycles 28,683,874..28,684,272. Thus DMC/IRQ cross-engine parity,
+frame/input alignment and native substitution remain open.
+0 original PRG bytes retired. See
+docs/rom-translation/evidence/fcde_v11_3_native_212_call_rom_dma_owner_capture.json
+and tools/instrumentation/verify_fcde_native_zip_v11.py.
