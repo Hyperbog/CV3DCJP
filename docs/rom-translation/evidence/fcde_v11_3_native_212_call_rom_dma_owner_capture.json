@@ -1,0 +1,98 @@
+{
+  "schema": "cv3dcjp-collision-v11.3-native-owner-capture-original-rom-audit",
+  "owner_upload_zip_sha256": "eb2bb7e3631273243756cceaa06a9f01511460254c8d0572c9434b1dd73fbcf6",
+  "original_jp_rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "original_ROM_bytes": 393232,
+  "native_engine_commit": "2b4fcdb98c9e702be3fb365cfc645003c50b5fc1",
+  "native_executable_sha256": "dcd4619c3f034379ec7435dd6d7943f547c3a7b0eeb0ac4ae929fe6fc2658e91",
+  "input_schedule_sha256": "7018c0b3f2bbfbc20257a67e886e4b8b5b21b0e2d378cfcb4cf8446fca841a7e",
+  "session": {
+    "shift": 0,
+    "ppu_align": 0,
+    "frames": 1000,
+    "source": "owner-provided pinned NESRecomp host log, receipt, native CPU/DMA CSVs and one bus trace window",
+    "owner_emulator_provenance_cryptographically_verified": false
+  },
+  "native_observed": {
+    "calls": 212,
+    "dma_sidecar_rows": 212,
+    "caller_counts": {
+      "0x8429": 128,
+      "0x96E4": 42,
+      "0x96ED": 42
+    },
+    "strict_ROM_JSR_callsite_stack_and_PRG_mapping_checks_pass": 212,
+    "returned_A_X_Y_SP_P_matches_independent_original_ROM_opcode_reference": 212,
+    "full_2k_ram_matches_original_ROM_opcode_reference": 212,
+    "native_C_predicted_instruction_cycles_match_original_ROM_opcode_reference": 212,
+    "observed_elapsed_cycles_match_original_ROM_instructions_plus_observed_DMA": 212,
+    "unexplained_elapsed_cycle_residuals": 0,
+    "DMA_cycle_histogram": {
+      "0": 193,
+      "3": 3,
+      "4": 16
+    },
+    "confirmed_DMC_sample_reads": 19,
+    "OAM_DMA_writes": 0,
+    "original_ROM_FCDE_instruction_addresses_executed": 60
+  },
+  "original_mesen_v11_2_reference": {
+    "source_collision_samples": 128,
+    "observed_callers": {
+      "0x8429": 100,
+      "0x96E4": 14,
+      "0x96ED": 14
+    },
+    "exact_Caller_CPU_entry_registers_flags_and_2KB_RAM_pairs_anywhere_across_native_capture": 0,
+    "mesen_samples_with_a_same_caller_native_call_within_100_cpu_cycles": 66,
+    "min_RAM_byte_differences_for_those_near_calls": 15,
+    "median_RAM_byte_differences_for_those_near_calls": 28,
+    "examples": [
+      {
+        "mesen_sample": 5,
+        "native_sample": 6,
+        "mesen_entry_cycle": 26119320,
+        "native_entry_cycle": 26119320,
+        "entry_ram_bytes_differing": 33
+      },
+      {
+        "mesen_sample": 9,
+        "native_sample": 10,
+        "mesen_entry_cycle": 26238444,
+        "native_entry_cycle": 26238444,
+        "entry_ram_bytes_differing": 33
+      },
+      {
+        "mesen_sample": 33,
+        "native_sample": 34,
+        "mesen_entry_cycle": 26953145,
+        "native_entry_cycle": 26953145,
+        "entry_ram_bytes_differing": 17
+      }
+    ],
+    "same_execution_alignment_proven": false,
+    "cross_emulator_CPU_DMA_IRQ_bus_parity_proven": false
+  },
+  "IRQ": {
+    "native_E0F5_handler_insn_cycle_in_frame_962": 28654127,
+    "native_IRQ_vector_reads_at_cycles": [
+      28654125,
+      28654126
+    ],
+    "native_IRQ_overlap_observed_FCDE_call_intervals": 0,
+    "native_IRC_cycle_trace_is_single_frame": true,
+    "mesen_IRQ_overlap_sample": 101,
+    "mesen_IRQ_overlap_caller": "0x96ED",
+    "mesen_IRQ_overlap_entry_cycle": 28683874,
+    "mesen_IRQ_overlap_return_cycle": 28684272,
+    "same_IRQ_timing_not_established": true
+  },
+  "authorization": {
+    "native_C_replacement_enabled": false,
+    "retired_original_6502_bytes": 0,
+    "all_source_level_collision_ledger_implemented_bytes": 1150,
+    "identified_collision_executable_bytes": 1264,
+    "identified_open_bytes": 114
+  },
+  "privacy": "Only aggregated evidence hashes, counters, example cycle times, and findings committed; no original ROM, private input sequence, raw trace or 2KiB RAM snapshots."
+}
