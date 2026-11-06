@@ -130,3 +130,41 @@ separate pinned engine worktree. CMake regenerates the existing
 marked collision-v11-paired build tree and drops the obsolete
 selector objects from the target link. Do not reset or patch either
 engine worktree. The protected original game build is untouched.
+
+
+## v11.3 first actual native owner-run acceptance outcome
+
+The owner Windows diagnostic successfully executed the original
+Japanese ROM under pinned NESRecomp for 1,000 frames. Its 212
+collision CPU rows and 212 DMA rows pass original-ROM callsite,
+stack, mapped bank, independent ROM opcode return-state/RAM and
+instruction-cycle/DMA accounting for **212/212** observed calls.
+The DMA sidecar reports 16 four-cycle and three three-cycle
+DMC fetch stalls; zero unexplained native cycle residuals.
+
+However, the native shift=0, align=0 run does **NOT** pass the
+cross-emulator same-session gate: no full entry CPU+2KiB RAM
+state matches any of the 128 Mesen entries, even though 66
+Mesen entries have a same-caller native entry clock within 100.
+Native IRQ $E0F5 at CPU clock 28,654,127 in traced frame 962
+is outside captured collision calls. Mesen IRQ-overlap sample
+101 spans 28,683,874..28,684,272 *inside* caller $96ED.
+Thus original CPU and native-side timing accounting are verified
+locally, but **same-input PPU/IRQ alignment and hardware
+bus-cycle parity remain unproven**.
+
+To reproduce the ROM-backed audit on a private machine:
+
+    py -3 tools/instrumentation/verify_fcde_native_zip_v11.py --rom "<private-JP-ROM>" --zip "<owner-20261105-native-ZIP>" --mesen "<owner-v11.2-Mesen-CPU-CSV>" --report "<private-native-audit.json>"
+
+Next test two distinct candidate input phase shifts in the
+already built, protected headless diagnostic directory;
+do not select an offset without state equality:
+
+    & .\tools\windows\Invoke-CV3DCJP-CollisionV11Native.ps1 -Action Run -Engine "C:\NESDev\nesrecomp-collision-v11-pin" -GameConfig "$env:USERPROFILE\Downloads\game-cv3dcjp-original.toml" -InputDir "$env:USERPROFILE\Downloads\CV3DCJP-Collision-v11-Replay" -Shift 1 -Frames 1000 -Align 0
+    & .\tools\windows\Invoke-CV3DCJP-CollisionV11Native.ps1 -Action Run -Engine "C:\NESDev\nesrecomp-collision-v11-pin" -GameConfig "$env:USERPROFILE\Downloads\game-cv3dcjp-original.toml" -InputDir "$env:USERPROFILE\Downloads\CV3DCJP-Collision-v11-Replay" -Shift 2 -Frames 1000 -Align 0
+
+Keep both new private capture directories. No ROM, raw input
+history or RAM snapshots committed. Aggregate receipt:
+docs/rom-translation/evidence/fcde_v11_3_native_212_call_rom_dma_owner_capture.json.
+Original CPU still executes, 0 PRG bytes retired.
