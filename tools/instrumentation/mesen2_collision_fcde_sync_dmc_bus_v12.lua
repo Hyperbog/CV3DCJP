@@ -126,10 +126,19 @@ local function replay_input(mesen_frame)
   emu.setInput(replay_state[2],1)
 end
 
+local arm_path=assert(os.getenv('CV3DCJP_MESEN_ARM_FILE'),
+                      'Set private CV3DCJP_MESEN_ARM_FILE before running')
 local epoch=0
 emu.addEventCallback(function()
   epoch=epoch+1
-  if epoch==1 then replay_pos=1 end
+  if epoch==1 then
+    replay_pos=1
+    -- Enable patched debugger's REAL DMC bus reads only after this reset.
+    -- File is owner-private; no emulated memory or registers are changed.
+    local arm=assert(io.open(arm_path,'wb'),'Cannot create DMC reset marker')
+    arm:write('CV3DCJP-v12-reset-armed\\n')
+    arm:close()
+  end
 end,emu.eventType.reset)
 emu.addEventCallback(function()
   local state=emu.getState()
