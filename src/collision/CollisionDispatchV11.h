@@ -29,5 +29,8 @@ void CollisionDispatchV11_TraceClose(void);
 /* Requires upstream per-cycle tracing enabled by --hash-out FILE. */
 int CollisionDispatchV11_DmaTraceOpen(const char *path);
 void CollisionDispatchV11_DmaTraceClose(void);
+/* Strictly observed per-cycle DMA bus sidecar, paired with DmaTraceOpen. */
+int CollisionDispatchV11_DmaBusTraceOpen(const char *path);
+void CollisionDispatchV11_DmaBusTraceClose(void);
 void CollisionDispatchV11_GetStats(CollisionDispatchV11Stats *out);
 #endif
