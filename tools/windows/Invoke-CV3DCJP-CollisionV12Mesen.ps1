@@ -88,6 +88,7 @@ $session=Join-Path $root ('session-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))
 if (Test-Path $session) { throw 'Capture directory exists' }
 New-Item -ItemType Directory -Path $session -Force | Out-Null
 $env:CV3DCJP_MESEN_DMC_CSV=Join-Path $session 'mesen-real-dma-bus-v12.csv'
+$env:CV3DCJP_MESEN_ARM_FILE=Join-Path $session 'collision-v12-dma-armed.flag'
 $env:CV3DCJP_MESEN_OUTPUT_DIR=$session
 $env:CV3DCJP_MESEN_INPUT=(Resolve-Path -LiteralPath $inputs).Path
 Write-Host 'Open the ORIGINAL Japanese ROM in this private Mesen build.'
@@ -102,6 +103,7 @@ $csv=@(Get-ChildItem $session -File -Filter '*.csv')
 $names=@($csv | ForEach-Object { $_.Name })
 $realBus=Join-Path $session 'mesen-real-dma-bus-v12.csv'
 Need $realBus
+Need $env:CV3DCJP_MESEN_ARM_FILE
 if ((Get-Item -LiteralPath $realBus).Length -le 90) {
  throw 'Genuine MesenCE DMC bus trace contains no observed DMA rows'
 }
