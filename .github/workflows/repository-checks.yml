@@ -139,5 +139,35 @@ jobs:
           assert "MemoryOperationType::DmaRead" in source
           assert "MemoryOperationType::DmaWrite" in source
           assert "_cpu->IsDmcDma()" in source
-          assert "CV3DCJP_MESEN_DMC_CSV" in source
+          assert "getenv_s(" in source and "fopen_s(" in source
+          assert "std::getenv(" not in source and "std::fopen(" not in source
+          PY
+      - name: Reproduce owner C4996 legacy code and verify exact repair
+        run: |
+          git -C upstream/mesen restore -- Core/NES/Debugger/NesDebugger.cpp
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tools/instrumentation")
+          import prepare_mesen_dmc_bus_v12 as p
+          root=Path("upstream/mesen")
+          src=root/p.SOURCE
+          original=src.read_bytes()
+          src.write_bytes(p.instrumented(original,p.LEGACY_HELPER))
+          assert b"std::getenv(" in src.read_bytes()
+          assert b"std::fopen(" in src.read_bytes()
+          PY
+          python3 tools/instrumentation/prepare_mesen_dmc_bus_v12.py --private-source upstream/mesen --repair
+          python3 tools/instrumentation/prepare_mesen_dmc_bus_v12.py --private-source upstream/mesen --repair
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,"tools/instrumentation")
+          import prepare_mesen_dmc_bus_v12 as p
+          root=Path("upstream/mesen")
+          observed=(root/p.SOURCE).read_bytes()
+          original=p.checked_original(root.resolve())
+          assert observed==p.instrumented(original,p.HELPER)
+          assert b"getenv_s(" in observed and b"fopen_s(" in observed
+          assert b"std::getenv(" not in observed and b"std::fopen(" not in observed
           PY
