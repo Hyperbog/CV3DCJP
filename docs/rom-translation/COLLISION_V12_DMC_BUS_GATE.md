@@ -148,3 +148,35 @@ not altered. The owner should pull `main`, run only
 `-Action Build`, and provide the first compiler/SDK error lines
 from the log. Do not run `-Action Prepare` again or clean/reclone
 the pinned private checkout. Hardware parity remains open.
+
+
+## Exact MesenCE MSVC C4996 owner-log failure and isolated repair (2026-11-06)
+
+Owner supplied the 170,253-line MSBuild diagnostic log for the
+separately patched MesenCE source. The first real failure is
+Core/NES/Debugger/NesDebugger.cpp(19,36), compiler C2220. Its four
+associated warnings are C4996, for two uses of std::getenv and two
+uses of std::fopen injected by our v12 DMC debugger hook. The Core
+project explicitly compiles with MSVC /W4 /WX (warnings as errors).
+No Lua, .NET, SDK, original ROM or mapper error is evidenced.
+Lua.lib was built successfully and is not the failure.
+
+The patcher uses checked 4KiB getenv_s buffers and fopen_s for
+only the opt-in PRIVATE host output paths. It does not disable
+compiler diagnostics, add a fake DMA event, or touch emulated memory.
+
+**Owner-private source upgrade, no reclone or Prepare:**
+
+    cd C:\NESDev\CV3DCJP-Repo
+    git pull --ff-only origin main
+    py -3 .\tools\instrumentation\prepare_mesen_dmc_bus_v12.py --private-source "C:\NESDev\mesence-collision-v12-pin" --repair
+    & .\tools\windows\Invoke-CV3DCJP-CollisionV12Mesen.ps1 -Action Build
+
+The --repair mode reconstructs the exact legacy and corrected v12
+hook from authenticated pinned upstream Git bytes, including
+Windows CRLF materialization. It rejects any unknown source edits
+or other tracked modifications. Repeated repair is harmless and
+does not modify an already corrected hook. The owner must still
+confirm the patched Windows build and produce real DMC CSVs.
+Compile-time CI pin/source/repair tests are not original-ROM or
+hardware bus-timing proof. Existing gameplay and ROM untouched.
