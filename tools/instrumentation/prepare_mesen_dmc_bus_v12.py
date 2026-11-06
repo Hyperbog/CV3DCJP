@@ -81,45 +81,79 @@ def git(repo,*cmd):
     return subprocess.run(['git','-C',str(repo),*cmd],text=True,
                           capture_output=True,check=True).stdout.strip()
 
-def patch_source(repo):
-    repo=repo.resolve()
-    file=repo/SOURCE
-    if not file.is_file():raise ValueError("Not a MesenCE source checkout")
-    if git(repo,'rev-parse','HEAD')!=PIN:
-        raise ValueError("Wrong MesenCE revision; pinned commit: "+PIN)
-    if git(repo,'status','--porcelain'):
-        raise ValueError("Source has uncommitted changes; private patch refused")
-    if git(repo,'rev-parse','HEAD:'+SOURCE)!=ORIGINAL_BLOB:
-        raise ValueError("MesenCE pinned source blob changed")
-    if git(repo,'hash-object','--path='+SOURCE,str(file))!=ORIGINAL_BLOB:
-        raise ValueError("Working source does not match pinned Git blob")
-    raw=file.read_bytes()
-    eol=b'\r\n' if b'\r\n' in raw else b'\n'
+def checked_original(repo):
+    """Return pinned upstream source, never a source guess."""
+    original=subprocess.run(
+        ["git","-C",str(repo),"show","HEAD:"+SOURCE],
+        capture_output=True,check=True).stdout
+    if git(repo,"rev-parse","HEAD:"+SOURCE)!=ORIGINAL_BLOB:
+        raise ValueError("Original upstream MesenCE source blob mismatch")
+    return original
+
+def instrumented(original,helper):
+    """Recreate exactly the legacy or secure-CRT source patch."""
+    eol=b'\r\n' if b'\r\n' in original else b'\n'
     def to_bytes(s):
         return s.encode('utf-8').replace(b'\n',eol)
-    if raw.count(INCLUDE)!=1 or raw.count(READ_ANCHOR)!=1 or raw.count(WRITE_FUNCTION)!=1:
-        raise ValueError("Source hooks do not match authenticated MesenCE revision")
-    if b'cv3dcjp_v12_dma_bus' in raw:
-        raise ValueError("Already instrumented")
-    # Do not touch original includes or machine behavior other than observation.
-    helper=(b'#include <cstdio>'+eol+b'#include <cstdlib>'+eol+
-            b'#include <cstdint>'+eol+eol+to_bytes(HELPER)+eol)
-    raw=raw.replace(INCLUDE,INCLUDE+eol+helper,1)
-    raw=raw.replace(READ_ANCHOR,READ_ANCHOR+eol+to_bytes(READ_INSERT),1)
-    head,tail=raw.split(WRITE_FUNCTION,1)
+    if (original.count(INCLUDE)!=1 or original.count(READ_ANCHOR)!=1
+        or original.count(WRITE_FUNCTION)!=1):
+        raise ValueError("Authenticated MesenCE hook anchors changed")
+    helpers=(b'#include <cstdio>'+eol+b'#include <cstdlib>'+eol+
+             b'#include <cstdint>'+eol+eol+to_bytes(helper)+eol)
+    patched=original.replace(INCLUDE,INCLUDE+eol+helpers,1)
+    patched=patched.replace(READ_ANCHOR,
+                            READ_ANCHOR+eol+to_bytes(READ_INSERT),1)
+    head,tail=patched.split(WRITE_FUNCTION,1)
     if tail.count(WRITE_ANCHOR)!=1:
-        raise ValueError("Unexpected write method structure")
-    tail=tail.replace(WRITE_ANCHOR,WRITE_ANCHOR+eol+to_bytes(WRITE_INSERT),1)
-    file.write_bytes(head+WRITE_FUNCTION+tail)
-    print("PRIVATE MesenCE source patched:",file)
-    print("CSV event type comes from real DmaRead/DmaWrite and IsDmcDma();")
-    print("not a fabricated Lua operation type. Build and runtime still pending.")
+        raise ValueError("Unexpected authenticated MesenCE write method")
+    tail=tail.replace(WRITE_ANCHOR,
+                      WRITE_ANCHOR+eol+to_bytes(WRITE_INSERT),1)
+    return head+WRITE_FUNCTION+tail
+
+def patch_source(repo,repair=False):
+    repo=repo.resolve()
+    file=repo/SOURCE
+    if not file.is_file():
+        raise ValueError("Not a MesenCE source checkout")
+    if git(repo,'rev-parse','HEAD')!=PIN:
+        raise ValueError("Wrong MesenCE revision; pinned commit: "+PIN)
+    original=checked_original(repo)
+    expected=instrumented(original,HELPER)
+    current=file.read_bytes()
+    if repair:
+        legacy=instrumented(original,LEGACY_HELPER)
+        if current==expected:
+            print("Already repaired: pinned private MesenCE DMC hook uses secure CRT")
+            return
+        # No patch is made if the owner made any OTHER tracked modifications.
+        modified=git(repo,'status','--porcelain','--untracked-files=no').splitlines()
+        if modified!=[' M '+SOURCE]:
+            raise ValueError("Private MesenCE has unexpected tracked changes: "+
+                             repr(modified))
+        if current!=legacy:
+            raise ValueError("Existing private source is not the EXACT legacy "+
+                             "v12 patch; refusing partial/unknown edits")
+        file.write_bytes(expected)
+        print("REPAIRED exact legacy private MesenCE DMC instrumentation in-place.")
+        print("Replaced MSVC C4996 getenv/fopen with checked getenv_s/fopen_s.")
+        print("No original emulator installation or other sources modified.")
+        return
+    if git(repo,'status','--porcelain'):
+        raise ValueError("Source has uncommitted changes; private patch refused")
+    if current!=original:
+        raise ValueError("Working source does not equal pinned upstream Git blob")
+    file.write_bytes(expected)
+    print("PATCHED private pinned MesenCE source:",file)
+    print("Source-identified DMC bus logging uses checked MSVC secure CRT.")
+    print("Build/runtime bus parity remains unverified.")
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--private-source',required=True,type=Path)
+    p.add_argument('--repair',action='store_true',
+                   help='Safely upgrade only EXACT earlier v12 patched source')
     a=p.parse_args()
-    patch_source(a.private_source)
+    patch_source(a.private_source,repair=a.repair)
 
 if __name__=='__main__':
     main()
