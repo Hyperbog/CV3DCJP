@@ -118,11 +118,15 @@ def patch_source(repo,repair=False):
     if git(repo,'rev-parse','HEAD')!=PIN:
         raise ValueError("Wrong MesenCE revision; pinned commit: "+PIN)
     original=checked_original(repo)
-    expected=instrumented(original,HELPER)
     current=file.read_bytes()
     if repair:
-        legacy=instrumented(original,LEGACY_HELPER)
-        if current==expected:
+        # Git's blob can contain LF while a Windows checkout has CRLF due to
+        # core.autocrlf. Reproduce *both* authenticated working-tree layouts.
+        # Never guess or rewrite EOLs; accept only an exact known legacy patch.
+        original_candidates=[original]
+        if b'\r\n' not in original:
+            original_candidates.append(original.replace(b'\n',b'\r\n'))
+        if any(current==instrumented(x,HELPER) for x in original_candidates):
             print("Already repaired: pinned private MesenCE DMC hook uses secure CRT")
             return
         # No patch is made if the owner made any OTHER tracked modifications.
@@ -131,19 +135,25 @@ def patch_source(repo,repair=False):
         if modified!=[SOURCE] or staged:
             raise ValueError("Private MesenCE has unexpected tracked changes: "+
                              repr({'unstaged':modified,'staged':staged}))
-        if current!=legacy:
+        matches=[x for x in original_candidates if current==instrumented(x,LEGACY_HELPER)]
+        if len(matches)!=1:
             raise ValueError("Existing private source is not the EXACT legacy "+
                              "v12 patch; refusing partial/unknown edits")
-        file.write_bytes(expected)
+        file.write_bytes(instrumented(matches[0],HELPER))
         print("REPAIRED exact legacy private MesenCE DMC instrumentation in-place.")
         print("Replaced MSVC C4996 getenv/fopen with checked getenv_s/fopen_s.")
         print("No original emulator installation or other sources modified.")
         return
     if git(repo,'status','--porcelain'):
         raise ValueError("Source has uncommitted changes; private patch refused")
+    # Authentic Windows Git checkouts may materialize CRLF from a LF blob.
+    original_worktree = original
     if current!=original:
-        raise ValueError("Working source does not equal pinned upstream Git blob")
-    file.write_bytes(expected)
+        if b'\r\n' not in original and current==original.replace(b'\n',b'\r\n'):
+            original_worktree=current
+        else:
+            raise ValueError("Working source does not equal pinned upstream Git blob")
+    file.write_bytes(instrumented(original_worktree,HELPER))
     print("PATCHED private pinned MesenCE source:",file)
     print("Source-identified DMC bus logging uses checked MSVC secure CRT.")
     print("Build/runtime bus parity remains unverified.")
