@@ -20,7 +20,7 @@ WRITE_ANCHOR=b'\tInstructionProgress.LastMemOperation = operation;'
 # the suffix after the unambiguous ProcessWrite function signature.
 WRITE_FUNCTION=b'void NesDebugger::ProcessWrite(uint32_t addr, uint8_t value, MemoryOperationType type)'
 
-HELPER=r'''
+LEGACY_HELPER=r'''
 /* CV3DCJP v12: private opt-in cycle evidence. No emulator bus writes.
  * Cycle is observed from the real NES CPU debugger, before the Lua callback.
  * DMC=1 only in the actual NesCpu::IsDmcDma read interval.
@@ -58,6 +58,10 @@ static void cv3dcjp_v12_dma_bus(unsigned long long cycle,
     }
 }
 '''.strip("\n")
+# Preserve exact v12 legacy bytes for safe owner-side repairs. No manual edits.
+HELPER = LEGACY_HELPER.replace("        const char *armPath = std::getenv(\"CV3DCJP_MESEN_ARM_FILE\");\n        if(!armPath || !*armPath) return;\n        std::FILE *armed = std::fopen(armPath, \"rb\");\n        if(!armed) return;\n        std::fclose(armed);\n        opened = true;\n        const char *path = std::getenv(\"CV3DCJP_MESEN_DMC_CSV\");\n        if(path && *path) {\n            out = std::fopen(path, \"wb\");\n            if(!out) {", "        /* Checked, size-limited environment values and MSVC secure CRT:\n         * Core.vcxproj enables /WX, so deprecated getenv/fopen are invalid. */\n        char armPath[4096] = {};\n        size_t armSize = 0;\n        if(getenv_s(&armSize, armPath, sizeof(armPath),\n                    \"CV3DCJP_MESEN_ARM_FILE\") != 0 || armSize <= 1)\n            return;\n        std::FILE *armed = nullptr;\n        if(fopen_s(&armed, armPath, \"rb\") != 0 || !armed) return;\n        std::fclose(armed);\n        opened = true;\n        char path[4096] = {};\n        size_t pathSize = 0;\n        if(getenv_s(&pathSize, path, sizeof(path),\n                    \"CV3DCJP_MESEN_DMC_CSV\") == 0 && pathSize > 1) {\n            if(fopen_s(&out, path, \"wb\") != 0 || !out) {")
+if HELPER == LEGACY_HELPER:
+    raise RuntimeError("MesenCE secure CRT helper replacement missing")
 READ_INSERT=r'''
             cv3dcjp_v12_dma_bus(
                 (unsigned long long)_cpu->GetCycleCount(),
