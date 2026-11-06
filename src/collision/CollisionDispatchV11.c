@@ -38,6 +38,7 @@ static CollisionLiveSnapshot started;
 static CollisionDispatchV11Stats stats;
 static FILE *trace;
 static FILE *dma_trace;
+static FILE *dma_bus_trace; /* opt-in per-cycle private source evidence */
 static uint64_t dma_cycles, dma_halts, dma_reads, dma_writes;
 static uint64_t observed_pairs;
 static uint64_t dmc_reads_confirmed, oam_dma_writes;
@@ -55,6 +56,29 @@ static void collision_cycle_observer(const CycTraceCycle *cycle)
         ApuDmcView dmc;
         apu_debug_dmc(&dmc); /* Device-owned state, observation only. */
         if (cycle->dma) {
+            /* The sidecar stores REAL traced DMA cycles, not inferred stalls.
+             * The DMC source-state snapshot is read-only and a source advance
+             * is not promoted to a proven DMC transaction without an actual
+             * DMA read at that address on this same trace cycle. */
+            unsigned sample_fetch = !cycle->halt && cycle->kind=='R' &&
+                cycle->addr==previous_dmc.addr &&
+                dmc.addr==(uint16_t)(previous_dmc.addr==0xFFFFu
+                    ? 0x8000u : previous_dmc.addr+1u) &&
+                previous_dmc.bytes>0 && dmc.bytes+1u==previous_dmc.bytes;
+            if (dma_bus_trace) {
+                fprintf(dma_bus_trace,
+                    "%llu,%u,%u,%c,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u\n",
+                    (unsigned long long)(observed_pairs+1u),
+                    (unsigned)active_caller,
+                    (unsigned)cycle->index,cycle->kind,
+                    (unsigned)cycle->addr,(unsigned)cycle->value,
+                    (unsigned)cycle->data_bus,
+                    (unsigned)cycle->halt,
+                    (unsigned)previous_dmc.addr,(unsigned)dmc.addr,
+                    (unsigned)previous_dmc.bytes,(unsigned)dmc.bytes,
+                    sample_fetch,(unsigned)cycle->done);
+                fflush(dma_bus_trace);
+            }
             ++dma_cycles;
             if (cycle->halt) ++dma_halts;
             else if (cycle->kind=='R') ++dma_reads;
@@ -257,8 +281,32 @@ int CollisionDispatchV11_DmaTraceOpen(const char *path)
     cycle_hook_installed=1;
     return 1;
 }
+/* Must be enabled after --collision-v11-dma-trace; no synthetic events.
+ * DmaTraceOpen owns/chains the pinned upstream per-cycle callback. */
+int CollisionDispatchV11_DmaBusTraceOpen(const char *path)
+{
+    if (!dma_trace || dma_bus_trace || !path || !*path ||
+        !cycle_hook_installed) return 0;
+    FILE *existing=fopen(path,"rb");
+    if (existing) { fclose(existing); return 0; }
+    FILE *f=fopen(path,"wb");
+    if (!f) return 0;
+    fputs("sample,caller_pc,cycle_index,kind,address,value,data_bus,"
+          "halt,dmc_address_before,dmc_address_after,"
+          "dmc_remaining_before,dmc_remaining_after,"
+          "dmc_fetch_verified,instruction_done\n",f);
+    fflush(f);
+    dma_bus_trace=f;
+    return 1;
+}
+void CollisionDispatchV11_DmaBusTraceClose(void)
+{
+    if (dma_bus_trace) { fclose(dma_bus_trace); dma_bus_trace=NULL; }
+}
+
 void CollisionDispatchV11_DmaTraceClose(void)
 {
+    CollisionDispatchV11_DmaBusTraceClose();
     if (cycle_hook_installed) {
         if (cyc_trace_cycle_hook==collision_cycle_observer)
             cyc_trace_cycle_hook=previous_cycle_hook;
