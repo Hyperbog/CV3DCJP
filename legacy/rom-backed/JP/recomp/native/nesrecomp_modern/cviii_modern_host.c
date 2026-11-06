@@ -110,6 +110,8 @@ static bool cviii_option(void *context, const char *name, const char *value)
         return CollisionDispatchV11_TraceOpen(value);
     if (!strcmp(name, "--collision-v11-dma-trace"))
         return CollisionDispatchV11_DmaTraceOpen(value);
+    if (!strcmp(name, "--collision-v11-bus-trace"))
+        return CollisionDispatchV11_DmaBusTraceOpen(value);
 #endif
     if (!strcmp(name, "--edition")) return cviii_edition(state, value);
     if (!strcmp(name, "--asset-index")) return cviii_room_diag_load_chr(value);
@@ -309,6 +311,7 @@ static const CycHostOption cviii_options[] = {
     {"--collision-v11-rom", true, "Opt-in read-only FCDE dispatch shadow; authentic local ROM path"},
     {"--collision-v11-trace", true, "New private CSV of original NESRecomp FCDE entry/return states"},
     {"--collision-v11-dma-trace", true, "Additional original NESRecomp per-cycle DMA-count sidecar (requires --hash-out)"},
+    {"--collision-v11-bus-trace", true, "Opt-in original NESRecomp actual DMA bus cycle records (requires --collision-v11-dma-trace)"},
 #endif
     {"--edition", true, "Original or Enhanced host mode (Original default)"},
     {"--unlimited-sprites", true, "EXPERIMENTAL: draw all OAM pieces (0/1)"},
