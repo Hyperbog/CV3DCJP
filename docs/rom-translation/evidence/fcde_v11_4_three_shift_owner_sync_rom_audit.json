@@ -1,0 +1,147 @@
+{
+  "schema": "cv3dcjp-collision-v11-4-owner-three-shift-rom-differential-audit",
+  "source_zip_sha256": "851c6d9d662e7f45fa62093527f9e3ff0dc08de3813d056c61bd6b24b46df694",
+  "rom_sha256": "958a4b5e95e80acb2c71a43e9ef2e91444f3d097ae9d4eeb747f0dac8abe7a28",
+  "pinned_nesrecomp_commit": "2b4fcdb98c9e702be3fb365cfc645003c50b5fc1",
+  "native_executable_sha256": "dcd4619c3f034379ec7435dd6d7943f547c3a7b0eeb0ac4ae929fe6fc2658e91",
+  "source": "Owner supplied 824-entry full isolated diagnostic build ZIP with three 1000-frame runs, read-only original-CPU callbacks and DMA sidecars",
+  "verified_integrity": "ZIP CRC and original ROM SHA256 pass; executable SHA256 equals all three run receipts",
+  "shift_results": {
+    "0": {
+      "native_calls": 212,
+      "caller_counts": {
+        "0x8429": 128,
+        "0x96E4": 42,
+        "0x96ED": 42
+      },
+      "same_caller_event_within_100_cycles_of_Mesen": 66,
+      "identical_clock_events": 6,
+      "median_nearest_same_caller_clock_difference": 97,
+      "median_RAM_byte_differences_in_near_events": 28,
+      "full_entry_RAM_matches": 0,
+      "dma_histogram": {
+        "0": 193,
+        "3": 3,
+        "4": 16
+      },
+      "rom_register_flag_matches": 212,
+      "rom_uninterrupted_complete_RAM_matches": 212,
+      "rom_instruction_cycle_predictions_match": 212,
+      "native_uninterrupted_ROM_plus_DMA_cycle_matches": 212,
+      "irq_overlaps_in_captured_calls": 0
+    },
+    "1": {
+      "native_calls": 209,
+      "caller_counts": {
+        "0x8429": 127,
+        "0x96E4": 41,
+        "0x96ED": 41
+      },
+      "same_caller_event_within_100_cycles_of_Mesen": 128,
+      "identical_clock_events": 32,
+      "median_nearest_same_caller_clock_difference": 2,
+      "median_RAM_byte_differences_in_near_events": 3,
+      "full_entry_RAM_matches": 0,
+      "dma_histogram": {
+        "0": 185,
+        "4": 24
+      },
+      "rom_register_flag_matches": 209,
+      "rom_uninterrupted_complete_RAM_matches": 208,
+      "rom_instruction_cycle_predictions_match": 209,
+      "native_uninterrupted_ROM_plus_DMA_cycle_matches": 208,
+      "irq_overlaps_in_captured_calls": 1
+    },
+    "2": {
+      "native_calls": 206,
+      "caller_counts": {
+        "0x8429": 126,
+        "0x96E4": 40,
+        "0x96ED": 40
+      },
+      "same_caller_event_within_100_cycles_of_Mesen": 63,
+      "identical_clock_events": 2,
+      "median_nearest_same_caller_clock_difference": 142,
+      "median_RAM_byte_differences_in_near_events": 28,
+      "full_entry_RAM_matches": 0,
+      "dma_histogram": {
+        "0": 178,
+        "3": 1,
+        "4": 27
+      },
+      "rom_register_flag_matches": 206,
+      "rom_uninterrupted_complete_RAM_matches": 205,
+      "rom_instruction_cycle_predictions_match": 206,
+      "native_uninterrupted_ROM_plus_DMA_cycle_matches": 205,
+      "irq_overlaps_in_captured_calls": 1
+    }
+  },
+  "cumulative_original_cpu_observations": 627,
+  "original_rom_return_register_and_status_matches": 627,
+  "original_rom_C_instruction_cycle_predictions_match": 627,
+  "original_rom_uninterrupted_full_RAM_and_instructions_plus_DMA_matches": 625,
+  "rom_IRQ_overlap_samples_separately_classified": 2,
+  "scope_note": "627 observations come from near-duplicate 1000-frame input schedules, not 627 newly covered ROM instruction addresses or 627 retired bytes",
+  "shift_1_vs_mesen_first_128": {
+    "ordered_caller_sites_match": 128,
+    "meaningful_CPU_registers_status_SP_at_entry_and_return_match": 128,
+    "original_ROM_bounded_CPU_instruction_clock_totals_equal": 128,
+    "original_ROM_bounded_ordered_RAM_write_sequences_equal": 128,
+    "full_2048_byte_RAM_entry_snapshots_equal": 0,
+    "varying_historical_RAM_byte_frequencies": {
+      "0x0004": 3,
+      "0x0005": 4,
+      "0x0020": 128,
+      "0x01ED": 3,
+      "0x01EE": 4,
+      "0x01EF": 2,
+      "0x01FC": 128,
+      "0x01FD": 61,
+      "0x01FE": 90
+    },
+    "source_ROM_RAM_addresses_read_before_first_write_in_observed_FCDE_paths": [
+      "0x0053",
+      "0x0054",
+      "0x0065",
+      "0x041C",
+      "0x0438",
+      "0x06F5",
+      "0x06F6",
+      "0x06F7"
+    ],
+    "historical_differences_intersect_ROM_read_before_write_addresses": 0,
+    "note": "These nine RAM addresses cannot be globally ignored; their pre-write irrelevance is verified only for the observed bounded original-ROM $FCDE paths. $01EF is read only after being overwritten by PHA in the relevant path.",
+    "elapsed_time_differences": {
+      "equal_Mesen_and_native_duration_with_no_DMC_in_either": 98,
+      "Mesen_duration_four_cycles_longer_with_Mesen_DMC_advance_but_no_native_DMA": 16,
+      "native_duration_four_cycles_longer_with_native_DMA4_but_no_Mesen_DMC_advance": 14
+    },
+    "IRQ_overlap_sample_101": {
+      "caller_pc": "0x96ED",
+      "entry_cycle_in_both": 28683874,
+      "native_irq_vector": "$FFFE -> $E0F5",
+      "native_IRQ_handler_first_instruction_cycle": 28683905,
+      "native_return_cycle": 28684268,
+      "mesen_return_cycle": 28684272,
+      "original_ROM_uninterrupted_instruction_cycles": 152,
+      "native_measured_total_clocks": 394,
+      "native_IRQ_related_excess_cycles": 242,
+      "native_DMC_DMA_cycles_inside_interval": 0,
+      "mesen_measured_total_clocks": 398,
+      "mesen_DMC_sample_reader_advance": 1,
+      "native_extra_irq_stack_RAM_addresses": "0x01EA..0x01F1 (8 writes)",
+      "IRQ_source_and_per_cycle_DMC_bus_parity_proven": false
+    }
+  },
+  "claim_limits": {
+    "shifted_input_history_phase": "Shift-1 is a strongly evidenced call-sequence alignment; full 2KiB RAM and per-bus-cycle alignment remain unproven.",
+    "mesen_explicit_per_cycle_DMC_bus_trace_available": false,
+    "original_CPU_still_executes": true,
+    "native_substitution_enabled": false,
+    "original_6502_PRG_bytes_retired": 0,
+    "collision_source_implemented_bytes": 1150,
+    "collision_source_identified_executable_bytes": 1264,
+    "newly_identified_executable_bytes": 0
+  },
+  "privacy": "Public aggregate only. The full ROM, private game configuration, full native build, CSVs, controller history, RAM snapshots and bus traces are not committed."
+}
