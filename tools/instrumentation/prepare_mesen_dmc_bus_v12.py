@@ -1,98 +1,114 @@
 #!/usr/bin/env python3
-"""Instrument only a clean private, pinned MesenCE source checkout for DMC bus evidence.
+"""Add read-only, explicit DMA bus records to a CLEAN pinned private MesenCE checkout.
 
-This patch is ROM-agnostic; the companion MesenCE Lua script strictly pins the
-Japanese ROM. It does not touch any original installed emulator. It writes no
-modified original cartridge or graphics. Compiling/running patched MesenCE
-remains a separate owner-side action. Source verified 2026-11-05.
+All actual NES debugger DmaRead/DmaWrite operations are recorded. Only
+_cpu->IsDmcDma() is allowed to label a DMC sample read; ordinary Lua
+callbacks cannot distinguish that operation. This is never patched into
+the user's original Mesen installation.
 """
 import argparse
-import subprocess
 from pathlib import Path
+import subprocess
 
-COMMIT="4b8a196e299b3de297b204fd1208d2981562c89b"
-BLOB="c6a88b5304c8b027154a1c6ced4d1bd07de2ccbb"
-PATH="Core/NES/Debugger/NesDebugger.cpp"
+PIN="4b8a196e299b3de297b204fd1208d2981562c89b"
+ORIGINAL_BLOB="c6a88b5304c8b027154a1c6ced4d1bd07de2ccbb"
+SOURCE="Core/NES/Debugger/NesDebugger.cpp"
+INCLUDE=b'#include "pch.h"'
+READ_ANCHOR=b'\t\t\tbool isDmcDma = _cpu->IsDmcDma();'
+WRITE_ANCHOR=b'\tInstructionProgress.LastMemOperation = operation;'
+# The write method's anchor is shared with ProcessRead: restrict replacement to
+# the suffix after the unambiguous ProcessWrite function signature.
+WRITE_FUNCTION=b'void NesDebugger::ProcessWrite(uint32_t addr, uint8_t value, MemoryOperationType type)'
 
-# This method runs only for a true MemoryOperationType::DmaRead and has
-# _cpu->IsDmcDma() from the CPU's actual DMA machine, unlike Lua callbacks.
-ORIGINAL=b"\t\t\tbool isDmcDma = _cpu->IsDmcDma();"
-INSTRUMENT=br'''
-            /* CV3DCJP v12 debug-only, read-only DMC DMA evidence.
-             * At this exact site the CPU itself positively identifies DMC,
-             * not a normal bus read or a guessed APU sample-address change.
-             * The CSV clock is NesCpu::GetCycleCount at debugger callback.
-             * This hook is active ONLY when a private output path is set. */
-            if(isDmcDma) {
-                static bool cv3dcjpOpened = false;
-                static std::FILE* cv3dcjpFile = nullptr;
-                if(!cv3dcjpOpened) {
-                    cv3dcjpOpened = true;
-                    const char* path = std::getenv("CV3DCJP_MESEN_DMC_CSV");
-                    if(path && *path) {
-                        cv3dcjpFile = std::fopen(path, "wb");
-                        if(!cv3dcjpFile) {
-                            std::fprintf(stderr, "CV3DCJP: DMC CSV output failed\n");
-                            std::abort();
-                        }
-                        std::fputs("cpu_cycle,address,value,cpu_pc,real_dmc_dma\n", cv3dcjpFile);
-                        std::fflush(cv3dcjpFile);
-                    }
-                }
-                if(cv3dcjpFile) {
-                    std::fprintf(cv3dcjpFile, "%llu,%u,%u,%u,1\n",
-                        (unsigned long long)_cpu->GetCycleCount(),
-                        (unsigned)addr, (unsigned)value,
-                        (unsigned)_cpu->GetState().PC);
-                    std::fflush(cv3dcjpFile);
-                }
+HELPER=r'''
+/* CV3DCJP v12: private opt-in cycle evidence. No emulator bus writes.
+ * Cycle is observed from the real NES CPU debugger, before the Lua callback.
+ * DMC=1 only in the actual NesCpu::IsDmcDma read interval.
+ */
+static void cv3dcjp_v12_dma_bus(unsigned long long cycle,
+                                unsigned addr, unsigned value,
+                                unsigned pc, char kind, unsigned dmc)
+{
+    static bool opened = false;
+    static std::FILE *out = nullptr;
+    if(!opened) {
+        opened = true;
+        const char *path = std::getenv("CV3DCJP_MESEN_DMC_CSV");
+        if(path && *path) {
+            out = std::fopen(path, "wb");
+            if(!out) {
+                std::fprintf(stderr, "CV3DCJP: cannot create private DMC CSV\n");
+                std::abort();
             }
-'''.strip(b'\n')
+            std::fputs("cpu_cycle,bus_kind,address,value,cpu_pc,real_dmc_sample_read\n", out);
+            std::fflush(out);
+        }
+    }
+    if(out) {
+        std::fprintf(out, "%llu,%c,%u,%u,%u,%u\n",
+                     cycle, kind, addr, value, pc, dmc);
+        std::fflush(out);
+    }
+}
+'''.strip("\n")
+READ_INSERT=r'''
+            cv3dcjp_v12_dma_bus(
+                (unsigned long long)_cpu->GetCycleCount(),
+                (unsigned)addr, (unsigned)value,
+                (unsigned)_cpu->GetState().PC, 'R', isDmcDma ? 1u : 0u);
+'''.strip("\n")
+WRITE_INSERT=r'''
+    if(type == MemoryOperationType::DmaWrite) {
+        cv3dcjp_v12_dma_bus(
+            (unsigned long long)_cpu->GetCycleCount(),
+            (unsigned)addr, (unsigned)value,
+            (unsigned)_cpu->GetState().PC, 'W', 0u);
+    }
+'''.strip("\n")
 
+def git(repo,*cmd):
+    return subprocess.run(['git','-C',str(repo),*cmd],text=True,
+                          capture_output=True,check=True).stdout.strip()
 
-def run(repo):
+def patch_source(repo):
     repo=repo.resolve()
-    source=repo/PATH
-    if not source.is_file():
-        raise ValueError("Not a complete private MesenCE source tree")
-    def git(*args):
-        p=subprocess.run(["git","-C",str(repo),*args],
-                         capture_output=True,text=True,check=True)
-        return p.stdout.strip()
-    if git("rev-parse","HEAD")!=COMMIT:
-        raise ValueError("MesenCE source must be the exactly pinned commit "+COMMIT)
-    if git("status","--porcelain"):
-        raise ValueError("Private MesenCE source has changes; refusing to alter it")
-    if git("rev-parse","HEAD:"+PATH)!=BLOB:
-        raise ValueError("Pinned MesenCE source blob differs")
-    if git("hash-object","--path="+PATH,str(source))!=BLOB:
-        raise ValueError("On-disk file differs from authenticated Git blob")
-    raw=source.read_bytes()
-    if raw.count(ORIGINAL)!=1:
-        raise ValueError("Exact original DMC discriminator not found once")
-    if b"CV3DCJP_MESEN_DMC_CSV" in raw:
+    file=repo/SOURCE
+    if not file.is_file():raise ValueError("Not a MesenCE source checkout")
+    if git(repo,'rev-parse','HEAD')!=PIN:
+        raise ValueError("Wrong MesenCE revision; pinned commit: "+PIN)
+    if git(repo,'status','--porcelain'):
+        raise ValueError("Source has uncommitted changes; private patch refused")
+    if git(repo,'rev-parse','HEAD:'+SOURCE)!=ORIGINAL_BLOB:
+        raise ValueError("MesenCE pinned source blob changed")
+    if git(repo,'hash-object','--path='+SOURCE,str(file))!=ORIGINAL_BLOB:
+        raise ValueError("Working source does not match pinned Git blob")
+    raw=file.read_bytes()
+    eol=b'\r\n' if b'\r\n' in raw else b'\n'
+    def to_bytes(s):
+        return s.encode('utf-8').replace(b'\n',eol)
+    if raw.count(INCLUDE)!=1 or raw.count(READ_ANCHOR)!=1 or raw.count(WRITE_FUNCTION)!=1:
+        raise ValueError("Source hooks do not match authenticated MesenCE revision")
+    if b'cv3dcjp_v12_dma_bus' in raw:
         raise ValueError("Already instrumented")
-    if raw.count(b'#include "pch.h"')!=1:
-        raise ValueError("Unexpected include structure")
-    eol=b"\r\n" if b"\r\n" in raw else b"\n"
-    block=INSTRUMENT.replace(b"\n",eol)
-    patched=raw.replace(ORIGINAL,ORIGINAL+eol+block,1)
-    patched=patched.replace(b'#include "pch.h"',
-                           b'#include "pch.h"'+eol+b'#include <cstdio>'+eol+
-                           b'#include <cstdlib>',1)
-    source.write_bytes(patched)
-    print("PATCHED private MesenCE source:",source)
-    print("This is a SOURCE patch, not a compiled or runtime-verified emulator.")
-    print("Only real IsDmcDma() memory reads are logged. Never interpret this")
-    print("source patch as authorization to replace original 6502 instructions.")
-
+    # Do not touch original includes or machine behavior other than observation.
+    helper=(b'#include <cstdio>'+eol+b'#include <cstdlib>'+eol+
+            b'#include <cstdint>'+eol+eol+to_bytes(HELPER)+eol)
+    raw=raw.replace(INCLUDE,INCLUDE+eol+helper,1)
+    raw=raw.replace(READ_ANCHOR,READ_ANCHOR+eol+to_bytes(READ_INSERT),1)
+    head,tail=raw.split(WRITE_FUNCTION,1)
+    if tail.count(WRITE_ANCHOR)!=1:
+        raise ValueError("Unexpected write method structure")
+    tail=tail.replace(WRITE_ANCHOR,WRITE_ANCHOR+eol+to_bytes(WRITE_INSERT),1)
+    file.write_bytes(head+WRITE_FUNCTION+tail)
+    print("PRIVATE MesenCE source patched:",file)
+    print("CSV event type comes from real DmaRead/DmaWrite and IsDmcDma();")
+    print("not a fabricated Lua operation type. Build and runtime still pending.")
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--private-source",required=True,type=Path)
+    p.add_argument('--private-source',required=True,type=Path)
     a=p.parse_args()
-    run(a.private_source)
+    patch_source(a.private_source)
 
-
-if __name__=="__main__":
+if __name__=='__main__':
     main()
