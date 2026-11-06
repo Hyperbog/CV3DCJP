@@ -19,6 +19,25 @@ jobs:
           python-version: '3.12'
       - name: Compile tooling
         run: python -m compileall -q tools
+      - name: Parse PowerShell collision diagnostic scripts
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          $scripts = @(
+            'tools/windows/Invoke-CV3DCJP-CollisionV12Mesen.ps1',
+            'tools/windows/Invoke-CV3DCJP-CollisionV11Native.ps1'
+          )
+          foreach ($script in $scripts) {
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              (Resolve-Path $script).Path, [ref]$tokens, [ref]$errors
+            ) | Out-Null
+            if ($errors.Count -gt 0) {
+              $errors | ForEach-Object { Write-Error ("{0}: {1}" -f $script, $_.Message) }
+              exit 1
+            }
+          }
       - name: Check tracked files and repository policy
         run: python tools/check_repository.py
       - name: Test repository checks
