@@ -120,3 +120,31 @@ Full collision hardware timing is NOT accepted until actual
 interrupt source, all CPU/DMA halt/read/write cycles and relevant
 hardware interleavings are independently compared. Original code
 remains active; original 6502 code bytes retired = 0.
+
+
+## MesenCE owner-build failure diagnostics (2026-11-06)
+
+The owner reported `Lua.vcxproj -> .../Lua.lib` followed by the wrapper's
+generic `MesenCE patched Release x64 build failed: 1`. The Lua line
+means the Lua static library was built; it is NOT an error message.
+The actual first failed compiler, MSBuild, NuGet or .NET project
+diagnostic was not included in that report. The subsequent
+`Patched Mesen.exe missing` is expected if the full solution fails
+to link/build and must not be treated as a second independent failure.
+
+The pinned MesenCE UI project `UI/UI.csproj` has
+`TargetFramework=net10.0`, `RuntimeIdentifier=win-x64`,
+`AssemblyName=Mesen`, and outputs to
+`bin/win-x64/Release/Mesen.exe`. The native Core is a Visual Studio
+v143 C++ project. Neither the installed toolset nor the actual
+failing component may be inferred from the last success line.
+
+The Windows diagnostic launcher now retains an isolated MSBuild
+diagnostic file at:
+`C:\NESDev\CV3DCJP-Builds\collision-v12-mesen\build-logs\MesenCE-v12-Release-x64-*.log`
+and prints the first identifiable build errors before aborting.
+The original installed MesenCE, original ROM and playable build are
+not altered. The owner should pull `main`, run only
+`-Action Build`, and provide the first compiler/SDK error lines
+from the log. Do not run `-Action Prepare` again or clean/reclone
+the pinned private checkout. Hardware parity remains open.
