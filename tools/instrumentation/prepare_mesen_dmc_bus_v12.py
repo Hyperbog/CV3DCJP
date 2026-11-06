@@ -126,10 +126,11 @@ def patch_source(repo,repair=False):
             print("Already repaired: pinned private MesenCE DMC hook uses secure CRT")
             return
         # No patch is made if the owner made any OTHER tracked modifications.
-        modified=git(repo,'status','--porcelain','--untracked-files=no').splitlines()
-        if modified!=[' M '+SOURCE]:
+        modified=git(repo,'diff','--name-only').splitlines()
+        staged=git(repo,'diff','--cached','--name-only').splitlines()
+        if modified!=[SOURCE] or staged:
             raise ValueError("Private MesenCE has unexpected tracked changes: "+
-                             repr(modified))
+                             repr({'unstaged':modified,'staged':staged}))
         if current!=legacy:
             raise ValueError("Existing private source is not the EXACT legacy "+
                              "v12 patch; refusing partial/unknown edits")
