@@ -1,7 +1,6 @@
--- v12 deterministic shift-1 input playback + original CPU/DMC boundary capture.
--- Real DMC bus transactions must be captured by PINNED private MesenCE
--- debugger patch, CV3DCJP_MESEN_DMC_CSV; this Lua alone does not expose
--- MemoryOperationType::DmaRead or _cpu->IsDmcDma().
+-- v12 original-JP ROM synchronized CPU, DMC boundary and deterministic
+-- shift-1 input replay. Genuine DMC bus events require separately patched
+-- pinned MesenCE debugger with CV3DCJP_MESEN_DMC_CSV enabled.
 -- v11.2 read-only paired-input/DMC/FCDE capture; no machine writes.
 -- Original Japanese ROM required. Reset AFTER starting script to log
 -- the full controller history from boot. MesenCE APIs source-verified.
@@ -76,17 +75,62 @@ local function pad_mask(port)
   return mask
 end
 
--- v12: deterministic input playback in the SAME Mesen session as the CPU/DMC
--- capture. This is a controlled game INPUT, not CPU/memory/timing substitution.
--- MesenCE BaseControlManager::UpdateInputState invokes InputPolled after
--- device state is acquired; emu.setInput mutates that state for this poll.
+-- Replay an existing private, original-Mesen-derived shift-1 input schedule.
+-- The current Mesen memory-read Lua API does NOT expose DMA operation type.
 local schedule=assert(os.getenv('CV3DCJP_MESEN_INPUT'),
                       'Set CV3DCJP_MESEN_INPUT to the private shift-1 schedule')
-local schedule_file=assert(io.open(schedule,'rb'),'Cannot open private shift-1 input')
+local schedule_file=assert(io.open(schedule,'rb'),'Cannot open input schedule')
 local steps={}
 local last_frame=-1
 for line in schedule_file:lines() do
-  local clean=line:gsub('#.*
+  local clean=line:gsub('#.*$',''):match('^%s*(.-)%s*$')
+  if clean~='' then
+    local fr,spec=clean:match('^(%d+)%s+(.+)$')
+    assert(fr,'Invalid schedule line')
+    fr=tonumber(fr)
+    assert(fr>=last_frame,'Schedule not ordered')
+    last_frame=fr
+    local port=0
+    local p,rest=spec:match('^([1-4]):(.+)$')
+    if p then assert(p=='2','Unsupported controller port');port=1;spec=rest end
+    local values={}
+    for _,name in ipairs(button_names) do values[name]=false end
+    if spec~='-' then
+      for token in spec:gmatch('[^+]+') do
+        local key=token:lower()
+        assert(values[key]~=nil,'Unknown button: '..token)
+        assert(not values[key],'Duplicate button: '..token)
+        values[key]=true
+      end
+    end
+    steps[#steps+1]={frame=fr,port=port,buttons=values}
+  end
+end
+schedule_file:close()
+assert(#steps>1 and steps[1].frame==0,'Input schedule is empty')
+local replay_pos=1
+local replay_state={{},{}}
+for _,name in ipairs(button_names) do
+  replay_state[1][name]=false;replay_state[2][name]=false
+end
+local function replay_input(mesen_frame)
+  -- Shift-1: recorded Mesen frame 2 corresponds to native frame 1.
+  local native_frame=mesen_frame-1
+  assert(native_frame>=0,'Unexpected Mesen frame origin')
+  while replay_pos<=#steps and steps[replay_pos].frame<=native_frame do
+    local v=steps[replay_pos]
+    replay_state[v.port+1]=v.buttons
+    replay_pos=replay_pos+1
+  end
+  emu.setInput(replay_state[1],0)
+  emu.setInput(replay_state[2],1)
+end
+
+local epoch=0
+emu.addEventCallback(function()
+  epoch=epoch+1
+  if epoch==1 then replay_pos=1 end
+end,emu.eventType.reset)
 emu.addEventCallback(function()
   local state=emu.getState()
   local frame=assert(state['frameCount'],'MesenCE frameCount unavailable')
@@ -165,384 +209,6 @@ emu.addEventCallback(function()
   emu.log('Collision v11 trace closed: '..count..' rows, '..skipped..' overlaps: '..path)
 end,emu.eventType.scriptEnded)
 emu.log('Collision v12 collision CPU trace: '..path)
-emu.log('Collision v11.2 DMC boundary state: '..dmc_path)
-emu.log('Collision v11.2 controller history: '..input_path)
-emu.log('Reset original ROM AFTER starting capture; private shift-1 controller inputs replay from reset.')
-,''):match('^%s*(.-)%s*
-emu.addEventCallback(function()
-  local state=emu.getState()
-  local frame=assert(state['frameCount'],'MesenCE frameCount unavailable')
-  input_out:write(string.format('%d,%d,%d,%d,%d\n',epoch,frame,
-                  emu.getCpuCycleCount(emu.cpuType.nes),
-                  pad_mask(0),pad_mask(1)))
-end,emu.eventType.inputPolled)
-local function physical(address)
-  local c=emu.convertAddress(address,MEM.nesMemory)
-  if type(c)~='table' or c.memType~=PRG then return -1 end
-  return c.address
-end
-local function hexram()
-  local t={}
-  for i=0,2047 do t[#t+1]=string.format('%02x',read(i,RAM)) end
-  return table.concat(t)
-end
-local callers={
-  0x8345,0x834e,0x839d,0x83ea,0x83f6,0x8429,0x8450,0x84cf,0x84d8,
-  0x9153,0x9164,0x91cf,0x91d8,0x9212,0x96cf,0x96d8,0x96e4,
-  0x96ed,0x970b,0x9714,0x9720,0x9729,0x97b1,0x97ba,0x97c5,
-  0x97ce,0x97e7,0x97fc,0x9b3c,0x9b45,0x9b4e,0x9b59,0x9b7b,
-  0x9b84,0x9b8d,0x9b96
-}
-local allow, pending={},{}
-for _,addr in ipairs(callers) do allow[addr]=true end
-local MAX=128;local count=0;local skipped=0
-local function entry(pc,opcode)
-  if count>=MAX or pc~=0xfcde or physical(pc)~=0x3fcde then return end
-  local s=regs(); local sp=s.sp
-  local ret=read(0x100+((sp+1)&255),RAM)+256*read(0x100+((sp+2)&255),RAM)
-  local caller=(ret-2)&65535
-  if not allow[caller] then return end
-  if physical(caller)~=0x38000+caller-0x8000 then return end
-  if read(caller,CPU_DEBUG)~=0x20 or read(caller+1,CPU_DEBUG)~=0xde
-     or read(caller+2,CPU_DEBUG)~=0xfc then return end
-  local return_pc=(caller+3)&65535
-  if pending[return_pc] then skipped=skipped+1;return end
-  pending[return_pc]={caller=caller,first=s,ram=hexram(),dmc=dmc_state()}
-end
-local ok,why=pcall(emu.addMemoryCallback,entry,CB.exec,0xfcde,0xfcde,
-                   emu.cpuType.nes,MEM.nesMemory)
-assert(ok,'Mesen2 $FCDE exec callback unavailable: '..tostring(why))
-for _,caller in ipairs(callers) do
-  local ret=(caller+3)&65535
-  local function on_return(pc,opcode)
-    local hit=pending[ret]
-    if not hit or count>=MAX then return end
-    pending[ret]=nil
-    if physical(pc)~=0x38000+pc-0x8000 then return end
-    local s=regs()
-    if s.cycle<hit.first.cycle then return end
-    local f=hit.first
-    local row={hit.caller,f.cycle,s.cycle,f.a,f.x,f.y,f.sp,f.p,
-               s.a,s.x,s.y,s.sp,s.p,hit.ram,hexram()}
-    out:write(table.concat(row,',')..'\n')
-    out:flush()
-    local last=dmc_state()
-    dmc_out:write(string.format('%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n',
-       count+1,hit.caller,f.cycle,s.cycle,
-       hit.dmc.addr,last.addr,hit.dmc.remaining,last.remaining,
-       hit.dmc.empty,last.empty))
-    dmc_out:flush()
-    count=count+1
-    if count==MAX then emu.log('Collision v11 capture full: '..path) end
-  end
-  local worked,error_text=pcall(emu.addMemoryCallback,on_return,CB.exec,ret,ret,
-                               emu.cpuType.nes,MEM.nesMemory)
-  assert(worked,'Mesen2 return callback unavailable: '..tostring(error_text))
-end
-emu.addEventCallback(function()
-  out:flush();out:close()
-  dmc_out:flush();dmc_out:close()
-  input_out:flush();input_out:close()
-  emu.log('Collision v11 trace closed: '..count..' rows, '..skipped..' overlaps: '..path)
-end,emu.eventType.scriptEnded)
-emu.log('Collision v12 collision CPU trace: '..path)
-emu.log('Collision v11.2 DMC boundary state: '..dmc_path)
-emu.log('Collision v11.2 controller history: '..input_path)
-emu.log('Reset the original game AFTER starting capture; reset_epoch=0 is not boot-complete.')
-)
-  if clean~='' then
-    local fr,spec=clean:match('^(%d+)%s+(.+)
-emu.addEventCallback(function()
-  local state=emu.getState()
-  local frame=assert(state['frameCount'],'MesenCE frameCount unavailable')
-  input_out:write(string.format('%d,%d,%d,%d,%d\n',epoch,frame,
-                  emu.getCpuCycleCount(emu.cpuType.nes),
-                  pad_mask(0),pad_mask(1)))
-end,emu.eventType.inputPolled)
-local function physical(address)
-  local c=emu.convertAddress(address,MEM.nesMemory)
-  if type(c)~='table' or c.memType~=PRG then return -1 end
-  return c.address
-end
-local function hexram()
-  local t={}
-  for i=0,2047 do t[#t+1]=string.format('%02x',read(i,RAM)) end
-  return table.concat(t)
-end
-local callers={
-  0x8345,0x834e,0x839d,0x83ea,0x83f6,0x8429,0x8450,0x84cf,0x84d8,
-  0x9153,0x9164,0x91cf,0x91d8,0x9212,0x96cf,0x96d8,0x96e4,
-  0x96ed,0x970b,0x9714,0x9720,0x9729,0x97b1,0x97ba,0x97c5,
-  0x97ce,0x97e7,0x97fc,0x9b3c,0x9b45,0x9b4e,0x9b59,0x9b7b,
-  0x9b84,0x9b8d,0x9b96
-}
-local allow, pending={},{}
-for _,addr in ipairs(callers) do allow[addr]=true end
-local MAX=128;local count=0;local skipped=0
-local function entry(pc,opcode)
-  if count>=MAX or pc~=0xfcde or physical(pc)~=0x3fcde then return end
-  local s=regs(); local sp=s.sp
-  local ret=read(0x100+((sp+1)&255),RAM)+256*read(0x100+((sp+2)&255),RAM)
-  local caller=(ret-2)&65535
-  if not allow[caller] then return end
-  if physical(caller)~=0x38000+caller-0x8000 then return end
-  if read(caller,CPU_DEBUG)~=0x20 or read(caller+1,CPU_DEBUG)~=0xde
-     or read(caller+2,CPU_DEBUG)~=0xfc then return end
-  local return_pc=(caller+3)&65535
-  if pending[return_pc] then skipped=skipped+1;return end
-  pending[return_pc]={caller=caller,first=s,ram=hexram(),dmc=dmc_state()}
-end
-local ok,why=pcall(emu.addMemoryCallback,entry,CB.exec,0xfcde,0xfcde,
-                   emu.cpuType.nes,MEM.nesMemory)
-assert(ok,'Mesen2 $FCDE exec callback unavailable: '..tostring(why))
-for _,caller in ipairs(callers) do
-  local ret=(caller+3)&65535
-  local function on_return(pc,opcode)
-    local hit=pending[ret]
-    if not hit or count>=MAX then return end
-    pending[ret]=nil
-    if physical(pc)~=0x38000+pc-0x8000 then return end
-    local s=regs()
-    if s.cycle<hit.first.cycle then return end
-    local f=hit.first
-    local row={hit.caller,f.cycle,s.cycle,f.a,f.x,f.y,f.sp,f.p,
-               s.a,s.x,s.y,s.sp,s.p,hit.ram,hexram()}
-    out:write(table.concat(row,',')..'\n')
-    out:flush()
-    local last=dmc_state()
-    dmc_out:write(string.format('%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n',
-       count+1,hit.caller,f.cycle,s.cycle,
-       hit.dmc.addr,last.addr,hit.dmc.remaining,last.remaining,
-       hit.dmc.empty,last.empty))
-    dmc_out:flush()
-    count=count+1
-    if count==MAX then emu.log('Collision v11 capture full: '..path) end
-  end
-  local worked,error_text=pcall(emu.addMemoryCallback,on_return,CB.exec,ret,ret,
-                               emu.cpuType.nes,MEM.nesMemory)
-  assert(worked,'Mesen2 return callback unavailable: '..tostring(error_text))
-end
-emu.addEventCallback(function()
-  out:flush();out:close()
-  dmc_out:flush();dmc_out:close()
-  input_out:flush();input_out:close()
-  emu.log('Collision v11 trace closed: '..count..' rows, '..skipped..' overlaps: '..path)
-end,emu.eventType.scriptEnded)
-emu.log('Collision v12 collision CPU trace: '..path)
-emu.log('Collision v11.2 DMC boundary state: '..dmc_path)
-emu.log('Collision v11.2 controller history: '..input_path)
-emu.log('Reset the original game AFTER starting capture; reset_epoch=0 is not boot-complete.')
-)
-    assert(fr,'Invalid NESRecomp schedule line')
-    fr=tonumber(fr)
-    assert(fr>=last_frame,'Input schedule must have nondecreasing frames')
-    last_frame=fr
-    local port=0
-    local p,rest=spec:match('^([1-4]):(.+)
-emu.addEventCallback(function()
-  local state=emu.getState()
-  local frame=assert(state['frameCount'],'MesenCE frameCount unavailable')
-  input_out:write(string.format('%d,%d,%d,%d,%d\n',epoch,frame,
-                  emu.getCpuCycleCount(emu.cpuType.nes),
-                  pad_mask(0),pad_mask(1)))
-end,emu.eventType.inputPolled)
-local function physical(address)
-  local c=emu.convertAddress(address,MEM.nesMemory)
-  if type(c)~='table' or c.memType~=PRG then return -1 end
-  return c.address
-end
-local function hexram()
-  local t={}
-  for i=0,2047 do t[#t+1]=string.format('%02x',read(i,RAM)) end
-  return table.concat(t)
-end
-local callers={
-  0x8345,0x834e,0x839d,0x83ea,0x83f6,0x8429,0x8450,0x84cf,0x84d8,
-  0x9153,0x9164,0x91cf,0x91d8,0x9212,0x96cf,0x96d8,0x96e4,
-  0x96ed,0x970b,0x9714,0x9720,0x9729,0x97b1,0x97ba,0x97c5,
-  0x97ce,0x97e7,0x97fc,0x9b3c,0x9b45,0x9b4e,0x9b59,0x9b7b,
-  0x9b84,0x9b8d,0x9b96
-}
-local allow, pending={},{}
-for _,addr in ipairs(callers) do allow[addr]=true end
-local MAX=128;local count=0;local skipped=0
-local function entry(pc,opcode)
-  if count>=MAX or pc~=0xfcde or physical(pc)~=0x3fcde then return end
-  local s=regs(); local sp=s.sp
-  local ret=read(0x100+((sp+1)&255),RAM)+256*read(0x100+((sp+2)&255),RAM)
-  local caller=(ret-2)&65535
-  if not allow[caller] then return end
-  if physical(caller)~=0x38000+caller-0x8000 then return end
-  if read(caller,CPU_DEBUG)~=0x20 or read(caller+1,CPU_DEBUG)~=0xde
-     or read(caller+2,CPU_DEBUG)~=0xfc then return end
-  local return_pc=(caller+3)&65535
-  if pending[return_pc] then skipped=skipped+1;return end
-  pending[return_pc]={caller=caller,first=s,ram=hexram(),dmc=dmc_state()}
-end
-local ok,why=pcall(emu.addMemoryCallback,entry,CB.exec,0xfcde,0xfcde,
-                   emu.cpuType.nes,MEM.nesMemory)
-assert(ok,'Mesen2 $FCDE exec callback unavailable: '..tostring(why))
-for _,caller in ipairs(callers) do
-  local ret=(caller+3)&65535
-  local function on_return(pc,opcode)
-    local hit=pending[ret]
-    if not hit or count>=MAX then return end
-    pending[ret]=nil
-    if physical(pc)~=0x38000+pc-0x8000 then return end
-    local s=regs()
-    if s.cycle<hit.first.cycle then return end
-    local f=hit.first
-    local row={hit.caller,f.cycle,s.cycle,f.a,f.x,f.y,f.sp,f.p,
-               s.a,s.x,s.y,s.sp,s.p,hit.ram,hexram()}
-    out:write(table.concat(row,',')..'\n')
-    out:flush()
-    local last=dmc_state()
-    dmc_out:write(string.format('%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n',
-       count+1,hit.caller,f.cycle,s.cycle,
-       hit.dmc.addr,last.addr,hit.dmc.remaining,last.remaining,
-       hit.dmc.empty,last.empty))
-    dmc_out:flush()
-    count=count+1
-    if count==MAX then emu.log('Collision v11 capture full: '..path) end
-  end
-  local worked,error_text=pcall(emu.addMemoryCallback,on_return,CB.exec,ret,ret,
-                               emu.cpuType.nes,MEM.nesMemory)
-  assert(worked,'Mesen2 return callback unavailable: '..tostring(error_text))
-end
-emu.addEventCallback(function()
-  out:flush();out:close()
-  dmc_out:flush();dmc_out:close()
-  input_out:flush();input_out:close()
-  emu.log('Collision v11 trace closed: '..count..' rows, '..skipped..' overlaps: '..path)
-end,emu.eventType.scriptEnded)
-emu.log('Collision v12 collision CPU trace: '..path)
-emu.log('Collision v11.2 DMC boundary state: '..dmc_path)
-emu.log('Collision v11.2 controller history: '..input_path)
-emu.log('Reset the original game AFTER starting capture; reset_epoch=0 is not boot-complete.')
-)
-    if p then
-      assert(p=='2','Unsupported non-controller-2 port')
-      port=1;spec=rest
-    end
-    local names={'a','b','select','start','up','down','left','right'}
-    local values={}
-    for _,name in ipairs(names) do values[name]=false end
-    if spec~='-' then
-      for token in spec:gmatch('[^+]+') do
-        local key=token:lower()
-        assert(values[key]~=nil,'Unrecognized controller input: '..token)
-        assert(not values[key],'Duplicate controller input: '..token)
-        values[key]=true
-      end
-    end
-    steps[#steps+1]={frame=fr,port=port,buttons=values}
-  end
-end
-schedule_file:close()
-assert(#steps>1 and steps[1].frame==0,
-       'Refusing empty or uninitialized NESRecomp schedule')
-local replay_pos=1
-local replay_state={{},{}}
-for _,name in ipairs(button_names) do
-  replay_state[1][name]=false
-  replay_state[2][name]=false
-end
-local function replay_input(mesen_frame)
-  -- Recorded Mesen frame 2 corresponds to NESRecomp frame 1 for shift=1.
-  -- This offset is evidence-backed for bounded $FCDE calls, not for PPU.
-  local native_frame=mesen_frame-1
-  assert(native_frame>=0,'Unexpected Mesen boot frame for shift-1')
-  while replay_pos<=#steps and steps[replay_pos].frame<=native_frame do
-    local v=steps[replay_pos]
-    replay_state[v.port+1]=v.buttons
-    replay_pos=replay_pos+1
-  end
-  emu.setInput(replay_state[1],0)
-  emu.setInput(replay_state[2],1)
-end
-
-local epoch=0
-emu.addEventCallback(function()
-  epoch=epoch+1
-  if epoch==1 then replay_pos=1 end
-end,emu.eventType.reset)
-emu.addEventCallback(function()
-  local state=emu.getState()
-  local frame=assert(state['frameCount'],'MesenCE frameCount unavailable')
-  input_out:write(string.format('%d,%d,%d,%d,%d\n',epoch,frame,
-                  emu.getCpuCycleCount(emu.cpuType.nes),
-                  pad_mask(0),pad_mask(1)))
-end,emu.eventType.inputPolled)
-local function physical(address)
-  local c=emu.convertAddress(address,MEM.nesMemory)
-  if type(c)~='table' or c.memType~=PRG then return -1 end
-  return c.address
-end
-local function hexram()
-  local t={}
-  for i=0,2047 do t[#t+1]=string.format('%02x',read(i,RAM)) end
-  return table.concat(t)
-end
-local callers={
-  0x8345,0x834e,0x839d,0x83ea,0x83f6,0x8429,0x8450,0x84cf,0x84d8,
-  0x9153,0x9164,0x91cf,0x91d8,0x9212,0x96cf,0x96d8,0x96e4,
-  0x96ed,0x970b,0x9714,0x9720,0x9729,0x97b1,0x97ba,0x97c5,
-  0x97ce,0x97e7,0x97fc,0x9b3c,0x9b45,0x9b4e,0x9b59,0x9b7b,
-  0x9b84,0x9b8d,0x9b96
-}
-local allow, pending={},{}
-for _,addr in ipairs(callers) do allow[addr]=true end
-local MAX=128;local count=0;local skipped=0
-local function entry(pc,opcode)
-  if count>=MAX or pc~=0xfcde or physical(pc)~=0x3fcde then return end
-  local s=regs(); local sp=s.sp
-  local ret=read(0x100+((sp+1)&255),RAM)+256*read(0x100+((sp+2)&255),RAM)
-  local caller=(ret-2)&65535
-  if not allow[caller] then return end
-  if physical(caller)~=0x38000+caller-0x8000 then return end
-  if read(caller,CPU_DEBUG)~=0x20 or read(caller+1,CPU_DEBUG)~=0xde
-     or read(caller+2,CPU_DEBUG)~=0xfc then return end
-  local return_pc=(caller+3)&65535
-  if pending[return_pc] then skipped=skipped+1;return end
-  pending[return_pc]={caller=caller,first=s,ram=hexram(),dmc=dmc_state()}
-end
-local ok,why=pcall(emu.addMemoryCallback,entry,CB.exec,0xfcde,0xfcde,
-                   emu.cpuType.nes,MEM.nesMemory)
-assert(ok,'Mesen2 $FCDE exec callback unavailable: '..tostring(why))
-for _,caller in ipairs(callers) do
-  local ret=(caller+3)&65535
-  local function on_return(pc,opcode)
-    local hit=pending[ret]
-    if not hit or count>=MAX then return end
-    pending[ret]=nil
-    if physical(pc)~=0x38000+pc-0x8000 then return end
-    local s=regs()
-    if s.cycle<hit.first.cycle then return end
-    local f=hit.first
-    local row={hit.caller,f.cycle,s.cycle,f.a,f.x,f.y,f.sp,f.p,
-               s.a,s.x,s.y,s.sp,s.p,hit.ram,hexram()}
-    out:write(table.concat(row,',')..'\n')
-    out:flush()
-    local last=dmc_state()
-    dmc_out:write(string.format('%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n',
-       count+1,hit.caller,f.cycle,s.cycle,
-       hit.dmc.addr,last.addr,hit.dmc.remaining,last.remaining,
-       hit.dmc.empty,last.empty))
-    dmc_out:flush()
-    count=count+1
-    if count==MAX then emu.log('Collision v11 capture full: '..path) end
-  end
-  local worked,error_text=pcall(emu.addMemoryCallback,on_return,CB.exec,ret,ret,
-                               emu.cpuType.nes,MEM.nesMemory)
-  assert(worked,'Mesen2 return callback unavailable: '..tostring(error_text))
-end
-emu.addEventCallback(function()
-  out:flush();out:close()
-  dmc_out:flush();dmc_out:close()
-  input_out:flush();input_out:close()
-  emu.log('Collision v11 trace closed: '..count..' rows, '..skipped..' overlaps: '..path)
-end,emu.eventType.scriptEnded)
-emu.log('Collision v12 collision CPU trace: '..path)
-emu.log('Collision v11.2 DMC boundary state: '..dmc_path)
-emu.log('Collision v11.2 controller history: '..input_path)
+emu.log('Collision v12 DMC boundary state: '..dmc_path)
+emu.log('Collision v12 controller history: '..input_path)
 emu.log('Reset the original game AFTER starting capture; reset_epoch=0 is not boot-complete.')
