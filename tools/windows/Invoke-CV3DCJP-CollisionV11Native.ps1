@@ -139,6 +139,7 @@ if (Test-Path -LiteralPath $session) { throw "Output directory exists: $session"
 New-Item -ItemType Directory -Path $session -Force | Out-Null
 $trace=Join-Path $session 'native-fcde.csv'
 $dma=Join-Path $session 'native-dma.csv'
+$busCsv=Join-Path $session 'native-dma-bus-v12.csv'
 $hashFile=Join-Path $session 'native-hashes.txt'
 $bus=Join-Path $session 'native-cycle-frame-IRQ-window.txt'
 $log=Join-Path $session 'native-console.log'
@@ -148,13 +149,15 @@ $argsNative=@($rom,'--edition','original','--room-view','0','--headless',
   '--no-save','--frames',"$Frames",'--input',$input,
   '--hash-out',$hashFile,'--trace-frame',"$irqCandidateFrame",'--trace-out',$bus,
   '--align',"$Align",'--collision-v11-rom',$rom,
-  '--collision-v11-trace',$trace,'--collision-v11-dma-trace',$dma)
+  '--collision-v11-trace',$trace,'--collision-v11-dma-trace',$dma,
+  '--collision-v11-bus-trace',$busCsv)
 Write-Host "RUNNING UNVERIFIED candidate frame shift $Shift, PPU align $Align"
 Write-Host "Private outputs: $session"
 & $exe @argsNative *> $log
 Exit-Check 'First native collision diagnostic run'
 Ensure-File $trace
 Ensure-File $dma
+Ensure-File $busCsv
 $cpuRows=@(Import-Csv -LiteralPath $trace)
 $dmaRows=@(Import-Csv -LiteralPath $dma)
 $summary=[ordered]@{schema='cv3dcjp-v11.2-owner-native-execution-receipt';
@@ -163,6 +166,8 @@ $summary=[ordered]@{schema='cv3dcjp-v11.2-owner-native-execution-receipt';
   binary_sha256=(Get-FileHash $exe -Algorithm SHA256).Hash.ToLowerInvariant();
   rom_sha256=$expectedRom; input_sha256=$hash;
   native_cpu_samples=$cpuRows.Count; native_dma_samples=$dmaRows.Count;
+  native_dma_bus_sha256=(Get-FileHash $busCsv -Algorithm SHA256).Hash.ToLowerInvariant();
+  hardware_event_stream_generated=$true;
   expected_mesen_capture_samples=128; captured_irq_trace_frame=$irqCandidateFrame;
   source_engine_commit=$head }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $session 'run-receipt.json') -Encoding UTF8
