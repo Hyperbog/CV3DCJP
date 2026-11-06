@@ -84,6 +84,14 @@ calls, stop the Lua script to flush/close its CPU/DMC/controller CSVs,
 and exit that private emulator. The source patch writes the fourth
 CSV, mesen-real-dma-bus-v12.csv, to the same private directory.
 
+The patched MesenCE debugger is explicitly ARMED by the v12 Lua reset
+event via the private CV3DCJP_MESEN_ARM_FILE marker. Prior boot or
+title-screen DMC events are discarded, preventing an unrelated pre-reset
+CPU-clock epoch from contaminating the synchronized log. The owner-side
+runner requires both the arm marker and a nonempty debugger-produced DMC
+CSV before declaring capture completion. This marker is a host file
+only and changes no emulated CPU or memory state.
+
 The MesenCE private directory:
 C:\NESDev\CV3DCJP-Builds\collision-v12-mesen\session-...
 preserves the Mesen ROM-checked 128 calls, boundary DMC states,
