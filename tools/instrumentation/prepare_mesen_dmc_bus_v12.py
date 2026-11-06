@@ -32,6 +32,13 @@ static void cv3dcjp_v12_dma_bus(unsigned long long cycle,
     static bool opened = false;
     static std::FILE *out = nullptr;
     if(!opened) {
+        /* An explicitly recorded Lua reset is required. Never mix the
+         * startup/pre-reset CPU cycle epoch with the synchronized capture. */
+        const char *armPath = std::getenv("CV3DCJP_MESEN_ARM_FILE");
+        if(!armPath || !*armPath) return;
+        std::FILE *armed = std::fopen(armPath, "rb");
+        if(!armed) return;
+        std::fclose(armed);
         opened = true;
         const char *path = std::getenv("CV3DCJP_MESEN_DMC_CSV");
         if(path && *path) {
