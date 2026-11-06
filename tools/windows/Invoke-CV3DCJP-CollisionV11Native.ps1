@@ -49,10 +49,32 @@ if ((Get-Item -LiteralPath $rom).Length -ne 393232 -or
 }
 $hash=(Get-FileHash -LiteralPath $input -Algorithm SHA256).Hash.ToLowerInvariant()
 $receipt=Get-Content -LiteralPath $manifest -Raw | ConvertFrom-Json
+# Two manifest layouts were released during phase 1. The earlier
+# owner ZIP uses mapping_proven; the repository converter uses
+# start_phase_alignment_proven. Require the *matching schema and explicit
+# false* instead of reading an absent property under StrictMode.
+$unverifiedField = switch ([string]$receipt.schema) {
+  'cv3dcjp-v11.2-nesrecomp-input-CANDIDATES' { 'mapping_proven' }
+  'cv3dcjp-v11.2-native-input-unverified-candidates' { 'start_phase_alignment_proven' }
+  default { throw "Unknown input manifest schema: $($receipt.schema)" }
+}
+$flagProperty=$receipt.PSObject.Properties[$unverifiedField]
+if ($null -eq $flagProperty -or $flagProperty.Value -isnot [bool] -or
+    $flagProperty.Value) {
+  throw 'Input manifest does not explicitly mark input alignment unverified'
+}
 $selected=@($receipt.candidate_schedules | Where-Object { $_.shift -eq $Shift })
-if ($selected.Count -ne 1 -or $selected[0].sha256 -ne $hash -or
-    $receipt.source_rom_sha256 -ne $expectedRom -or $receipt.start_phase_alignment_proven) {
-  throw 'Input manifest does not match this candidate or is not an unverified candidate.'
+if ($selected.Count -ne 1 -or [string]$selected[0].sha256 -ne $hash -or
+    [string]$receipt.source_rom_sha256 -ne $expectedRom) {
+  throw 'Input manifest does not match selected candidate or original ROM.'
+}
+$expectedInputName = if ($selected[0].PSObject.Properties['relative_filename']) {
+    [string]$selected[0].relative_filename
+  } elseif ($selected[0].PSObject.Properties['name']) {
+    [string]$selected[0].name
+  } else { throw 'Input manifest is missing selected schedule filename' }
+if ($expectedInputName -cne [IO.Path]::GetFileName($input)) {
+  throw 'Input manifest names a different schedule file'
 }
 if (!(Get-Command git -ErrorAction SilentlyContinue)) { throw 'git not installed' }
 $head=(& git -C $engine rev-parse HEAD).Trim()
