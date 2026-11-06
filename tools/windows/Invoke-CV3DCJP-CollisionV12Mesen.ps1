@@ -99,6 +99,24 @@ Write-Host "Private evidence directory: $session"
 & $bin
 Check 'Private MesenCE process'
 $csv=@(Get-ChildItem $session -File -Filter '*.csv')
+$names=@($csv | ForEach-Object { $_.Name })
+$realBus=Join-Path $session 'mesen-real-dma-bus-v12.csv'
+Need $realBus
+if ((Get-Item -LiteralPath $realBus).Length -le 90) {
+ throw 'Genuine MesenCE DMC bus trace contains no observed DMA rows'
+}
+foreach ($prefix in @('cv3dcjp-fcde-sync-v12-',
+                      'cv3dcjp-fcde-dmc-v12-',
+                      'cv3dcjp-controller-v12-')) {
+ $matches=@($names | Where-Object { $_.StartsWith($prefix,[StringComparison]::Ordinal) -and $_.EndsWith('.csv') })
+ if ($matches.Count -ne 1) {
+   throw "Missing or duplicate Lua CSV for prefix $prefix; check Lua/reset: $session"
+ }
+}
+$cpuCsv=Get-Item -LiteralPath (Join-Path $session ($names | Where-Object { $_.StartsWith('cv3dcjp-fcde-sync-v12-') } | Select-Object -First 1))
+if (@(Import-Csv -LiteralPath $cpuCsv.FullName).Count -ne 128) {
+ throw "MesenCE capture must contain exactly 128 collision CPU samples: $session"
+}
 $summary=[ordered]@{
  schema='cv3dcjp-collision-v12-owner-mesen-debugger-run'
  Mesen_git_commit=$pin
