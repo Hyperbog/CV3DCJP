@@ -171,3 +171,29 @@ jobs:
           assert b"getenv_s(" in observed and b"fopen_s(" in observed
           assert b"std::getenv(" not in observed and b"std::fopen(" not in observed
           PY
+      - name: Reproduce Windows CRLF checkout and verify byte-preserving repair
+        run: |
+          git -C upstream/mesen restore -- Core/NES/Debugger/NesDebugger.cpp
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tools/instrumentation")
+          import prepare_mesen_dmc_bus_v12 as p
+          path=Path("upstream/mesen") / p.SOURCE
+          source=path.read_bytes()
+          if b"\r\n" in source:
+              raise ValueError("Upstream test fixture already contains CRLF")
+          windows_checkout=source.replace(b"\n",b"\r\n")
+          path.write_bytes(p.instrumented(windows_checkout,p.LEGACY_HELPER))
+          PY
+          python3 tools/instrumentation/prepare_mesen_dmc_bus_v12.py --private-source upstream/mesen --repair
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tools/instrumentation")
+          import prepare_mesen_dmc_bus_v12 as p
+          root=Path("upstream/mesen")
+          original=p.checked_original(root.resolve())
+          actual=(root/p.SOURCE).read_bytes()
+          assert actual==p.instrumented(original.replace(b"\n",b"\r\n"),p.HELPER)
+          PY
