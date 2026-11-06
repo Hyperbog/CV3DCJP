@@ -98,3 +98,35 @@ and 0 executable PRG bytes have been retired.
    until full hardware behavior is proven.
 5. The collision translation ledger retains 1,150 of 1,264 identified
    executable bytes implemented, 114 open, 0 retired.
+
+
+## Pinned-engine 5H8S/5H8U linker compatibility (2026-11-05)
+
+Owner Windows collision diagnostic compile reached LNK2019 for two
+historical selector-write globals: cyc_cviii_selector_write_5h8s and
+cyc_cviii_selector_write_5h8u. These two callbacks are declared by
+cviii_selector_native_5h8s.h and cviii_selector_native_5h8u.h, but
+they were introduced in a separately instrumented cycle-engine
+checkout, not the clean pinned upstream mstan/nesrecomp revision
+2b4fcdb98c9e702be3fb365cfc645003c50b5fc1.
+
+Correct scope: in CMake when BOTH JP_CYCLE_HEADLESS and
+JP_COLLISION_V11_SHADOW are ON, omit the two legacy selector
+instrumentation modules and instead link
+cviii_selector_unavailable_collision_v11.c, which defines only the
+HOST selector power-on entry points and does not define engine hook
+pointers. Any attempt to enable the old selector instrumentation by
+setting CVIII_SELECTOR_TRACE_5H8S or CVIII_SELECTOR_TRACE_5H8U
+fails closed. The original game target and normal selector
+diagnostics stay unchanged.
+
+This compatibility fix does NOT create selector-write observations,
+and no CPU, mapper or PPU behavior is fabricated. Its ROM-free
+compiler/linker smoke test is part of GitHub Actions. A full private
+Windows ROM-backed link remains an owner-side acceptance test.
+
+After pulling main, rerun the SAME diagnostic command with the
+separate pinned engine worktree. CMake regenerates the existing
+marked collision-v11-paired build tree and drops the obsolete
+selector objects from the target link. Do not reset or patch either
+engine worktree. The protected original game build is untouched.
