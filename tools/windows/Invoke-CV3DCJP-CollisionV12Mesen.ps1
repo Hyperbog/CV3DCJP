@@ -67,9 +67,38 @@ if ($Action -eq 'Build') {
    if ($found.Count -gt 0) { $msbuild=$found[0] }
  }
  if (!$msbuild) { throw 'MSBuild.exe not available from Visual Studio' }
- & $msbuild (Join-Path $private 'Mesen.sln') '/t:Build' '/p:Configuration=Release' '/p:Platform=x64' '/m:1' '/verbosity:minimal'
- Check 'MesenCE patched Release x64 build'
- Write-Host 'Private MesenCE build complete. No gameplay capture yet.'
+ # Preserve all compiler/project errors in the isolated diagnostic directory.
+ $logDir=Join-Path $root 'build-logs'
+ New-Item -ItemType Directory -Path $logDir -Force | Out-Null
+ $stamp=Get-Date -Format 'yyyyMMdd-HHmmssfff'
+ $buildLog=Join-Path $logDir ("MesenCE-v12-Release-x64-" + $stamp + ".log")
+ Write-Host "MSBuild diagnostic log: $buildLog"
+ $buildArgs=@((Join-Path $private 'Mesen.sln'), '/t:Build',
+   '/p:Configuration=Release', '/p:Platform=x64',
+   '/m:1', '/verbosity:normal', '/clp:ErrorsOnly;Summary',
+   '/fl', ("/flp:LogFile=" + $buildLog + ";Verbosity=diagnostic"))
+ & $msbuild @buildArgs
+ $exitCode=$LASTEXITCODE
+ if ($exitCode -ne 0) {
+   Write-Host ("MSBuild exit code: " + $exitCode)
+   if (Test-Path -LiteralPath $buildLog -PathType Leaf) {
+     $errorsFound=@(Select-String -LiteralPath $buildLog -Pattern '(?i)\berror\s+(?:C|MSB|NETSDK|CS|NU|LNK)\d+\b|\bfatal error\b|:\s*error\b' | Select-Object -First 20)
+     if ($errorsFound.Count -gt 0) {
+       Write-Host 'First compiler/project errors:'
+       foreach ($match in $errorsFound) { Write-Host $match.Line.Trim() }
+     } else {
+       Write-Host 'No compiler error marker found; last 35 log lines:'
+       Get-Content -LiteralPath $buildLog -Tail 35 | ForEach-Object { Write-Host $_ }
+     }
+   } else {
+     Write-Host 'MSBuild did not produce the requested diagnostic log.'
+   }
+   throw "MesenCE build failed. Send the errors and diagnostic log: $buildLog"
+ }
+ $expectedExe=Join-Path $private 'bin\win-x64\Release\Mesen.exe'
+ Need $expectedExe
+ Write-Host "PASS: Built private MesenCE: $expectedExe"
+ Write-Host 'No native hardware parity is established by compilation.'
  return
 }
 foreach($p in @($inputs,$manifest)) { Need $p }
@@ -79,11 +108,8 @@ if ($selected.Count -ne 1 -or
     $selected[0].sha256 -ne (Get-FileHash $inputs -Algorithm SHA256).Hash.ToLowerInvariant()) {
  throw 'Private input schedule does not match shift-1 manifest'
 }
-$exe=@(Get-ChildItem $private -Recurse -Filter Mesen.exe -File |
-       Where-Object { $_.FullName -notmatch '[\\/](?:obj|packages)[\\/]' } |
-       Sort-Object LastWriteTime -Descending)
-if ($exe.Count -eq 0) { throw 'Patched Mesen.exe missing; use -Action Build first' }
-$bin=$exe[0].FullName
+$bin=Join-Path $private 'bin\win-x64\Release\Mesen.exe'
+Need $bin
 $session=Join-Path $root ('session-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))
 if (Test-Path $session) { throw 'Capture directory exists' }
 New-Item -ItemType Directory -Path $session -Force | Out-Null
