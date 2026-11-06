@@ -280,3 +280,37 @@ Use tools/instrumentation/verify_fcde_native_zip_v11.py to
 verify original ROM/DMA traces with arbitrary native row count:
 the older paired v11 comparator was deliberately restricted to
 128 owner Mesen calls and must NOT truncate a 212-row native run.
+
+
+## v11.4 — 627 original-CPU native calls; shift-1 ROM effect alignment
+
+Owner provided all three isolated headless native replay runs,
+recording 212/209/206 original $FCDE CPU calls (627 total).
+The authentic ROM interpreter verifies 627/627 bounded
+register/flag and instruction-clock predictions, 625/625
+uninterrupted full RAM and CPU+DMA elapsed-clock totals,
+and two separate IRQ-overlap cases with the ROM vector
+$FFFE->$E0F5 and eight stack writes.
+
+Shift 1 is the first true same-ordinal cross-emulator
+execution alignment. All first 128 Mesen and native caller
+sites and CPU entry/return registers/flags match, as do
+their authentic ROM $FCDE bounded sequential RAM write
+effects and original 6502 instruction-cycle totals. Only
+nine historical RAM addresses differ in the complete
+capture; none is a read-before-write input on those
+observed ROM paths. Full 2KiB byte identity and
+machine-wide behavior are still NOT proved.
+
+DMC phase diverges: 98 equal elapsed-time samples,
+16 Mesen-only +4, 14 native-only +4. Sample 101 has
+the identical CPU entry clock and ROM IRQ return site,
+but Mesen observes one DMC sample advance and a +4
+elapsed-time difference. No per-cycle Mesen DMC DMA
+bus capture was provided; this is a *bounded semantic
+match* with unresolved cross-engine bus-phase parity,
+not hardware-perfect parity.
+
+Translation ledger unchanged: 1,150/1,264 implemented;
+114 open, 60 classified data, 0 executable bytes retired.
+Public aggregate: evidence/fcde_v11_4_three_shift_owner_sync_rom_audit.json.
