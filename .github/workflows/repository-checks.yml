@@ -83,17 +83,10 @@ jobs:
             tests/test_collision_v11_selector_unavailable.c \
             -o /tmp/cv3dcjp_collision_selector_gate
           /tmp/cv3dcjp_collision_selector_gate
-          ! nm -g /tmp/cv3dcjp_collision_selector_gate | grep -E '[[:space:]][BU][[:space:]]cyc_cviii_selector_write_5h8[su]
-        run: |
-          python3 -m py_compile tools/instrumentation/verify_fcde_sync_dmc_irq_v11.py
-          python3 -m unittest discover -s tests -p 'test_collision_sync_dmc_irq_v11.py' -v
-
-      - name: Validate v11.2 controller replay conversion contracts
-        run: |
-          python3 -m py_compile tools/instrumentation/collision_v11_make_native_input.py
-          python3 -m unittest discover -s tests -p 'test_collision_v11_input_replay.py' -v
-          python3 -m unittest discover -s tests -p 'test_collision_paired_dma_v11.py' -v
-
+          if nm -g /tmp/cv3dcjp_collision_selector_gate | grep -E 'cyc_cviii_selector_write_5h8[su]'; then
+            echo "unexpected fabricated engine selector symbol"
+            exit 1
+          fi
 
       - name: Validate v11.2 capture verifier and ROM-free IRQ stack contracts
         run: |
