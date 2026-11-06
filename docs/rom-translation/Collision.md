@@ -314,3 +314,31 @@ not hardware-perfect parity.
 Translation ledger unchanged: 1,150/1,264 implemented;
 114 open, 60 classified data, 0 executable bytes retired.
 Public aggregate: evidence/fcde_v11_4_three_shift_owner_sync_rom_audit.json.
+
+
+## Collision v12 DMC bus-event source instrumentation prepared (2026-11-05)
+
+The native original-CPU collision observer now emits an optional
+per-cycle DMA sidecar, recording actual CycTraceCycle halt/read/write
+events and device-owned DMC address/byte transitions inside verified
+$FCDE calls. A private source patcher targets the exact upstream
+MesenCE commit 4b8a196e299b3de297b204fd1208d2981562c89b,
+using the real NES debugger DmaRead and IsDmcDma branch to
+identify DMC sample reads. This is necessary because the Lua Read
+callback combines ordinary CPU and DMA reads. The MesenCE patch
+is opt-in in a separate private source checkout, not a modification
+to the installed emulator.
+
+The shift-1 replay Lua now accepts a private deterministic input
+schedule, and Windows scripts prepare/build/run both the private
+MesenCE capture and the isolated NESRecomp original-CPU capture.
+A strict v12 source-identified bus comparator and ROM-free synthetic
+tests are committed; pinned MesenCE source-patch CI passed.
+
+**These are prepared, source-checked tools, not new gameplay evidence.**
+No new MesenCE debugger-DMC CSV or per-cycle native DMA CSV was
+captured or compared in this environment. Source-level collision
+translation: 1,150/1,264 executable bytes implemented, 114 open.
+Original CPU is still active, retired original 6502 bytes = 0.
+No whole-machine DMC/IRQ/PPU/APU/VRC6 bus parity acceptance.
+See docs/rom-translation/COLLISION_V12_DMC_BUS_GATE.md.
