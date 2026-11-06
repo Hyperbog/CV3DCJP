@@ -12,7 +12,7 @@ local expected='a0f3b31d4e3b0d2ca2e8a34f91f14ad99a5ad11f'
 local info=assert(emu.getRomInfo(),'No game loaded')
 assert(type(info.fileSha1Hash)=='string' and info.fileSha1Hash:lower()==expected,
        'Wrong ROM; refusing collision capture')
-local dir=emu.getScriptDataFolder()
+local dir=os.getenv('CV3DCJP_MESEN_OUTPUT_DIR') or emu.getScriptDataFolder()
 assert(type(dir)=='string' and #dir>0,
        'Enable Mesen Lua access to I/O and OS functions to write capture')
 local sep=package.config:sub(1,1)
