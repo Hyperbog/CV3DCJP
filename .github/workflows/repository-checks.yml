@@ -98,3 +98,27 @@ jobs:
           python3 -m py_compile tools/instrumentation/collision_v11_make_native_input.py
           python3 -m unittest discover -s tests -p 'test_collision_v11_input_replay.py' -v
           python3 -m unittest discover -s tests -p 'test_collision_paired_dma_v11.py' -v
+
+  collision-v12-mesen-source-gate:
+    name: Collision v12 genuine MesenCE DMC source hook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: nesdev-org/MesenCE
+          ref: 4b8a196e299b3de297b204fd1208d2981562c89b
+          path: upstream/mesen
+          persist-credentials: false
+      - name: Patch exact pinned original DMA debugger source, no ROM
+        run: |
+          python3 tools/instrumentation/prepare_mesen_dmc_bus_v12.py --private-source upstream/mesen
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path("upstream/mesen/Core/NES/Debugger/NesDebugger.cpp").read_text(encoding="utf-8-sig")
+          assert source.count("cv3dcjp_v12_dma_bus(") == 3
+          assert "MemoryOperationType::DmaRead" in source
+          assert "MemoryOperationType::DmaWrite" in source
+          assert "_cpu->IsDmcDma()" in source
+          assert "CV3DCJP_MESEN_DMC_CSV" in source
+          PY
